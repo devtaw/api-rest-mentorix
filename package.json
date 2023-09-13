@@ -1,12 +1,25 @@
 {
-  "name": "api-rest-mentorix",
+  "name": "@devtaw/api-rest-mentorix",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "API REST desenvolvida com Node.js com objetivo de gerenciar as entidades do projeto Mentorix",
+  "type": "module",
+  "main": "./src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./src/server.js",
+    "test": "jest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devtaw/api-rest-mentorix"
+  },
+  "keywords": [
+    "api rest",
+    "plataforma",
+    "ensino",
+    "mentoria",
+    "educação"
+  ],
+  "author": "Squad 4",
+  "license": "MIT",
+  "dependencies": {}
 }
