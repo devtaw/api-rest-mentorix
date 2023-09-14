@@ -22,6 +22,7 @@
   "author": "Squad 4",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "express": "^4.18.2",
     "sequelize": "^6.33.0",
     "sqlite3": "^5.1.6"
