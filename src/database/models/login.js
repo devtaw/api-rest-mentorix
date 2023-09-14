@@ -43,4 +43,4 @@ const Login = sequelize.define("Login", {
 // `sequelize.define` também retorno o modelo
 console.log(User === sequelize.models.User); // true
 
-module.exports = Login;
+export default Login;
