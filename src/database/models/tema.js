@@ -1,3 +1,4 @@
+
 import { Sequelize, DataTypes } from "sequelize";
 
 // Cria uma instância do Sequelize e especifica o banco de dados SQLite.
@@ -27,3 +28,4 @@ console.log(User === sequelize.models.User); // true
 
 // Exporta o modelo "Categoria" para ser usado em outras partes do aplicativo.
 module.exports = Categoria;
+
