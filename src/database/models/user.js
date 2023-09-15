@@ -1,3 +1,4 @@
+// arquivo salvo como User.js ao inves de login para representar Usuario.Login
 import { Sequelize, DataTypes } from "sequelize";
 
 const sequelize = new Sequelize("sqlite::memory:");
