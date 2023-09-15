@@ -1,3 +1,4 @@
+
 // Responsável: Felipe
 // Forma de fazer o modelo sequelize.define: https://sequelize.org/docs/v6/core-concepts/model-basics/
 
@@ -10,6 +11,20 @@
 // A combinação dessa relação com a relação estabelecida no Model/especialidade.js cria uma relação de
 //  muitas "Especialidades" possuem 1 "Área de Atuação".
 // Referência: https://sequelize.org/docs/v6/core-concepts/assocs/#one-to-many-relationships
+
+import sequelize from "sequelize";
+
+module.exports = (sequelize, DataTypes) => {
+  const areaAtuacao = sequelize.define('areaAtuacao', {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      unique: true,
+    },
+  });
+};
+
 AreaAtuacao.hasMany(sequelize.models.Especialidade, {
   foreignKey: {
     allowNull: false,
