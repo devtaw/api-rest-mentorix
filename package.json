@@ -24,7 +24,7 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "express": "^4.18.2",
-    "sequelize": "^6.33.0",
-    "sqlite3": "^5.1.6"
+    "mysql2": "^3.6.1",
+    "sequelize": "^6.33.0"
   }
 }
