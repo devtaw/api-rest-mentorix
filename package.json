@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "API REST desenvolvida com Node.js com objetivo de gerenciar as entidades do projeto Mentorix",
   "type": "module",
-  "main": "./src/server.js",
+  "main": "./server.js",
   "scripts": {
-    "start": "node ./src/server.js",
+    "start": "node ./server.js",
     "test": "jest"
   },
   "repository": {
