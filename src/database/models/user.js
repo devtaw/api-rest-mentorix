@@ -2,8 +2,8 @@ import { Sequelize, DataTypes } from "sequelize";
 
 const sequelize = new Sequelize("sqlite::memory:");
 
-// Define a entidade "Login" e seus atributos
-const Login = sequelize.define("Login", {
+// Define a entidade "User" e seus atributos
+const User = sequelize.define("User", {
   // Um identificador único para cada usuário registrado na plataforma.
   id: {
     type: DataTypes.INTEGER,
@@ -43,4 +43,4 @@ const Login = sequelize.define("Login", {
 // `sequelize.define` também retorno o modelo
 console.log(User === sequelize.models.User); // true
 
-export default Login;
+export default User;

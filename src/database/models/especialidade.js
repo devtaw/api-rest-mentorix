@@ -4,6 +4,14 @@ import { Sequelize, DataTypes } from "sequelize";
 const sequelize = new Sequelize("sqlite::memory:");
 
 const Especialidade = sequelize.define("Especialidade", {
+  // Um identificador único para cada usuário registrado na plataforma.
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true, // Permite que o valor seja gerado automaticamente
+    unique: true,
+    allowNull: false,
+  },
   nome: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -13,8 +21,11 @@ const Especialidade = sequelize.define("Especialidade", {
   },
 });
 
-// Associação com a entidade "Area"
-Especialidade.belongsTo(sequelize.models.Area, {
+// Associa entidade "Especialidade" com "Área de Atuação", estabelecendo uma relação de 1:1 (um para um).
+// A combinação dessa relação com a relação estabelecida no Model/area-atuacao.js cria uma relação de
+// 1 "Área de Atuação" possui muitas "Especialidades".
+// Referência: https://sequelize.org/docs/v6/core-concepts/assocs/#one-to-many-relationships
+Especialidade.belongsTo(sequelize.models.AreaAtuacao, {
   foreignKey: {
     allowNull: false,
   },
