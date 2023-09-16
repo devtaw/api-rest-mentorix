@@ -37,7 +37,7 @@ routes.post('/', async (req, res) => {
       return res.status(500).json({ error: 'Erro ao cadastrar mentorado.' });
     }
   });
-  
+
   // Rota para atualizar os dados de um mentorado por ID
 routes.put('/:id', async (req, res) => {
     try {
@@ -57,4 +57,22 @@ routes.put('/:id', async (req, res) => {
       return res.status(500).json({ error: 'Erro ao atualizar mentorado.' });
     }
   });
-  
+  // Rota para deletar um mentorado por ID
+routes.delete('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const mentorado = await Mentorado.findByPk(id);
+
+    if (!mentorado) {
+      return res.status(404).json({ error: 'Mentorado não encontrado.' });
+    }
+
+    await mentorado.destroy();
+
+    return res.status(204).json();
+  } catch (error) {
+    return res.status(500).json({ error: 'Erro ao deletar mentorado.' });
+  }
+});
+
+export default routes;
