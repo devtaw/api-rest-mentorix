@@ -74,7 +74,7 @@ routes.get("/:id", (request, response) => {
      * pode mudar no futuro dependendo na Regra de Negócio
      */
     return response.status(500).json({ mensagem: "Erro ao listar Área." });
-});
+}});
 
 /**
  * Define uma rota POST (http://localhost:3000/area) para cadastrar uma nova área
