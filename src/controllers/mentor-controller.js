@@ -11,6 +11,19 @@ routes.get ("/", async (req, res) => {
     }
 });
 
+routes.get ("/:id", (req, res) => {
+    try {
+        const body = req.body; 
+        return response.status(200).json({
+            message: "caiu no endpoint get mentor by id" + id
+        })
+    } catch (error) {
+        return response.status(500).json({
+            error: "Erro ao listar mentor"
+        });
+    }
+});
+
 routes.post ("/", (req, res) => {
     try{
         const body = request.body;
