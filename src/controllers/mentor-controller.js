@@ -37,7 +37,7 @@ routes.post ("/", (req, res) => {
     }
 });
 
-routes.put ("/", (req, res) => {
+routes.put ("/:id", (req, res) => {
     try {
         const body= request.body;
         return response.status(200).json({
