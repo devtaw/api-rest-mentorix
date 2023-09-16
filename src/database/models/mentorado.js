@@ -1,7 +1,5 @@
 import { Sequelize, DataTypes } from "sequelize";
 
-const sequelize = new Sequelize("sqlite::memory:");
-
 // Define a entidade Mentorado e seus atributos
 const Mentorado = sequelize.define("Mentorado", {
   // Um identificador único para cada mentorado
@@ -39,7 +37,7 @@ const Mentorado = sequelize.define("Mentorado", {
     set(value) {
       const hashedSenha = bcrypt.hashSync(value, 10);
       this.setDataValue("senhaCriptografada", hashedSenha);
-    },
+    },f
   },
   // Foto de Perfil: Uma imagem do mentorado é algo que torna o perfil mais pessoal.
   fotoPerfil: {

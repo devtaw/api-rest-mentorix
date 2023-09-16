@@ -6,11 +6,17 @@
 
 import { Sequelize, DataTypes } from "sequelize";
 
-// Cria uma instância do Sequelize e especifica o banco de dados SQLite.
-const sequelize = new Sequelize("sqlite::memory:");
 
 // Entidade "agendamento"
 const Agendamento = sequelize.define("Agendamento", {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    unique: true,
+    allowNull: false,
+  },
+
   campo_mensagem: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -33,6 +39,10 @@ Agendamento.belongsTo(Mentorado, {
   foreignKey: {
     allowNull: false,
   },
+});
+Agendamento.belongsTo(User, {
+  foreignKey: 'user_id', //chave estrangeira em Agendamento
+  as: 'usuario', //
 });
 
 // Exporta as entidades
