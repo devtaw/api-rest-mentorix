@@ -12,9 +12,19 @@ const Mentorado = sequelize.define("Mentorado", {
     unique: true,
     allowNull: false,
   },
+  // Para identificar se o usuário está se cadastrando como mentor ou mentorado.
+  //verificar se é necessario essa parte
+  mentoresMentorados: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+  },
   // O nome do mentorado
-  nome: {
+  nomeCompleto: {
     type: DataTypes.STRING,
+    allowNull: false,
+  },
+  dataNascimento: {
+    type: DataTypes.DATE,
     allowNull: false,
   },
   // O email do mentorado
@@ -28,15 +38,31 @@ const Mentorado = sequelize.define("Mentorado", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  // A data de nascimento do mentorado
-  dataNascimento: {
-    type: DataTypes.DATE,
+  // Senha: Associada à conta do usuário. Armazenada de forma segura e criptografada.
+  senhaCriptografada: {
+    type: DataTypes.STRING,
     allowNull: false,
+    set(value) {
+      const hashedSenha = bcrypt.hashSync(value, 10);
+      this.setDataValue("senhaCriptografada", hashedSenha);
+    },
   },
-  // A área de interesse do mentorado
+  // Foto de Perfil: Uma imagem do mentorado é algo que torna o perfil mais pessoal.
+  fotoPerfil: {
+    type: DataTypes.STRING, // Você pode armazenar a URL da imagem
+  },
+  // A área de interesse do mentorado ou seria biografia?
   areaInteresse: {
     type: DataTypes.STRING,
     allowNull: false,
+  },
+  // Idiomas: Idiomas que o mentorado deseja aprender ou nos quais precisa de orientação.
+  idiomas: {
+    type: DataTypes.ARRAY(DataTypes.STRING), // Idiomas é um array de texto
+  },
+  user_id: {
+    type: DataTypes.INTEGER,
+    allowNull: true, // A relacao
   },
 });
 
