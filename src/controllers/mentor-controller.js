@@ -49,7 +49,7 @@ routes.put ("/:id", (req, res) => {
     }
 });
 
-routes.delete("/", (req, res) => {
+routes.delete("/:id", (req, res) => {
     try {
         return response.status(200).json()
     } catch (error) {
