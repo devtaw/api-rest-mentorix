@@ -56,24 +56,25 @@ routes.get("/", async (request, response) => {
  *  Exemplo de chamada: (GET) http://localhost:3000/area/123
  */
 routes.get("/:id", (request, response) => {
-  try {
-    // obtem o id passado na url
-    const id = request.params.id;
+    try {
+      // obtem o id passado na url
+      const id = request.params.id;
 
-    console.log("get area");
+      console.log("get area");
 
-    // retorna o status 200 (ok) e o json com os dados
-    return response.status(200).json({
-      message: "Caiu no endpoint get area by id " + id,
-    });
-  } catch (error) {
-    /**
-     * Caso houver qualquer tipo de erro na execução,
-     * retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
-     * 
-     * pode mudar no futuro dependendo na Regra de Negócio
-     */
-    return response.status(500).json({ mensagem: "Erro ao listar Área." });
+      // retorna o status 200 (ok) e o json com os dados
+      return response.status(200).json({
+        message: "Caiu no endpoint get area by id " + id,
+      });
+    } catch (error) {
+      /**
+       * Caso houver qualquer tipo de erro na execução,
+       * retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
+       * 
+       * pode mudar no futuro dependendo na Regra de Negócio
+       */
+      return response.status(500).json({ mensagem: "Erro ao listar Área." });
+    }
 });
 
 /**
