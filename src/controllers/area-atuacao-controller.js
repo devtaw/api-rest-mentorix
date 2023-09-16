@@ -12,7 +12,7 @@ const routes = express.Router();
 
 /**
  * Define uma rota GET (http://localhost:3000/area/) para obter todas as areas
- * 
+ *
  * Exemplo de chamada: (GET) http://localhost:3000/area
  */
 routes.get("/", async (request, response) => {
@@ -40,7 +40,7 @@ routes.get("/", async (request, response) => {
     /**
      * Caso houver qualquer tipo de erro na execução,
      * retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
-     * 
+     *
      * pode mudar no futuro dependendo na Regra de Negócio
      */
     return response.status(500).json({ mensagem: "Erro ao listar Áreas." });
@@ -70,32 +70,32 @@ routes.get("/:id", (request, response) => {
     /**
      * Caso houver qualquer tipo de erro na execução,
      * retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
-     * 
+     *
      * pode mudar no futuro dependendo na Regra de Negócio
      */
     return response.status(500).json({ mensagem: "Erro ao listar Área." });
-}});
+  }
+});
 
 /**
  * Define uma rota POST (http://localhost:3000/area) para cadastrar uma nova área
- * 
+ *
  * neste caso, o body da requisição deve conter os dados da área a ser cadastrada
- * 
+ *
  * Exemplo de body:
  * {
  *   "nome": "Área 1"
  * }
- * 
+ *
  * Exemplo de chamada: (POST) http://localhost:3000/area
  */
 routes.post("/", (request, response) => {
   try {
-
     // obtem os dados da área a ser cadastrada
     const data = request.body;
 
     console.log("post area");
-    
+
     // retorna o status 200 (ok) e o json com os dados
     return response.status(200).json({
       message: "Caiu no endpoint post area",
@@ -105,7 +105,7 @@ routes.post("/", (request, response) => {
     /**
      * Caso houver qualquer tipo de erro na execução,
      * retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
-     * 
+     *
      * pode mudar no futuro dependendo na Regra de Negócio
      */
     return response.status(500).json({ mensagem: "Erro ao cadastrar Área." });
@@ -114,9 +114,9 @@ routes.post("/", (request, response) => {
 
 /**
  * Define uma rota PUT (http://localhost:3000/area) para editar uma área específica
- * 
+ *
  * :id representa um parâmetro da rota, ou seja, pode ser qualquer valor
- * 
+ *
  * Exemplo de chamada: (PUT) http://localhost:3000/area/123
  */
 routes.put("/:id", (request, response) => {
@@ -137,16 +137,16 @@ routes.put("/:id", (request, response) => {
     /**
      * Caso houver qualquer tipo de erro na execução,
      * retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
-     * 
+     *
      * pode mudar no futuro dependendo na Regra de Negócio
      */
-    return response.status(500).json({ mensagem: "Erro ao incluir Área." }); 
+    return response.status(500).json({ mensagem: "Erro ao incluir Área." });
   }
 });
 
 /**
  * Define uma rota DELETE (http://localhost:3000/area) para deletar uma área específica
- * 
+ *
  * Exemplo de chamada: (DELETE) http://localhost:3000/area/123
  */
 routes.delete("/:id", (request, response) => {
@@ -154,7 +154,7 @@ routes.delete("/:id", (request, response) => {
     // obtem o id passado na url
     const id = request.params.id;
     console.log("put area");
-    
+
     return response.status(200).json({
       // endpoint cada bloquinho desse delete, delete é um ponto de chamada (requição do verbo http)
       message: "Caiu no endpoint delete area by id " + id,
@@ -164,4 +164,4 @@ routes.delete("/:id", (request, response) => {
   }
 });
 
-export const AreaController = routes;
+export const AreaController = routes;

@@ -13,6 +13,7 @@
 // Referência: https://sequelize.org/docs/v6/core-concepts/assocs/#one-to-many-relationships
 
 import sequelize from "sequelize";
+const sequelize = new sequelize("sqlite::memory:");
 
 module.exports = (sequelize, DataTypes) => {
   const areaAtuacao = sequelize.define('areaAtuacao', {
