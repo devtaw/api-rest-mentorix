@@ -60,3 +60,32 @@ routes.get("/:id", (request, response) => {
       .status(500).json({ mensagem: "Erro ao listar Agendamento." });
   }
 });
+
+/**
+ * Define uma rota POST (http://localhost:3000/agendamento) para cadastrar um novo agendamento
+ *
+ * neste caso, o body da requisição deve conter os dados do agendamento a ser cadastrado
+ */
+
+routes.post("/", (request, response) => {
+    try {
+      // obtem os dados do agendamento a ser cadastrado
+      const data = request.body;
+  
+      console.log("post agendamento");
+  
+      // retorna o status 200 (ok) e o json com os dados
+      return response.status(200).json({
+        message: "Caiu no endpoint post agendamento",
+        data, //sugar sintaxe para simplificar a atribuição de propriedade dentro do objeto, seria data:data
+      });
+    } catch (error) {
+      /**
+       * Caso houver qualquer tipo de erro na execução, retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
+       */
+      return response.status(500).json({ mensagem: "Erro ao cadastrar Agendamento." });
+    }
+  });
+  
+  
+
