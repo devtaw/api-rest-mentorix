@@ -40,7 +40,7 @@ Agendamento.belongsTo(Mentorado, {
     allowNull: false,
   },
 });
-Agendamento.belongsTo(User, {
+Agendamento.hasMany(User, {
   foreignKey: 'user_id', //chave estrangeira em Agendamento
   as: 'usuario', //
 });
