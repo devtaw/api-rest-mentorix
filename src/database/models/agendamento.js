@@ -40,10 +40,7 @@ Agendamento.belongsTo(Mentorado, {
     allowNull: false,
   },
 });
-Agendamento.hasMany(User, {
-  foreignKey: 'user_id', //chave estrangeira em Agendamento
-  as: 'usuario', //
-});
+
 
 // Exporta as entidades
 export default  Agendamento ;

@@ -1,4 +1,5 @@
 import { Sequelize, DataTypes } from "sequelize";
+import Agendamento from "./agendamento";
 
 // Define a entidade Mentorado e seus atributos
 const Mentorado = sequelize.define("Mentorado", {
@@ -59,6 +60,18 @@ const Mentorado = sequelize.define("Mentorado", {
     allowNull: true, // A relacao
   },
 });
+
+Mentorado.belongsTo(User, {
+  foreignKey: {
+    allowNull: false,
+  },
+});
+
+Mentorado.hasMany(Agendamento, {
+  foreignKey: 'agendamento_id', //chave estrangeira em Agendamento
+  allowNull: false,
+});
+
 
 // `sequelize.define` também retorno o modelo
 console.log(Mentorado === sequelize.models.Mentorado); // true
