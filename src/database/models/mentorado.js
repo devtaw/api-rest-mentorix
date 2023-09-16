@@ -12,12 +12,6 @@ const Mentorado = sequelize.define("Mentorado", {
     unique: true,
     allowNull: false,
   },
-  // Para identificar se o usuário está se cadastrando como mentor ou mentorado.
-  //verificar se é necessario essa parte
-  mentoresMentorados: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false,
-  },
   // O nome do mentorado
   nomeCompleto: {
     type: DataTypes.STRING,
