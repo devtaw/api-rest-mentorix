@@ -34,6 +34,12 @@ Especialidade.belongsTo(sequelize.models.AreaAtuacao, {
   },
 });
 
+Especialidade.hasMany(sequelize.models.MentorEspecialidade, {
+  foreignKey: {
+    allowNull: false,
+  },
+});
+
 
 
 export default Especialidade;
