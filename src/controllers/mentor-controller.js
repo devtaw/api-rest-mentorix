@@ -24,3 +24,15 @@ routes.post ("/", (req, res) => {
     }
 });
 
+routes.put ("/", (req, res) => {
+    try {
+        const body= request.body;
+        return response.status(200).json({
+            message: 'Caiu no endpoint post mentor',
+            body,
+        });
+    } catch (error) {
+        return response.status(500).json({error: 'Erro ao incluir mentor'});
+    }
+});
+
