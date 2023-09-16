@@ -32,17 +32,18 @@ module.exports = (sequelize, DataTypes) => {
 
     fotoAreaAtuacao: {
       type: DataTypes.STRING, // Você pode armazenar a URL da imagem
+      allowNull: true,
     },
   });
 };
 
-AreaAtuacao.belongsTo(sequelize.models.Mentor, {
+AreaAtuacao.hasMany(sequelize.models.Mentor, {
   foreignKey: {
     allowNull: false,
   },
 });
 
-AreaAtuacao.hasMany(sequelize.models.Mentores, {
+AreaAtuacao.hasMany(sequelize.models.Especialidade, {
   foreignKey: {
     allowNull: false,
   },
