@@ -36,3 +36,13 @@ routes.put ("/", (req, res) => {
     }
 });
 
+routes.delete("/", (req, res) => {
+    try {
+        return response.status(200).json()
+    } catch (error) {
+        return response.status(500).json()
+    }
+});
+
+
+
