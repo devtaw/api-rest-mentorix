@@ -26,3 +26,14 @@ routes.get('/', async (req, res) => {
     return res.status(500).json({ error: 'Erro ao buscar mentorado.' });
   }
 });
+
+// Rota para cadastrar um novo mentorado
+routes.post('/', async (req, res) => {
+    try {
+      const body = req.body;
+      const mentorado = await Mentorado.create(body);
+      return res.status(201).json(mentorado);
+    } catch (error) {
+      return res.status(500).json({ error: 'Erro ao cadastrar mentorado.' });
+    }
+  });
