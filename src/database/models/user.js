@@ -30,15 +30,6 @@ const User = sequelize.define("User", {
       this.setDataValue("senhaCriptografada", hashedSenha);
     },
   },
-  // Indica o método de autenticação utilizado, como nome de usuário e senha.
-  metodoAutenticacao: {
-    type: DataTypes.ENUM(["Nome de Usuário e Senha"]),
-    allowNull: false,
-  },
-  // Indica o método de recuperação de senha usado para redefinir senhas esquecidas.
-  recuperacaoSenha: {
-    type: DataTypes.ENUM(["E-mail de Recuperação"]),
-  },
   
 });
 User.belongsTo(sequelize.models.Mentor, {
@@ -52,6 +43,7 @@ User.belongsTo(sequelize.models.Mentorado, {
     allowNull: false,
   },
 });
+
 // `sequelize.define` também retorno o modelo
 console.log(User === sequelize.models.User); // true
 
