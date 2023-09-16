@@ -54,6 +54,7 @@ const Mentorado = sequelize.define("Mentorado", {
   // Idiomas: Idiomas que o mentorado deseja aprender ou nos quais precisa de orientação.
   idiomas: {
     type: DataTypes.ARRAY(DataTypes.STRING), // Idiomas é um array de texto
+    allowNull: true,
   },
   user_id: {
     type: DataTypes.INTEGER,
