@@ -10,3 +10,17 @@ routes.get ("/", async (req, res) => {
         return response.status(500).json({error: 'Erro ao listar mentores.'});
     }
 });
+
+routes.post ("/", (req, res) => {
+    try{
+        const body = request.body;
+        console.log("post mentor")
+        return response.status(200).json({
+            message: 'caiu no endpoint post mentor',
+            body,
+        });
+    } catch (error) {
+        return response.status(status).json({error: 'Erro ao cadastrar mentor'});
+    }
+});
+
