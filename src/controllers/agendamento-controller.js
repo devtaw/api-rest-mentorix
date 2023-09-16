@@ -86,6 +86,35 @@ routes.post("/", (request, response) => {
       return response.status(500).json({ mensagem: "Erro ao cadastrar Agendamento." });
     }
   });
+
+/**
+ * Define uma rota PUT (http://localhost:3000/agendamento) para editar um agendamento específico
+ *
+ * :id representa um parâmetro da rota, ou seja, pode ser qualquer valor
+ *
+ * Exemplo de chamada: (PUT) http://localhost:3000/agendamento/123
+ */
+routes.put("/:id", (request, response) => {
+    try {
+      // obtem o id passado na url
+      const id = request.params.id;
+      // obtem o corpo da requisição (dados do agendamento a ser editado)
+      const data = request.body;
+      console.log("put agendamento");
+  
+      // retorna o status 200 (ok) e o json com os dados
+      return response.status(200).json({
+        message: "Caiu no endpoint put agendamento by id " + id,
+        data, //sugar sintax para simplificar a atribuição de propriedade dentro do objeto, seria data:data
+      });
+    } catch (error) {
+      /**
+       * Caso houver qualquer tipo de erro na execução,retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
+       */
+      return response.status(500).json({ mensagem: "Erro ao incluir Agendamento." });
+    }
+  });
   
   
+
 
