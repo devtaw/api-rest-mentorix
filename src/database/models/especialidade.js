@@ -1,8 +1,5 @@
 import { Sequelize, DataTypes } from "sequelize";
 
-// Cria uma instância do Sequelize e especifica o banco de dados SQLite.
-
-
 const Especialidade = sequelize.define("Especialidade", {
   // Um identificador único para cada usuário registrado na plataforma.
   id: {
