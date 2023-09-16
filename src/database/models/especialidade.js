@@ -19,6 +19,9 @@ const Especialidade = sequelize.define("Especialidade", {
   descricao: {
     type: DataTypes.TEXT,
   },
+  foto:{
+    type: DataTypes.STRING, 
+  } 
 });
 
 // Associa entidade "Especialidade" com "Área de Atuação", estabelecendo uma relação de 1:1 (um para um).
@@ -30,5 +33,13 @@ Especialidade.belongsTo(sequelize.models.AreaAtuacao, {
     allowNull: false,
   },
 });
+
+Especialidade.hasMany(sequelize.models.MentorEspecialidade, {
+  foreignKey: {
+    allowNull: false,
+  },
+});
+
+
 
 export default Especialidade;
