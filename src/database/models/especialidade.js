@@ -19,6 +19,9 @@ const Especialidade = sequelize.define("Especialidade", {
   descricao: {
     type: DataTypes.TEXT,
   },
+  foto:{
+    type: DataTypes.STRING, 
+  } 
 });
 
 // Associa entidade "Especialidade" com "Área de Atuação", estabelecendo uma relação de 1:1 (um para um).
