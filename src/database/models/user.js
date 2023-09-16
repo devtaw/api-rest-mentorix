@@ -39,8 +39,19 @@ const User = sequelize.define("User", {
   recuperacaoSenha: {
     type: DataTypes.ENUM(["E-mail de Recuperação"]),
   },
+  
+});
+User.belongsTo(sequelize.models.Mentor, {
+  foreignKey: {
+    allowNull: false,
+  },
 });
 
+User.belongsTo(sequelize.models.Mentorado, {
+  foreignKey: {
+    allowNull: false,
+  },
+});
 // `sequelize.define` também retorno o modelo
 console.log(User === sequelize.models.User); // true
 
