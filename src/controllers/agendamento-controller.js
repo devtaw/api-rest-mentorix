@@ -115,6 +115,27 @@ routes.put("/:id", (request, response) => {
     }
   });
   
+  /**
+ * Define uma rota DELETE (http://localhost:3000/agendamento) para deletar um agendamento específico
+ *
+ * Exemplo de chamada: (DELETE) http://localhost:3000/agendamento/123
+ */
+routes.delete("/:id", (request, response) => {
+    try {
+      // obtem o id passado na url
+      const id = request.params.id;
+      console.log("put agendamento");
+  
+      return response.status(200).json({
+        // endpoint cada bloquinho desse delete, delete é um ponto de chamada (requição do verbo http)
+        message: "Caiu no endpoint delete area by id " + id,
+      });
+    } catch (error) {
+      return response.status(500).json({ mensagem: "Erro ao deletar Agendamento." }); 
+    }
+  });
+  
+  export const AgendamentoController = routes;
   
 
 
