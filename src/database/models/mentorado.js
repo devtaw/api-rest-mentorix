@@ -44,6 +44,7 @@ const Mentorado = sequelize.define("Mentorado", {
   // Foto de Perfil: Uma imagem do mentorado é algo que torna o perfil mais pessoal.
   fotoPerfil: {
     type: DataTypes.STRING, // Você pode armazenar a URL da imagem
+    allowNull: true,
   },
   // A área de interesse do mentorado ou seria biografia?
   areaInteresse: {
