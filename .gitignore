@@ -1,2 +1,5 @@
 # Ignora diretório de dependências npm
 node_modules
+
+# Ignora configuração de banco de dado contendo dados sensíveis
+./src/database/config/config.json
