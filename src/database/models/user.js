@@ -1,8 +1,6 @@
 // arquivo salvo como User.js ao inves de login para representar Usuario.Login
 import { Sequelize, DataTypes } from "sequelize";
 
-const sequelize = new Sequelize("sqlite::memory:");
-
 // Define a entidade "User" e seus atributos
 const User = sequelize.define("User", {
   // Um identificador único para cada usuário registrado na plataforma.
