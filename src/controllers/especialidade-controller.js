@@ -67,3 +67,5 @@ routes.delete ("/:id", (req, res) => {
         });
     }
 });
+
+export const especialidadeController = routes;
