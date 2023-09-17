@@ -2,7 +2,6 @@
 import express from "express";
 import { AutenticacaoController } from "./src/controllers/autenticacao-controller.js";
 import {MentoradoController} from "./src/controllers/mentorado-controller.js";
-import {AutenticacaoController} from "./src/controllers/autenticacao-controller.js";
 import {EspecialidadeController} from "./src/controllers/especialidade-controller.js";
 
 
