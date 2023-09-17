@@ -1,4 +1,3 @@
-
 // Responsável: Felipe
 // Forma de fazer o modelo sequelize.define: https://sequelize.org/docs/v6/core-concepts/model-basics/
 
@@ -13,10 +12,8 @@
 // Referência: https://sequelize.org/docs/v6/core-concepts/assocs/#one-to-many-relationships
 
 import sequelize from "sequelize";
-const sequelize = new sequelize("sqlite::memory:");
 
-module.exports = (sequelize, DataTypes) => {
-  const areaAtuacao = sequelize.define('areaAtuacao', {
+  const AreaAtuacao = sequelize.define("AreaAtuacao", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -32,15 +29,22 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    fotoArea: {
+    fotoAreaAtuacao: {
       type: DataTypes.STRING,
       allowNull: true,
     },
   });
-};
+
+AreaAtuacao.hasMany(sequelize.models.Mentor, {
+  foreignKey: {
+    allowNull: false,
+  },
+});
 
 AreaAtuacao.hasMany(sequelize.models.Especialidade, {
   foreignKey: {
     allowNull: false,
   },
 });
+
+export default AreaAtuacao;

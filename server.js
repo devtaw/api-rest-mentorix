@@ -1,7 +1,8 @@
 //Importação do express
 import express from "express";
 import { AutenticacaoController } from "./src/controllers/autenticacao-controller.js";
-import { AreaController } from "./src/controllers/area-controller.js";
+import {MentoradoController} from "./src/controllers/mentorado-controller.js"
+// import { AreaController } from "./src/controllers/area-controller.js";
 
 //constante para rodar o express
 const app = express();
@@ -16,9 +17,10 @@ app.use(express.json());
 
 //Aqui, chama-se as rotas
 app.use("/autenticacao", AutenticacaoController);
-app.use("/area", AreaController);
+app.use("/mentorado", MentoradoController);
+// app.use("/area", AreaController);
 
 //Aqui, é definido o "levante" para o servidor da API
 app.listen(port, () => {
-  console.log(`Servidor rodando na porta http://localhost${port}`);
+  console.log(`Servidor rodando na porta http://localhost:${port}`);
 });

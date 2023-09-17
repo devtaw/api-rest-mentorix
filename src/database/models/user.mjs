@@ -1,7 +1,9 @@
 // arquivo salvo como User.js ao inves de login para representar Usuario.Login
-import { Sequelize, DataTypes } from "sequelize";
 
-const sequelize = new Sequelize("sqlite::memory:");
+import DB from "./index.cjs";
+
+const sequelize = DB.sequelize;
+const { DataTypes } = DB.Sequelize;
 
 // Define a entidade "User" e seus atributos
 const User = sequelize.define("User", {
@@ -30,16 +32,33 @@ const User = sequelize.define("User", {
       this.setDataValue("senhaCriptografada", hashedSenha);
     },
   },
-  // Indica o método de autenticação utilizado, como nome de usuário e senha.
-  metodoAutenticacao: {
-    type: DataTypes.ENUM(["Nome de Usuário e Senha"]),
+  createdAt: {
+    type: DataTypes.DATE,
     allowNull: false,
   },
-  // Indica o método de recuperação de senha usado para redefinir senhas esquecidas.
-  recuperacaoSenha: {
-    type: DataTypes.ENUM(["E-mail de Recuperação"]),
-  },
+
+  updatedAt: {
+    type: DataTypes.DATE,
+    allowNull:false,
+},
+},
+{
+  tableName: "user"
+}
+);
+User.hasOne(sequelize.models.Mentor,{
+  onDelete:'CASCADE',
+  onUpdate:'CASCADE',
 });
+
+User.hasOne(sequelize.models.Mentorado, {
+  onDelete:'CASCADE',
+  onUpdate:'CASCADE',
+});
+//onDelete: 'CASCADE': Quando um registro na tabela referenciada é excluído, todos os registros relacionados na tabela atual são excluídos automaticamente.
+
+//onUpdate: 'CASCADE': Quando a chave primária de um registro na tabela referenciada é atualizada, todos os registros relacionados na tabela atual são atualizados automaticamente.
+
 
 // `sequelize.define` também retorno o modelo
 console.log(User === sequelize.models.User); // true
