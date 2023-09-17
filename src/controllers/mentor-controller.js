@@ -41,6 +41,7 @@ routes.post ("/", (req, res) => {
 routes.put ("/:id", (req, res) => {
     try {
         const body= request.body;
+        const idMentor = req.params.id;
         return response.status(200).json({
             message: 'Caiu no endpoint post mentor',
             body,
