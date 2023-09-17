@@ -4,7 +4,7 @@ import { MentorEspecialidadeService } from "../services/mentorEspecialidade-serv
 const routes = express.Router();
 
 // Solicitar informações ou recursos do servidor
-routes.get("/", async (req, res) => {
+routes.get("/", async (request, response) => {
   try {
     // Consulta todos os mentorEspecialidade no banco de dados
     const listaMentorEspecialidades =
@@ -19,9 +19,9 @@ routes.get("/", async (req, res) => {
   }
 });
 
-routes.get("/:id", async (req, res) => {
+routes.get("/:id", async (request, response) => {
   try {
-    const { id } = req.params;
+    const { id } = request.params;
 
     // Busca um mentorEspecialidade pelo ID no banco de dados
     const mentorEspecialidade =
@@ -34,7 +34,7 @@ routes.get("/:id", async (req, res) => {
     }
 
     // Retorna o mentorEspecialidade encontrado como resposta com status 200 (OK)
-    return res.status(200).json(mentorEspecialidade);
+    return response.status(200).json(mentorEspecialidade);
   } catch (error) {
     // Em caso de erro durante a busca, retorna uma resposta com status 500 (Erro interno do servidor)
     return res
@@ -43,42 +43,42 @@ routes.get("/:id", async (req, res) => {
 });
 
 // Rota para cadastrar um novo mentorEspecialidade
-routes.post("/", async (req, res) => {
+routes.post("/", async (request, response) => {
   try {
-    const body = req.body;
+    const body = request.body;
     const mentorEspecialidade =
       await MentorEspecialidadeService.addMentorEspecialidade(body);
-    return res.status(200).json(mentorEspecialidade);
+    return response.status(200).json(mentorEspecialidade);
   } catch (error) {
-    return res
+    return response
       .status(500).json({ error: "Erro ao cadastrar mentorEspecialidade." });
   }
 });
 
 // Rota para atualizar os dados de um mentorEspecialidade por ID
-routes.put("/:id", async (req, res) => {
+routes.put("/:id", async (request, response) => {
   try {
-    const { id } = req.params;
-    const body = req.body;
+    const { id } = request.params;
+    const body = request.body;
     const mentorEspecialidade =
       await MentorEspecialidadeService.updateMentorEspecialidade(id, body);
 
-    return res.status(200).json(mentorEspecialidade); // 200 okay
+    return response.status(200).json(mentorEspecialidade); // 200 okay
   } catch (error) {
-    return res.status(500).json({ error: "Erro ao atualizar mentorEspecialidade." });
+    return response.status(500).json({ error: "Erro ao atualizar mentorEspecialidade." });
   }
 });
 
 // Rota para deletar um mentorEspecialidade por ID
-routes.delete("/:id", async (req, res) => {
+routes.delete("/:id", async (request, response) => {
   try {
-    const { id } = req.params;
+    const { id } = request.params;
 
     await MentorEspecialidadeService.deleteMentorEspecialidade(id);
 
-    return res.status(204).json(); // 204- sem conteudo
+    return response.status(204).json(); // 204- sem conteudo
   } catch (error) {
-    return res
+    return response 
       .status(500).json({ error: "Erro ao deletar mentorEspecialidade." }); // 500- erro interno do servidor
   }
 });
