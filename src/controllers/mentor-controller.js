@@ -54,9 +54,13 @@ routes.put ("/:id", (req, res) => {
 routes.delete("/:id", (req, res) => {
     try {
         const idMentor = req.params.id;
-        return response.status(200).json()
+        return response.status(200).json({
+            message: 'Caiu no endpoint delete by id' + idMentor
+        })
     } catch (error) {
-        return response.status(500).json()
+        return response.status(500).json({
+            error: 'erro ao deletar mentor'
+        });
     }
 });
 
