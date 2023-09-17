@@ -4,8 +4,9 @@
 //- mentorado: Mentorado
 //- assunto: String
 
-import { Sequelize, DataTypes } from "sequelize";
-
+import DB from "./index.cjs";
+const sequelize = DB.sequelize;
+const { DataTypes } = DB.Sequelize;
 
 // Entidade "agendamento"
 const Agendamento = sequelize.define("Agendamento", {
@@ -25,7 +26,20 @@ const Agendamento = sequelize.define("Agendamento", {
     type: DataTypes.BOOLEAN,
     allowNull: false,
   },
-});
+  createdAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+
+  updatedAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    },
+},
+{
+  tableName: "Agendamento"
+}
+);
 
 
 // Associações

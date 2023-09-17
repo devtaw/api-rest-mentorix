@@ -1,5 +1,5 @@
-import { Sequelize, DataTypes } from "sequelize";
-import Agendamento from "./agendamento";
+
+import DB from "./index.cjs";
 
 // Define a entidade Mentorado e seus atributos
 const Mentorado = sequelize.define("Mentorado", {
@@ -46,7 +46,7 @@ const Mentorado = sequelize.define("Mentorado", {
     allowNull: true,
   },
   // A área de interesse do mentorado ou seria biografia?
-  areaInteresse: {
+  oQuebusco: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -59,6 +59,15 @@ const Mentorado = sequelize.define("Mentorado", {
     type: DataTypes.INTEGER,
     allowNull: true, // A relacao
   },
+  createdAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+
+  updatedAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+    },
 });
 
 Mentorado.belongsTo(User, {
