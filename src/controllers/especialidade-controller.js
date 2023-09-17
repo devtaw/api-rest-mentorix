@@ -40,3 +40,16 @@ routes.post ("/", (req, res) => {
     }
 });
 
+routes.put ("/:id", (req, res) => {
+   try {
+    const body = req.body;
+    const idEspecialidade = req.params.id;
+    return response.status(200).json({
+        message: 'Caiu no endpoint put especialidade by id' + idEspecialidade
+    });
+   } catch (error) {
+    return response.status(500).json({
+        error: 'Erro ao incluir especialidade'
+    });
+   }
+});
