@@ -7,6 +7,7 @@ routes.get ("/", (req, res) => {
         const listaEspecialidade = [];
         return response.status(200).json(listaEspecialidade);
     } catch (error) {
+        console.error(error);
         return response.status(500).json({
             message: "Erro ao listar especialidades"
         });
@@ -20,6 +21,7 @@ routes.get ("/:id", (req, res) => {
             message: "Caiu no endpoint get especialidade by id" + id
         })
     } catch (error) {
+        console.error(error);
         return response.status(500).json ({
             error: 'erro ao listar especialidade'
         });
@@ -34,6 +36,7 @@ routes.post ("/", (req, res) => {
             message: 'caiu no endpoint post especialidade'
         });
     } catch (error) {
+        console.error(error);
         return response.status(500).json({
             error: 'erro ao cadastrar especialidade'
         });
@@ -48,6 +51,7 @@ routes.put ("/:id", (req, res) => {
         message: 'Caiu no endpoint put especialidade by id' + idEspecialidade
     });
    } catch (error) {
+    console.error(error);
     return response.status(500).json({
         error: 'Erro ao incluir especialidade'
     });
@@ -62,6 +66,7 @@ routes.delete ("/:id", (req, res) => {
             message: "Caiu no endpoint delete area by id" + idEspecialidade
         });
     } catch (error) {
+        console.error(error);
         return response.status(500).json ({
             error: 'erro ao deletar especialidade'
         });
