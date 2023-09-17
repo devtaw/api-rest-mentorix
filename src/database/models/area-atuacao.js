@@ -13,8 +13,7 @@
 
 import sequelize from "sequelize";
 
-module.exports = (sequelize, DataTypes) => {
-  const areaAtuacao = sequelize.define("areaAtuacao", {
+  const AreaAtuacao = sequelize.define("AreaAtuacao", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -35,7 +34,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
     },
   });
-};
 
 AreaAtuacao.hasMany(sequelize.models.Mentor, {
   foreignKey: {
