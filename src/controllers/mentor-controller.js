@@ -7,6 +7,7 @@ routes.get ("/", async (req, res) => {
         const listaMentores = [];
         return res.status(200).json(listaMentores);
     } catch (error) {
+        console.error(error);
         return res.status(500).json({error: 'Erro ao listar mentores.'});
     }
 });
@@ -19,6 +20,7 @@ routes.get ("/:id", (req, res) => {
             message: "caiu no endpoint get mentor by id" + idMentor
         })
     } catch (error) {
+        console.error(error);
         return res.status(500).json({
             error: "Erro ao listar mentor"
         });
@@ -34,6 +36,7 @@ routes.post ("/", (req, res) => {
             body,
         });
     } catch (error) {
+        console.error(error);
         return res.status(500).json({error: 'Erro ao cadastrar mentor'});
     }
 });
@@ -47,6 +50,7 @@ routes.put ("/:id", (req, res) => {
             body,
         });
     } catch (error) {
+        console.error(error);
         return res.status(500).json({error: 'Erro ao incluir mentor'});
     }
 });
@@ -58,6 +62,7 @@ routes.delete("/:id", (req, res) => {
             message: 'Caiu no endpoint delete by id' + idMentor
         })
     } catch (error) {
+        console.error(error);
         return res.status(500).json({
             error: 'erro ao deletar mentor'
         });
