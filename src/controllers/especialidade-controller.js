@@ -1,7 +1,7 @@
 import express from 'express';
 const routes = express.Router;
 
-routes.get ("/", (req, res) => {
+routes.get ("/", (request, response) => {
     try {
         console.log("get especialidade");
         const listaEspecialidade = [];
@@ -14,9 +14,9 @@ routes.get ("/", (req, res) => {
     }
 });
 
-routes.get ("/:id", (req, res) => {
+routes.get ("/:id", (request, response) => {
     try {
-        const body = req.body;
+        const body = request.body;
         return response.status(200).json({
             message: "Caiu no endpoint get especialidade by id" + id
         })
@@ -28,9 +28,9 @@ routes.get ("/:id", (req, res) => {
     }
 });
 
-routes.post ("/", (req, res) => {
+routes.post ("/", (request, response) => {
     try {
-        const body = req.body;
+        const body = request.body;
         console.log('post especialidade');
         return response.status(200).json({
             message: 'caiu no endpoint post especialidade'
@@ -43,10 +43,10 @@ routes.post ("/", (req, res) => {
     }
 });
 
-routes.put ("/:id", (req, res) => {
+routes.put ("/:id", (request, response) => {
    try {
-    const body = req.body;
-    const idEspecialidade = req.params.id;
+    const body = request.body;
+    const idEspecialidade = request.params.id;
     return response.status(200).json({
         message: 'Caiu no endpoint put especialidade by id' + idEspecialidade
     });
@@ -58,9 +58,9 @@ routes.put ("/:id", (req, res) => {
    }
 });
 
-routes.delete ("/:id", (req, res) => {
+routes.delete ("/:id", (request, response) => {
     try {
-        const idEspecialidade = req.params.id;
+        const idEspecialidade = request.params.id;
         console.log("delete especialidade");
         return response.status(200).json ({
             message: "Caiu no endpoint delete area by id" + idEspecialidade
