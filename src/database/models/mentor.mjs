@@ -30,11 +30,6 @@ const Mentor = sequelize.define("Mentor", {
     unique: true,
     allowNull: false,
   },
-  // Mentores ou Mentorados: Para identificar se o usuário está se cadastrando como mentor ou mentorado.
-  mentoresMentorados: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false,
-  },
   // Nome completo: Armazena o nome completo do mentor.
   nomeCompleto: {
     type: DataTypes.STRING,
