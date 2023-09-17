@@ -14,6 +14,7 @@ routes.get ("/", async (req, res) => {
 routes.get ("/:id", (req, res) => {
     try {
         const body = req.body; 
+        const idMentor = req.params.id;
         return response.status(200).json({
             message: "caiu no endpoint get mentor by id" + id
         })
