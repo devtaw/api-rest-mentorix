@@ -33,7 +33,7 @@ routes.post ("/", (req, res) => {
             body,
         });
     } catch (error) {
-        return response.status(status).json({error: 'Erro ao cadastrar mentor'});
+        return response.status(500).json({error: 'Erro ao cadastrar mentor'});
     }
 });
 
