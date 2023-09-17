@@ -64,5 +64,6 @@ routes.delete("/:id", (req, res) => {
     }
 });
 
+export const mentorController = routes;
 
 
