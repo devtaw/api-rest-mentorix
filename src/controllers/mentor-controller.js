@@ -53,6 +53,7 @@ routes.put ("/:id", (req, res) => {
 
 routes.delete("/:id", (req, res) => {
     try {
+        const idMentor = req.params.id;
         return response.status(200).json()
     } catch (error) {
         return response.status(500).json()
