@@ -13,3 +13,15 @@ routes.get ("/", (req, res) => {
     }
 });
 
+routes.get ("/:id", (req, res) => {
+    try {
+        const body = req.body;
+        return response.status(200).json({
+            message: "Caiu no endpoint get especialidade by id" + id
+        })
+    } catch (error) {
+        return response.status(500).json ({
+            error: 'erro ao listar especialidade'
+        });
+    }
+});
