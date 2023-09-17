@@ -1,5 +1,9 @@
 // arquivo salvo como User.js ao inves de login para representar Usuario.Login
-import { Sequelize, DataTypes } from "sequelize";
+
+import DB from "./index.cjs";
+
+const sequelize = DB.sequelize;
+const { DataTypes } = DB.Sequelize;
 
 // Define a entidade "User" e seus atributos
 const User = sequelize.define("User", {
@@ -28,8 +32,20 @@ const User = sequelize.define("User", {
       this.setDataValue("senhaCriptografada", hashedSenha);
     },
   },
-  
-});
+  createdAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+
+  updatedAt: {
+    type: DataTypes.DATE,
+    allowNull:false,
+},
+},
+{
+  tableName: "user"
+}
+);
 User.hasOne(sequelize.models.Mentor,{
   onDelete:'CASCADE',
   onUpdate:'CASCADE',
