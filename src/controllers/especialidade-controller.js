@@ -25,3 +25,18 @@ routes.get ("/:id", (req, res) => {
         });
     }
 });
+
+routes.post ("/", (req, res) => {
+    try {
+        const body = req.body;
+        console.log('post especialidade');
+        return response.status(200).json({
+            message: 'caiu no endpoint post especialidade'
+        });
+    } catch (error) {
+        return response.status(500).json({
+            error: 'erro ao cadastrar especialidade'
+        });
+    }
+});
+
