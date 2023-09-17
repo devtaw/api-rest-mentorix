@@ -22,7 +22,16 @@ const MentorEspecialidade = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull:false,
+    },
   },
+  
   {
     // Define o nome da tabela no banco de dados como "mentorepecialidade"
     tableName: "mentorepecialidade",

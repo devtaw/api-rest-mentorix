@@ -4,7 +4,7 @@ import MentorEspecialidadeModel from "../database/models/mentorEspecialidade.mjs
 export class MentorEspecialidadeService {
     
     // Retorna todos os registros de "Mentor Especialidade" no banco de dados
-    async getAllMentorEspecialidade() {
+    async getAllMentorEspecialidades() {
         return MentorEspecialidadeModel.findAll();
     }
 
