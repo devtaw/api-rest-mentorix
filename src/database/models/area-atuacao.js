@@ -30,7 +30,11 @@ module.exports = (sequelize, DataTypes) => {
     descricaoArea: {
       type: DataTypes.STRING,
       allowNull: true,
-    }
+    },
+    fotoArea: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   });
 };
 
