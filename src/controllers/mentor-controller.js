@@ -1,30 +1,33 @@
-import Mentor from "../database/models/mentor.js";
+import { MentorService } from "../service/mentor-service.js";
 const routes = express.Router();
 
-routes.get ("/", async (req, res) => {
+routes.get ("/", async (request, response) => {
     try {
         console.log("get Mentor");
         const listaMentores = [];
         return response.status(200).json(listaMentores);
     } catch (error) {
+        console.error(error);
         return response.status(500).json({error: 'Erro ao listar mentores.'});
     }
 });
 
-routes.get ("/:id", (req, res) => {
+routes.get ("/:id", (request, response) => {
     try {
-        const body = req.body; 
+        const body = request.body; 
+        const idMentor = request.params.id;
         return response.status(200).json({
-            message: "caiu no endpoint get mentor by id" + id
+            message: "caiu no endpoint get mentor by id" + idMentor
         })
     } catch (error) {
+        console.error(error);
         return response.status(500).json({
             error: "Erro ao listar mentor"
         });
     }
 });
 
-routes.post ("/", (req, res) => {
+routes.post ("/", (request, response) => {
     try{
         const body = request.body;
         console.log("post mentor")
@@ -33,29 +36,39 @@ routes.post ("/", (req, res) => {
             body,
         });
     } catch (error) {
-        return response.status(status).json({error: 'Erro ao cadastrar mentor'});
+        console.error(error);
+        return response.status(500).json({error: 'Erro ao cadastrar mentor'});
     }
 });
 
-routes.put ("/:id", (req, res) => {
+routes.put ("/:id", (request, response) => {
     try {
         const body= request.body;
+        const idMentor = request.params.id;
         return response.status(200).json({
-            message: 'Caiu no endpoint post mentor',
+            message: 'Caiu no endpoint put mentor by id' + idMentor,
             body,
         });
     } catch (error) {
+        console.error(error);
         return response.status(500).json({error: 'Erro ao incluir mentor'});
     }
 });
 
-routes.delete("/:id", (req, res) => {
+routes.delete("/:id", (request, response) => {
     try {
-        return response.status(200).json()
+        const idMentor = request.params.id;
+        return response.status(200).json({
+            message: 'Caiu no endpoint delete by id' + idMentor
+        })
     } catch (error) {
-        return response.status(500).json()
+        console.error(error);
+        return response.status(500).json({
+            error: 'erro ao deletar mentor'
+        });
     }
 });
 
+export const MentorController = routes;
 
 

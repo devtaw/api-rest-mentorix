@@ -37,6 +37,7 @@ routes.get("/", async (request, response) => {
     // retorna o status 200 (ok) e o json com os dados
     return response.status(200).json(listaDeAreas);
   } catch (error) {
+    console.error(error);
     /**
      * Caso houver qualquer tipo de erro na execução,
      * retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
@@ -67,6 +68,7 @@ routes.get("/:id", (request, response) => {
       message: "Caiu no endpoint get area by id " + id,
     });
   } catch (error) {
+    console.error(error);
     /**
      * Caso houver qualquer tipo de erro na execução,
      * retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
@@ -102,6 +104,7 @@ routes.post("/", (request, response) => {
       data, //sugar sintaxe para simplificar a atribuição de propriedade dentro do objeto, seria data:data
     });
   } catch (error) {
+    console.error(error);
     /**
      * Caso houver qualquer tipo de erro na execução,
      * retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
@@ -134,6 +137,7 @@ routes.put("/:id", (request, response) => {
       data, //sugar sintax para simplificar a atribuição de propriedade dentro do objeto, seria data:data
     });
   } catch (error) {
+    console.error(error);
     /**
      * Caso houver qualquer tipo de erro na execução,
      * retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
@@ -160,6 +164,7 @@ routes.delete("/:id", (request, response) => {
       message: "Caiu no endpoint delete area by id " + id,
     });
   } catch (error) {
+    console.error(error);
     return response.status(500).json({ mensagem: "Erro ao deletar Área." }); //pode mudar no futuro dependendo na Regra de Negócio
   }
 });

@@ -19,18 +19,18 @@ import sequelize from "sequelize";
       primaryKey: true,
       autoIncrement: true,
       unique: true,
+      allowNull: false,
     },
     nome: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    descricao: {
+    descricaoArea: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-
     fotoAreaAtuacao: {
-      type: DataTypes.STRING, // Você pode armazenar a URL da imagem
+      type: DataTypes.STRING,
       allowNull: true,
     },
   });
