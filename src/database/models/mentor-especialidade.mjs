@@ -44,4 +44,4 @@ MentorEspecialidade.belongsTo(EspecialidadeModel, {
   }
 });
 
-export default MentorEspecialidade;
+export default mentor_especialidade;
