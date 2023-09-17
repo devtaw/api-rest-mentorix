@@ -53,3 +53,17 @@ routes.put ("/:id", (req, res) => {
     });
    }
 });
+
+routes.delete ("/:id", (req, res) => {
+    try {
+        const idEspecialidade = req.params.id;
+        console.log("delete especialidade");
+        return response.status(200).json ({
+            message: "Caiu no endpoint delete area by id" + idEspecialidade
+        });
+    } catch (error) {
+        return response.status(500).json ({
+            error: 'erro ao deletar especialidade'
+        });
+    }
+});
