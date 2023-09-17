@@ -1,4 +1,4 @@
-import {Mentor} from "../service/mentor-service.js";
+import { MentorService } from "../service/mentor-service.js";
 const routes = express.Router();
 
 routes.get ("/", async (request, response) => {
@@ -69,6 +69,6 @@ routes.delete("/:id", (request, response) => {
     }
 });
 
-export const mentorController = routes;
+export const MentorController = routes;
 
 
