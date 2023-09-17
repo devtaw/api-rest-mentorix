@@ -23,7 +23,11 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true,
       unique: true,
     },
-
+    nome: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      
+    }
   });
 };
 
