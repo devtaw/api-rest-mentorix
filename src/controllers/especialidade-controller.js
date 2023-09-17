@@ -73,4 +73,4 @@ routes.delete ("/:id", (request, response) => {
     }
 });
 
-export const especialidadeController = routes;
+export const EspecialidadeController = routes;
