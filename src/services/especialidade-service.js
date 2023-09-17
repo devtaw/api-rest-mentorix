@@ -20,7 +20,7 @@ export class EspecialidadeService {
     //   throw new Error("Especialidade não encontrada.");
     // }
 
-    await especialidade.update(dadosEspecialidade);
+    return especialidade.update(dadosEspecialidade);
   }
 
   async deleteEspecialidade(especialidadeId) {
@@ -30,6 +30,6 @@ export class EspecialidadeService {
     //   throw new Error("Especialidade não encontrada.");
     // }
 
-    await especialidade.destroy();
+    return especialidade.destroy();
   }
 }
