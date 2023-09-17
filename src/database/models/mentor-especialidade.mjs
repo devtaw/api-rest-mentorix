@@ -14,14 +14,7 @@ const MentorEspecialidade = sequelize.define(
       unique: true,
       allowNull: false,
     },
-    mentorID: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
-    especialidadeID: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -37,5 +30,18 @@ const MentorEspecialidade = sequelize.define(
     tableName: "mentorepecialidade",
   }
 );
+
+// belongsTo(MentorModel deixar isso em stand by para revisitarmos se vamos importar nesse estilo MentorModel ou se será apenas Mentor
+MentorEspecialidade.belongsTo(MentorModel, {
+  foreignKey: {
+    allowNull: false,
+    }
+  });
+
+MentorEspecialidade.belongsTo(EspecialidadeModel, {
+  foreignKey: {
+  allowNull: false,
+  }
+});
 
 export default MentorEspecialidade;
