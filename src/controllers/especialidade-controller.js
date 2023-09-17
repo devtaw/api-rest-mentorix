@@ -1,4 +1,5 @@
 import express from 'express';
+import { EspecialidadeService } from "../service/especialidade-service.js";
 const routes = express.Router;
 
 routes.get ("/", (request, response) => {
