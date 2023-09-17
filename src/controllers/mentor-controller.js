@@ -1,4 +1,4 @@
-import Mentor from "../database/models/mentor.js";
+import {Mentor} from "../service/mentor-service.js";
 const routes = express.Router();
 
 routes.get ("/", async (req, res) => {
