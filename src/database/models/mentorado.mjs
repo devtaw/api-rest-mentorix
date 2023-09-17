@@ -1,6 +1,9 @@
 
 import DB from "./index.cjs";
 
+const sequelize = DB.sequelize;
+const { DataTypes } = DB.Sequelize;
+
 // Define a entidade Mentorado e seus atributos
 const Mentorado = sequelize.define("Mentorado", {
   // Um identificador único para cada mentorado
@@ -31,15 +34,6 @@ const Mentorado = sequelize.define("Mentorado", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  // Senha: Associada à conta do usuário. Armazenada de forma segura e criptografada.
-  senhaCriptografada: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    set(value) {
-      const hashedSenha = bcrypt.hashSync(value, 10);
-      this.setDataValue("senhaCriptografada", hashedSenha);
-    },f
-  },
   // Foto de Perfil: Uma imagem do mentorado é algo que torna o perfil mais pessoal.
   fotoPerfil: {
     type: DataTypes.STRING, // Você pode armazenar a URL da imagem
@@ -63,12 +57,15 @@ const Mentorado = sequelize.define("Mentorado", {
     type: DataTypes.DATE,
     allowNull: false,
   },
-
   updatedAt: {
     type: DataTypes.DATE,
-    allowNull: false,
-    },
-});
+    allowNull:false,
+  },
+},
+{
+  tableName: "mentorado"
+}
+);
 
 Mentorado.belongsTo(User, {
   foreignKey: {

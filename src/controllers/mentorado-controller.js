@@ -1,5 +1,5 @@
 import express from 'express';
-import Mentorado from '../services/mentorado-service.js';
+import {MentoradoService} from '../services/mentorado-service.js';
 
 const routes = express.Router();
 
@@ -7,7 +7,7 @@ const routes = express.Router();
 routes.get('/', async (req, res) => {
     try {
         // Consulta todos os mentorados no banco de dados
-        const listaMentorados = await Mentorado.findAll();
+        const listaMentorados = await MentoradoService.getAllMentorados();
 
         // Retorna a lista de mentorados como resposta com status 200 (OK)
         return res.status(200).json(listaMentorados);
@@ -22,7 +22,7 @@ routes.get('/:id', async (req, res) => {
         const { id } = req.params;
 
         // Busca um mentorado pelo ID no banco de dados
-        const mentorado = await Mentorado.findByPk(id);
+        const mentorado = await MentoradoService.getMentoradoById(id);
 
         // Verifica se o mentorado foi encontrado
         if (!mentorado) {
@@ -44,8 +44,8 @@ routes.get('/:id', async (req, res) => {
 routes.post('/', async (req, res) => {
     try {
         const body = req.body;
-        const mentorado = await Mentorado.create(body);
-        return res.status(201).json(mentorado);
+        const mentorado = await MentoradoService.addMentorado(body);
+        return res.status(200).json(mentorado);
     } catch (error) {
         return res.status(500).json({ error: 'Erro ao cadastrar mentorado.' });
     }
@@ -58,14 +58,7 @@ routes.put('/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const body = req.body;
-
-        const mentorado = await Mentorado.findByPk(id);
-
-        if (!mentorado) {
-            return res.status(404).json({ error: 'Mentorado não encontrado.' });
-        }
-
-        await mentorado.update(body);
+        const mentorado = await MentoradoService.updateMentorado(id, body);
 
         return res.status(200).json(mentorado);
     } catch (error) {
@@ -79,13 +72,8 @@ routes.put('/:id', async (req, res) => {
 routes.delete('/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const mentorado = await Mentorado.findByPk(id);
-
-        if (!mentorado) {
-            return res.status(404).json({ error: 'Mentorado não encontrado.' });
-        }
-
-        await mentorado.destroy();
+        
+        await MentoradoService.deleteMentorado(id);
 
         return res.status(204).json();
     } catch (error) {
@@ -94,4 +82,4 @@ routes.delete('/:id', async (req, res) => {
 });
 
 
-export default routes;
+export const MentoradoController = routes;
