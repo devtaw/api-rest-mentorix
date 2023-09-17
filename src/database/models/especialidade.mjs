@@ -1,4 +1,8 @@
-import { Sequelize, DataTypes } from "sequelize";
+
+import DB from "./index.cjs";
+
+const sequelize = DB.sequelize;
+const { DataTypes } = DB.Sequelize;
 
 const Especialidade = sequelize.define("Especialidade", {
   // Um identificador único para cada usuário registrado na plataforma.
@@ -18,8 +22,21 @@ const Especialidade = sequelize.define("Especialidade", {
   },
   foto:{
     type: DataTypes.STRING, 
-  } 
-});
+  },
+  createdAt: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+
+  updatedAt: {
+    type: DataTypes.DATE,
+    allowNull:false,
+},
+},
+{
+  tableName: "especialidade"
+}
+);
 
 // Associa entidade "Especialidade" com "Área de Atuação", estabelecendo uma relação de 1:1 (um para um).
 // A combinação dessa relação com a relação estabelecida no Model/area-atuacao.js cria uma relação de
