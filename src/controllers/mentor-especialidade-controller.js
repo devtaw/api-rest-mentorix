@@ -7,11 +7,11 @@ const routes = express.Router();
 routes.get("/", async (req, res) => {
   try {
     // Consulta todos os mentorEspecialidade no banco de dados
-    const listaMentorEspecialidade =
-      await MentorEspecialidadeService.getAllMentorEspecialidade();
+    const listaMentorEspecialidades =
+      await MentorEspecialidadeService.getAllMentorEspecialidades();
 
     // Retorna a lista de mentorEspecialidade como resposta com status 200 (OK)
-    return res.status(200).json(listaMentorEspecialidade);
+    return res.status(200).json(listaMentorEspecialidades);
   } catch (error) {
     // Em caso de erro durante a consulta, retorna uma resposta
     return res
