@@ -16,7 +16,7 @@ routes.get ("/:id", (req, res) => {
         const body = req.body; 
         const idMentor = req.params.id;
         return response.status(200).json({
-            message: "caiu no endpoint get mentor by id" + id
+            message: "caiu no endpoint get mentor by id" + idMentor
         })
     } catch (error) {
         return response.status(500).json({
@@ -43,7 +43,7 @@ routes.put ("/:id", (req, res) => {
         const body= request.body;
         const idMentor = req.params.id;
         return response.status(200).json({
-            message: 'Caiu no endpoint post mentor',
+            message: 'Caiu no endpoint put mentor by id' + idMentor,
             body,
         });
     } catch (error) {
