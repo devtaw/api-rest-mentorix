@@ -16,7 +16,7 @@ export class UserService {
   async updateUser(idUser, dadosUser) {
     const user = await UserModel.findByPk(idUser);
     
-    await user.update(dadosUser);
+    return user.update(dadosUser);
   }
 
   async deleteUser(idUser) {
