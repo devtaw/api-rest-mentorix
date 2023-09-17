@@ -27,7 +27,7 @@ const MentorEspecialidade = sequelize.define(
   
   {
     // Define o nome da tabela no banco de dados como "mentorepecialidade"
-    tableName: "mentorepecialidade",
+    tableName: "mentor_especialidade",
   }
 );
 
@@ -44,4 +44,4 @@ MentorEspecialidade.belongsTo(EspecialidadeModel, {
   }
 });
 
-export default mentor_especialidade;
+export default MentorEspecialidade;
