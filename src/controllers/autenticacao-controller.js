@@ -3,7 +3,7 @@
 
 import express from "express";
 import { UserService } from "../services/user-service.js";
-const routes = express.Router;
+const routes = express.Router();
 const userService = new UserService();
 
 routes.post("/", (request, response) => {

@@ -1,4 +1,4 @@
-import MentorEspecialidadeModel from "../database/models/mentorEspecialidade.mjs";
+import MentorEspecialidadeModel from "../database/models/mentor-especialidade.mjs";
 
 // Classe que define o serviço para a entidade "Mentor Especialidade"
 export class MentorEspecialidadeService {
@@ -18,8 +18,13 @@ export class MentorEspecialidadeService {
   }
 
   // Atualiza um registro de "Mentor Especialidade" pelo ID
-  async updateMentorEspecialidade(idMentorEspecialidade, dadosMentorEspecialidade) {
-    const mentorEspecialidade = await MentorEspecialidadeModel.findByPk(idMentorEspecialidade);
+  async updateMentorEspecialidade(
+    idMentorEspecialidade,
+    dadosMentorEspecialidade
+  ) {
+    const mentorEspecialidade = await MentorEspecialidadeModel.findByPk(
+      idMentorEspecialidade
+    );
 
     // Verifica se o registro de "Mentor Especialidade" foi encontrado
     //if (!mentorEspecialidade) {
@@ -32,7 +37,9 @@ export class MentorEspecialidadeService {
 
   // Exclui um registro de "Mentor Especialidade" pelo ID
   async deleteMentorEspecialidade(idMentorEspecialidade) {
-    const mentorEspecialidade = await MentorEspecialidadeModel.findByPk(idMentorEspecialidade);
+    const mentorEspecialidade = await MentorEspecialidadeModel.findByPk(
+      idMentorEspecialidade
+    );
 
     // Verifica se o registro de "Mentor Especialidade" foi encontrado
     //if (!mentorEspecialidade) {

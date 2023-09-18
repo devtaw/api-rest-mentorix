@@ -2,7 +2,7 @@
 
 import express from "express";
 import { AgendamentoService } from "../services/agendamento-service.js";
-const routes = express.Router;
+const routes = express.Router();
 const agendamentoService = new AgendamentoService();
 
 // const agendamentoService = new AgendamentoService();
@@ -36,7 +36,9 @@ routes.get("/", async (request, response) => {
     /**
      * Caso houver qualquer tipo de erro na execução, retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
      */
-    return response.status(500).json({ mensagem: "Erro ao listar Agendamentos." });
+    return response
+      .status(500)
+      .json({ mensagem: "Erro ao listar Agendamentos." });
   }
 });
 
@@ -58,7 +60,9 @@ routes.get("/:id", (request, response) => {
     /**
      * Caso houver qualquer tipo de erro na execução, retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
      */
-    return response.status(500).json({ mensagem: "Erro ao listar Agendamento." });
+    return response
+      .status(500)
+      .json({ mensagem: "Erro ao listar Agendamento." });
   }
 });
 
@@ -84,7 +88,9 @@ routes.post("/", (request, response) => {
     /**
      * Caso houver qualquer tipo de erro na execução, retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
      */
-    return response.status(500).json({ mensagem: "Erro ao cadastrar Agendamento." });
+    return response
+      .status(500)
+      .json({ mensagem: "Erro ao cadastrar Agendamento." });
   }
 });
 
@@ -112,7 +118,9 @@ routes.put("/:id", (request, response) => {
     /**
      * Caso houver qualquer tipo de erro na execução,retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
      */
-    return response.status(500).json({ mensagem: "Erro ao incluir Agendamento." });
+    return response
+      .status(500)
+      .json({ mensagem: "Erro ao incluir Agendamento." });
   }
 });
 
@@ -132,7 +140,9 @@ routes.delete("/:id", (request, response) => {
       message: "Caiu no endpoint delete area by id " + id,
     });
   } catch (error) {
-    return response.status(500).json({ mensagem: "Erro ao deletar Agendamento." });
+    return response
+      .status(500)
+      .json({ mensagem: "Erro ao deletar Agendamento." });
   }
 });
 
