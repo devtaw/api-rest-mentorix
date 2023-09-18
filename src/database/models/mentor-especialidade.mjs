@@ -21,10 +21,10 @@ const MentorEspecialidade = sequelize.define(
     },
     updatedAt: {
       type: DataTypes.DATE,
-      allowNull:false,
+      allowNull: false,
     },
   },
-  
+
   {
     // Define o nome da tabela no banco de dados como "mentorepecialidade"
     tableName: "mentor_especialidade",
@@ -35,13 +35,13 @@ const MentorEspecialidade = sequelize.define(
 MentorEspecialidade.belongsTo(MentorModel, {
   foreignKey: {
     allowNull: false,
-    }
-  });
+  },
+});
 
 MentorEspecialidade.belongsTo(EspecialidadeModel, {
   foreignKey: {
-  allowNull: false,
-  }
+    allowNull: false,
+  },
 });
 
 export default MentorEspecialidade;
