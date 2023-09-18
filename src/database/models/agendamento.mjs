@@ -1,15 +1,10 @@
-// Onde será feito o mapeamento da entidade que está no banco de dados.
-//Agendamento
-//- mentor: Mentor
-//- mentorado: Mentorado
-//- assunto: String
-
+import { DataTypes } from "sequelize";
 import DB from "./index.cjs";
 const sequelize = DB.sequelize;
-const { DataTypes } = DB.Sequelize;
 
-// Entidade "agendamento"
-const Agendamento = sequelize.define("Agendamento", {
+  const Agendamento = sequelize.define(
+    "Agendamento",
+    {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -33,28 +28,17 @@ const Agendamento = sequelize.define("Agendamento", {
 
   updatedAt: {
     type: DataTypes.DATE,
-    allowNull: false,
-    },
+    allowNull:false,
+},
 },
 {
-  tableName: "agendamento"
+  tableName: "agendamento",
 }
 );
 
+Agendamento.associate = function (models) {
+  Agendamento.hasMany(models.Mentor);
+  Agendamento.belongsTo(models.Mentorado);
+  };
 
-// Associações
-Agendamento.belongsTo(Mentor, {
-  foreignKey: {
-    allowNull: false,
-  },
-});
-
-Agendamento.belongsTo(Mentorado, {
-  foreignKey: {
-    allowNull: false,
-  },
-});
-
-
-// Exporta as entidades
-export default  Agendamento ;
+  export default AreaAtuacao;
