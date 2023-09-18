@@ -39,18 +39,17 @@ const Mentorado = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-
-    // Define o campo "fotoPerfil" como uma string que pode ser nula.
+    // Foto de Perfil: Uma imagem do mentorado é algo que torna o perfil mais pessoal.
     fotoPerfil: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING, // Você pode armazenar a URL da imagem
       allowNull: true,
     },
-
-    // Define o campo "oQuebusco" como uma string não nula.
+    // A área de interesse do mentorado ou seria biografia?
     oQuebusco: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    // Idiomas: Idiomas que o mentorado deseja aprender ou nos quais precisa de orientação.
 
     // Define o campo "idiomas" como um array de strings que pode ser nulo.
     idiomas: {

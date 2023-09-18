@@ -30,7 +30,6 @@ app.use("/agendamento", AgendamentoController);
 app.use("/mentor", MentoradoController);
 app.use("/mentor-especialidade", MentorEspecialidadeController);
 
-
 sequelize.sync().then(() => {
   console.log("Tabelas sincronizadas");
 });
