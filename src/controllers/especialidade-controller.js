@@ -1,6 +1,6 @@
 import express from 'express';
 import { EspecialidadeService } from "../service/especialidade-service.js";
-const routes = express.Router;
+const routes = express.Router();
 const especialidadeService = new EspecialidadeService();
 
 routes.get ("/", async (request, response) => {
