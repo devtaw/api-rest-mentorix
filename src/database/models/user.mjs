@@ -47,13 +47,13 @@ const AreaAtuacao = sequelize.define(
 );
 
 // Define as associações 
-AreaAtuacao.associate = function (models) {
+User.associate = function (models) {
 User.hasOne(models.Mentor, {
   onDelete: 'CASCADE', // Quando um registro na tabela referenciada é excluído, todos os registros relacionados na tabela atual são excluídos automaticamente.
   onUpdate: 'CASCADE', // Quando a chave primária de um registro na tabela referenciada é atualizada, todos os registros relacionados na tabela atual são atualizados automaticamente.
 });
 
-User.hasOne(sequelize.models.Mentorado, {
+User.hasOne(models.Mentorado, {
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 });
