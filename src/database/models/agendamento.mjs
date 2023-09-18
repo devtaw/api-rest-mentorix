@@ -50,5 +50,5 @@ Agendamento.associate = function (models) {
 });
 };
 
-// Exporta o modelo "Mentorado" para uso em outros módulos
+// Exporta o modelo "Agendamento" para uso em outros módulos
 export default Agendamento;

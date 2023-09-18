@@ -42,9 +42,17 @@ const sequelize = DB.sequelize;
 );
 
 Especialidade.associate = function (models) {
- Especialidade.hasMany(models.AreaAtuacao);
- Especialidade.hasMany(models.MentorEspecialidade);
- 
-  };
+
+ Especialidade.hasMany(models.AreaAtuacao,{
+  foreignKey: {
+    allowNull: false,
+  },
+});
+ Especialidade.hasMany(models.MentorEspecialidade,{
+  foreignKey: {
+    allowNull: false,
+  },
+});
+};
 
 export default Especialidade;
