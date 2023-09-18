@@ -1,6 +1,5 @@
-import UserModel from "../database/models/user.mjs"
+import UserModel from "../database/models/user.mjs";
 export class UserService {
-
   async getAllUsers() {
     return UserModel.findAll();
   }
@@ -15,7 +14,7 @@ export class UserService {
 
   async updateUser(idUser, dadosUser) {
     const user = await UserModel.findByPk(idUser);
-    
+
     return user.update(dadosUser);
   }
 
@@ -36,15 +35,3 @@ export class UserService {
 // return bcrypt.compareSync(senha, this.senhaCriptografada);
 // }
 // }
-
-
-
-
-
-
-
-
-
-
-
-
