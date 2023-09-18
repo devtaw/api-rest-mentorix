@@ -34,9 +34,17 @@ const MentorEspecialidade = sequelize.define(
 
 // Define as associações 
 MentorEspecialidade.associate = function (models) {
-  MentorEspecialidade. belongsTo(MentorModel);
-  MentorEspecialidade.belongsTo(EspecialidadeModel);
-};
 
+  MentorEspecialidade. belongsTo(MentorModel, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
+  MentorEspecialidade.belongsTo(EspecialidadeModel, {
+  foreignKey: {
+    allowNull: false,
+  },
+});
+};
 // Exporta o modelo "MentorEspecialidade" para uso em outros lugares.
 export default MentorEspecialidade;
