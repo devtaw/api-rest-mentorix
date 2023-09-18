@@ -21,7 +21,7 @@ routes.get ("/:id", async (request, response) => {
         const idEspecialidade = request.params.id
         const especialidade = await especialidadeService.getEspecialidadeById(idEspecialidade);
         if (!mentorado) {
-            return res.status(404).json({ error: 'Usuário não encontrado.' });
+            return response.status(404).json({ error: 'Usuário não encontrado.' });
         }
         return response.status(200).json({
             message: "Caiu no endpoint get especialidade by id" + idEspecialidade,
