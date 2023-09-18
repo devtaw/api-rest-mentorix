@@ -1,11 +1,12 @@
-// Importa o objeto DB, que parece ser um objeto relacionado ao Sequelize.
+import { DataTypes } from "sequelize";
+
+// Importa o objeto DB que contém a configuração da conexão com o banco de dados.
 import DB from "./index.cjs";
 const sequelize = DB.sequelize;
-const { DataTypes } = DB.Sequelize;
-
-// Define a entidade "User" e seus atributos
-const User = sequelize.define("User", {
-  // Um identificador único para cada usuário registrado na plataforma.
+const AreaAtuacao = sequelize.define(
+  "User",
+  {
+        // Define o campo "id" como um inteiro com autoincremento, chave primária e não nulo.
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -41,12 +42,13 @@ const User = sequelize.define("User", {
   },
 },
 {
-  tableName: "user"
+  tableName: "user",
 }
 );
 
-// Define as associações da entidade User com as entidades Mentor e Mentorado
-User.hasOne(sequelize.models.Mentor, {
+// Define as associações 
+AreaAtuacao.associate = function (models) {
+User.hasOne(models.Mentor, {
   onDelete: 'CASCADE', // Quando um registro na tabela referenciada é excluído, todos os registros relacionados na tabela atual são excluídos automaticamente.
   onUpdate: 'CASCADE', // Quando a chave primária de um registro na tabela referenciada é atualizada, todos os registros relacionados na tabela atual são atualizados automaticamente.
 });
@@ -55,8 +57,6 @@ User.hasOne(sequelize.models.Mentorado, {
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE',
 });
-
-// `sequelize.define` também retorna o modelo
-console.log(User === sequelize.models.User); // true
+};
 
 export default User;
