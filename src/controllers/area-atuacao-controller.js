@@ -1,7 +1,6 @@
-// import { AreaService } from "../services/area-service.js";
-import express from "express";
 import { AreaAtuacaoService } from "../services/area-atuacao-service.js";
-const routes = express.Router;
+import express from "express";
+const routes = express.Router();
 const areaAtuacaoService = new AreaAtuacaoService();
 
 // Cada uma das entidades deve realizar todos os métodos HTTP:
@@ -20,20 +19,7 @@ routes.get("/", async (request, response) => {
   try {
     console.log("get area");
     // apenas um exemplo de retorno, pode ser de um banco de dados, uma api, um service, etc.
-    const listaDeAreas = [
-      {
-        id: 1,
-        nome: "Área 1",
-      },
-      {
-        id: 2,
-        nome: "Área 2",
-      },
-      {
-        id: 3,
-        nome: "Área 3",
-      },
-    ];
+    const listaDeAreas = await areaAtuacaoService.getAllAreas();
 
     // retorna o status 200 (ok) e o json com os dados
     return response.status(200).json(listaDeAreas);
@@ -92,18 +78,14 @@ routes.get("/:id", (request, response) => {
  *
  * Exemplo de chamada: (POST) http://localhost:3000/area
  */
-routes.post("/", (request, response) => {
+routes.post("/", async (request, response) => {
   try {
     // obtem os dados da área a ser cadastrada
     const data = request.body;
-
-    console.log("post area");
+    const newAreaAtuacao = await areaAtuacaoService.addArea(data);
 
     // retorna o status 200 (ok) e o json com os dados
-    return response.status(200).json({
-      message: "Caiu no endpoint post area",
-      data, //sugar sintaxe para simplificar a atribuição de propriedade dentro do objeto, seria data:data
-    });
+    return response.status(200).json(newAreaAtuacao);
   } catch (error) {
     console.error(error);
     /**

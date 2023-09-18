@@ -1,8 +1,8 @@
-import AreaAtuacaoModel from "../database/models/area-atuacao.js";
+import AreaAtuacaoModel from "../database/models/area-atuacao.mjs";
 
 export class AreaAtuacaoService {
   async getAllAreas() {
-    return await AreaAtuacaoModel.findAll();
+    return AreaAtuacaoModel.findAll();
   }
 
   async addArea(newArea) {

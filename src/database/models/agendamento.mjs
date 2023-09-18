@@ -13,7 +13,7 @@ const Agendamento = sequelize.define(
       allowNull: false,
     },
 
-    campo_mensagem: {
+    campoMensagem: {
       type: DataTypes.STRING,
       allowNull: false,
     },

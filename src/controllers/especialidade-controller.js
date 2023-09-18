@@ -1,12 +1,13 @@
 import express from "express";
-import { EspecialidadeService } from "../service/especialidade-service.js";
+import { EspecialidadeService } from "../services/especialidade-service.js";
 const routes = express.Router();
 const especialidadeService = new EspecialidadeService();
 
 routes.get("/", async (request, response) => {
   try {
     console.log("get especialidade");
-    const listaEspecialidade = await especialidadeService.getAllEspecialidades();
+    const listaEspecialidade =
+      await especialidadeService.getAllEspecialidades();
     return response.status(200).json(listaEspecialidade);
   } catch (error) {
     console.error(error);
@@ -19,7 +20,9 @@ routes.get("/", async (request, response) => {
 routes.get("/:id", async (request, response) => {
   try {
     const idEspecialidade = request.params.id;
-    const especialidade = await especialidadeService.getEspecialidadeById(idEspecialidade);
+    const especialidade = await especialidadeService.getEspecialidadeById(
+      idEspecialidade
+    );
     if (!mentorado) {
       return response.status(404).json({ error: "Usuário não encontrado." });
     }
@@ -56,7 +59,10 @@ routes.put("/:id", async (request, response) => {
   try {
     const body = request.body;
     const idEspecialidade = request.params.id;
-    const especialidade = await especialidadeService.updateEspecialidade(idEspecialidade, body);
+    const especialidade = await especialidadeService.updateEspecialidade(
+      idEspecialidade,
+      body
+    );
     return response.status(200).json({
       message: "Caiu no endpoint put especialidade by id" + idEspecialidade,
       especialidade,
