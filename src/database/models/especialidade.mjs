@@ -1,41 +1,42 @@
-
 import DB from "./index.cjs";
 
 const sequelize = DB.sequelize;
 const { DataTypes } = DB.Sequelize;
 
-const Especialidade = sequelize.define("Especialidade", {
-  // Um identificador único para cada usuário registrado na plataforma.
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true, // Permite que o valor seja gerado automaticamente
-    unique: true,
-    allowNull: false,
-  },
-  nome: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  descricao: {
-    type: DataTypes.TEXT,
-  },
-  foto:{
-    type: DataTypes.STRING, 
-  },
-  createdAt: {
-    type: DataTypes.DATE,
-    allowNull: false,
-  },
+const Especialidade = sequelize.define(
+  "Especialidade",
+  {
+    // Um identificador único para cada usuário registrado na plataforma.
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true, // Permite que o valor seja gerado automaticamente
+      unique: true,
+      allowNull: false,
+    },
+    nome: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    descricao: {
+      type: DataTypes.TEXT,
+    },
+    foto: {
+      type: DataTypes.STRING,
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
 
-  updatedAt: {
-    type: DataTypes.DATE,
-    allowNull:false,
-},
-},
-{
-  tableName: "especialidade"
-}
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+  },
+  {
+    tableName: "especialidade",
+  }
 );
 
 // Associa entidade "Especialidade" com "Área de Atuação", estabelecendo uma relação de 1:1 (um para um).
@@ -53,7 +54,5 @@ Especialidade.hasMany(sequelize.models.MentorEspecialidade, {
     allowNull: false,
   },
 });
-
-
 
 export default Especialidade;
