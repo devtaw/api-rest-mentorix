@@ -55,6 +55,7 @@ Agendamento.belongsTo(Mentorado, {
   },
 });
 
+//Aqui começam as validações
 
 // Exporta as entidades
 export default  Agendamento ;
