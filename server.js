@@ -1,9 +1,8 @@
 //Importação do express
 import express from "express";
 import { AutenticacaoController } from "./src/controllers/autenticacao-controller.js";
-import {MentoradoController} from "./src/controllers/mentorado-controller.js";
-import {EspecialidadeController} from "./src/controllers/especialidade-controller.js";
-
+import { MentoradoController } from "./src/controllers/mentorado-controller.js";
+import { EspecialidadeController } from "./src/controllers/especialidade-controller.js";
 
 //constante para rodar o express
 const app = express();
@@ -20,7 +19,6 @@ app.use(express.json());
 app.use("/autenticacao", AutenticacaoController);
 app.use("/mentorado", MentoradoController);
 app.use("/especialidade", EspecialidadeController);
-
 
 //Aqui, é definido o "levante" para o servidor da API
 app.listen(port, () => {
