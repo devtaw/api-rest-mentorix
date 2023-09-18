@@ -1,5 +1,5 @@
 import express from "express";
-import { MentorEspecialidadeService } from "../services/mentorEspecialidade-service.js";
+import { MentorEspecialidadeService } from "../services/mentor-especialidade-service.js";
 
 const routes = express.Router();
 
@@ -15,7 +15,8 @@ routes.get("/", async (request, response) => {
   } catch (error) {
     // Em caso de erro durante a consulta, retorna uma resposta
     return res
-      .status(500).json({ error: "Erro ao listar mentorEspecialidade." });
+      .status(500)
+      .json({ error: "Erro ao listar mentorEspecialidade." });
   }
 });
 
@@ -38,7 +39,8 @@ routes.get("/:id", async (request, response) => {
   } catch (error) {
     // Em caso de erro durante a busca, retorna uma resposta com status 500 (Erro interno do servidor)
     return res
-      .status(500).json({ error: "Erro ao buscar mentorEspecialidade." });
+      .status(500)
+      .json({ error: "Erro ao buscar mentorEspecialidade." });
   }
 });
 
@@ -51,7 +53,8 @@ routes.post("/", async (request, response) => {
     return response.status(200).json(mentorEspecialidade);
   } catch (error) {
     return response
-      .status(500).json({ error: "Erro ao cadastrar mentorEspecialidade." });
+      .status(500)
+      .json({ error: "Erro ao cadastrar mentorEspecialidade." });
   }
 });
 
@@ -65,7 +68,9 @@ routes.put("/:id", async (request, response) => {
 
     return response.status(200).json(mentorEspecialidade); // 200 okay
   } catch (error) {
-    return response.status(500).json({ error: "Erro ao atualizar mentorEspecialidade." });
+    return response
+      .status(500)
+      .json({ error: "Erro ao atualizar mentorEspecialidade." });
   }
 });
 
@@ -78,8 +83,9 @@ routes.delete("/:id", async (request, response) => {
 
     return response.status(204).json(); // 204- sem conteudo
   } catch (error) {
-    return response 
-      .status(500).json({ error: "Erro ao deletar mentorEspecialidade." }); // 500- erro interno do servidor
+    return response
+      .status(500)
+      .json({ error: "Erro ao deletar mentorEspecialidade." }); // 500- erro interno do servidor
   }
 });
 
