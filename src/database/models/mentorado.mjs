@@ -57,13 +57,6 @@ const Mentorado = sequelize.define(
       type: DataTypes.ARRAY(DataTypes.STRING), // Idiomas é um array de texto
       allowNull: true,
     },
-
-    // Define o campo "user_id" como um inteiro que pode ser nulo.
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
-
     // Define o campo "createdAt" como uma data não nula.
     createdAt: {
       type: DataTypes.DATE,
@@ -82,9 +75,8 @@ const Mentorado = sequelize.define(
   }
 );
 
-// Define as associações 
+// Define as associações
 Mentorado.associate = function (models) {
-  
   Mentorado.belongsTo(models.User, {
     foreignKey: {
       allowNull: false,

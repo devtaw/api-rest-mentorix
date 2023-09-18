@@ -20,76 +20,67 @@ import { DataTypes } from "sequelize";
 import DB from "./index.cjs";
 const sequelize = DB.sequelize;
 
-const Mentor = sequelize.define("Mentor", {
-  
-  // ID: Identificador único para cada mentor registrado na plataforma.
-  id: {
-    type: DataTypes.INTEGER, // Tipo de dado para um ID numérico
-    primaryKey: true, // Define este campo como chave primária
-    autoIncrement: true, // Permite que o valor seja gerado automaticamente
-    unique: true,
-    allowNull: false,
-  },
-  // Nome completo: Armazena o nome completo do mentor.
-  nomeCompleto: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  dataNascimento: {
-    type: DataTypes.DATE,
-    allowNull: false,
-  },
-  // E-mail: Armazena o e-mail do mentor.
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-  },
-  telefone: {
-    type: DataTypes.STRING, 
-    allowNull: false,
-  },
-  // Armazenada de forma segura e criptografada.
-  senhaCriptografada: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    set(value) {
-      // Usamos  bcrypt para criar um hash da senha antes de armazená-la no banco de dados
-      const hashedSenha = bcrypt.hashSync(value, 10); // O valor 10 é o custo da criptografia
-      this.setDataValue("senhaCriptografada", hashedSenha);
+const Mentor = sequelize.define(
+  "Mentor",
+  {
+    // ID: Identificador único para cada mentor registrado na plataforma.
+    id: {
+      type: DataTypes.INTEGER, // Tipo de dado para um ID numérico
+      primaryKey: true, // Define este campo como chave primária
+      autoIncrement: true, // Permite que o valor seja gerado automaticamente
+      unique: true,
+      allowNull: false,
+    },
+    // Nome completo: Armazena o nome completo do mentor.
+    nomeCompleto: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    dataNascimento: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    // E-mail: Armazena o e-mail do mentor.
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    telefone: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    // Uma imagem do mentor
+    fotoPerfil: {
+      type: DataTypes.STRING, // Você pode armazenar a URL da imagem
+    },
+    // Biografia: Uma breve descrição do usuário.
+    biografia: {
+      type: DataTypes.STRING,
+    },
+    // Nível de Experiência: Indica o nível de experiência do mentor em sua área de especialização.
+    nivelExperiencia: {
+      type: DataTypes.ENUM("Júnior", "Pleno", "Sênior"),
+      allowNull: false,
+    },
+    // Experiência Profissional: Descreve a experiência profissional e especializações do mentor.
+    experienciaProfissional: {
+      type: DataTypes.TEXT, // Experiência é um campo de texto
+      allowNull: false,
+    },
+
+    // Idiomas: Idiomas em que o mentor é proficientemente capaz de oferecer orientação.
+    idiomas: {
+      type: DataTypes.ARRAY(DataTypes.STRING), // Idiomas é um array de texto
     },
   },
-  // Uma imagem do mentor 
-  fotoPerfil: {
-    type: DataTypes.STRING, // Você pode armazenar a URL da imagem
-  },
-  // Biografia: Uma breve descrição do usuário.
-  biografia: {
-    type: DataTypes.STRING,
-  },
-  // Nível de Experiência: Indica o nível de experiência do mentor em sua área de especialização.
-  nivelExperiencia: {
-    type: DataTypes.ENUM("Júnior", "Pleno", "Sênior"),
-    allowNull: false,
-  },
-  // Experiência Profissional: Descreve a experiência profissional e especializações do mentor.
-  experienciaProfissional: {
-    type: DataTypes.TEXT, // Experiência é um campo de texto
-    allowNull: false,
-  },
-
-  // Idiomas: Idiomas em que o mentor é proficientemente capaz de oferecer orientação.
-  idiomas: {
-    type: DataTypes.ARRAY(DataTypes.STRING), // Idiomas é um array de texto
-  },
-},
-{
-  // Define o nome da tabela no banco de dados como "area_atuacao".
-  tableName: "mentor"
-}
+  {
+    // Define o nome da tabela no banco de dados como "area_atuacao".
+    tableName: "mentor",
+  }
 );
 
-// Define as associações 
+// Define as associações
 Mentor.associate = function (models) {
   Mentor.belongsTo(models.User, {
     foreignKey: {
