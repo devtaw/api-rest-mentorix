@@ -5,7 +5,9 @@ import { MentoradoController } from "./src/controllers/mentorado-controller.js";
 import { EspecialidadeController } from "./src/controllers/especialidade-controller.js";
 import { AreaAtuacaoController } from "./src/controllers/area-atuacao-controller.js";
 
-import DB from "./src/database/models/index.js";
+import DB from "./src/database/models/index.cjs";
+import { AgendamentoController } from "./src/controllers/agendamento-controller.js";
+import { MentorEspecialidadeController } from "./src/controllers/mentor-especialidade-controller.js";
 const sequelize = DB.sequelize;
 
 //constante para rodar o express
@@ -24,6 +26,10 @@ app.use("/autenticacao", AutenticacaoController);
 app.use("/mentorado", MentoradoController);
 app.use("/especialidade", EspecialidadeController);
 app.use("/area-atuacao", AreaAtuacaoController);
+app.use("/agendamento", AgendamentoController);
+app.use("/mentor", MentoradoController);
+app.use("/mentor-especialidade", MentorEspecialidadeController);
+
 
 sequelize.sync().then(() => {
   console.log("Tabelas sincronizadas");
