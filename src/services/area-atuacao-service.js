@@ -7,5 +7,5 @@ export class AreaAtuacaoService {
 
   async addArea(newArea) {
     return AreaAtuacaoModel.create(newArea);
-}
+  }
 }
