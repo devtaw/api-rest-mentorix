@@ -1,85 +1,102 @@
-
+// Importa o módulo DataTypes do Sequelize para definir tipos de dados dos campos da tabela.
+import { DataTypes } from "sequelize";
 import DB from "./index.cjs";
-
 const sequelize = DB.sequelize;
-const { DataTypes } = DB.Sequelize;
 
-// Define a entidade Mentorado e seus atributos
-const Mentorado = sequelize.define("Mentorado", {
-  // Um identificador único para cada mentorado
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true, // Permite que o valor seja gerado automaticamente
-    unique: true,
-    allowNull: false,
+const Mentorado = sequelize.define(
+  "Mentorado",
+  {
+    // Define o campo "id" como um inteiro com autoincremento, chave primária e não nulo.
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      unique: true,
+      allowNull: false,
+    },
+
+    // Define o campo "nomeCompleto" como uma string não nula.
+    nomeCompleto: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    // Define o campo "dataNascimento" como uma data não nula.
+    dataNascimento: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+
+    // Define o campo "email" como uma string não nula e única.
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+
+    // Define o campo "telefone" como uma string não nula.
+    telefone: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    // Define o campo "fotoPerfil" como uma string que pode ser nula.
+    fotoPerfil: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+
+    // Define o campo "oQuebusco" como uma string não nula.
+    oQuebusco: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    // Define o campo "idiomas" como um array de strings que pode ser nulo.
+    idiomas: {
+      type: DataTypes.ARRAY(DataTypes.STRING), // Idiomas é um array de texto
+      allowNull: true,
+    },
+
+    // Define o campo "user_id" como um inteiro que pode ser nulo.
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+
+    // Define o campo "createdAt" como uma data não nula.
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+
+    // Define o campo "updatedAt" como uma data não nula.
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
   },
-  // O nome do mentorado
-  nomeCompleto: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  dataNascimento: {
-    type: DataTypes.DATE,
-    allowNull: false,
-  },
-  // O email do mentorado
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-  },
-  // O número de telefone do mentorado
-  telefone: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  // Foto de Perfil: Uma imagem do mentorado é algo que torna o perfil mais pessoal.
-  fotoPerfil: {
-    type: DataTypes.STRING, // Você pode armazenar a URL da imagem
-    allowNull: true,
-  },
-  // A área de interesse do mentorado ou seria biografia?
-  oQuebusco: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  // Idiomas: Idiomas que o mentorado deseja aprender ou nos quais precisa de orientação.
-  idiomas: {
-    type: DataTypes.ARRAY(DataTypes.STRING), // Idiomas é um array de texto
-    allowNull: true,
-  },
-  user_id: {
-    type: DataTypes.INTEGER,
-    allowNull: true, // A relacao
-  },
-  createdAt: {
-    type: DataTypes.DATE,
-    allowNull: false,
-  },
-  updatedAt: {
-    type: DataTypes.DATE,
-    allowNull:false,
-  },
-},
-{
-  tableName: "mentorado"
-}
+  {
+    // Define o nome da tabela no banco de dados como "mentorado".
+    tableName: "mentorado",
+  }
 );
 
-Mentorado.belongsTo(User, {
-  foreignKey: {
-    allowNull: false,
-  },
-});
+// Define as associações 
+Mentorado.associate = function (models) {
+  
+  Mentorado.belongsTo(models.User, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
 
-Mentorado.hasMany(Agendamento, {
-  foreignKey: 'agendamento_id', //chave estrangeira em Agendamento
-  allowNull: false,
-});
+  Mentorado.hasMany(models.Agendamento, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
+};
 
-
-// `sequelize.define` também retorno o modelo
-console.log(Mentorado === sequelize.models.Mentorado); // true
-
+// Exporta o modelo "Mentorado" para uso em outros módulos.
 export default Mentorado;
