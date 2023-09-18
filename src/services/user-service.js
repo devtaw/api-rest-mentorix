@@ -1,4 +1,4 @@
-import { ServiceError } from "../common/service-error";
+import { ServiceError } from "../common/service-error.js";
 import UserModel from "../database/models/user.mjs";
 export class UserService {
   async getAllUsers() {

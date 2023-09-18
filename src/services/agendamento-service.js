@@ -1,5 +1,5 @@
 // Onde será implementado o CRUD.
-import { AgendamentoModel } from "../database/models/agendamento.mjs";
+import AgendamentoModel from "../database/models/agendamento.mjs";
 export class AgendamentoService {
   async getAllAgendamentos() {
     return AgendamentoModel.findAll();
