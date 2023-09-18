@@ -14,7 +14,7 @@ export class AgendamentoService {
         const agendamento = await AgendamentoModel.findByPk(idAgendamento);
 
         if (!agendamento) {
-          throw new Error("Especialidade não encontrada.");
+          throw new Error("Agendamento não encontrada.");
         }
 
         return agendamento.update(dadosAgendamento);
@@ -24,7 +24,7 @@ export class AgendamentoService {
         const agendamento = await AgendamentoModel.findByPk(AgendamentoId);
 
           if (!agendamento) {
-          throw new Error("Especialidade não encontrada.");
+          throw new Error("Agendamento não encontrada.");
         }
 
         return agendamento.destroy();
