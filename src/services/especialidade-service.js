@@ -1,6 +1,5 @@
-import EspecialidadeModel from "../database/models/especialidade.mjs"
+import EspecialidadeModel from "../database/models/especialidade.mjs";
 export class EspecialidadeService {
-
   async getAllEspecialidades() {
     return EspecialidadeModel.findAll();
   }
