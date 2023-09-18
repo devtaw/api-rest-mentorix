@@ -1,7 +1,7 @@
 // Importa o objeto DB, que parece ser um objeto relacionado ao Sequelize.
+import { DataTypes } from "sequelize";
 import DB from "./index.cjs";
 const sequelize = DB.sequelize;
-const { DataTypes } = DB.Sequelize;
 
 // Define o modelo "MentorEspecialidade" para representar a associação entre Mentores e Especialidades.
 const MentorEspecialidade = sequelize.define(
@@ -14,7 +14,8 @@ const MentorEspecialidade = sequelize.define(
       unique: true,
       allowNull: false,
     },
-
+    
+    // Define os campos "createdAt" e "updatedAt" do modelo.
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -26,22 +27,16 @@ const MentorEspecialidade = sequelize.define(
   },
   
   {
-    // Define o nome da tabela no banco de dados como "mentorepecialidade"
+    // Define o nome da tabela no banco de dados como "mentor_especialidade".
     tableName: "mentor_especialidade",
   }
 );
 
-// belongsTo(MentorModel deixar isso em stand by para revisitarmos se vamos importar nesse estilo MentorModel ou se será apenas Mentor
-MentorEspecialidade.belongsTo(MentorModel, {
-  foreignKey: {
-    allowNull: false,
-    }
-  });
+// Define as associações 
+MentorEspecialidade.associate = function (models) {
+  MentorEspecialidade. belongsTo(MentorModel);
+  MentorEspecialidade.belongsTo(EspecialidadeModel);
+};
 
-MentorEspecialidade.belongsTo(EspecialidadeModel, {
-  foreignKey: {
-  allowNull: false,
-  }
-});
-
+// Exporta o modelo "MentorEspecialidade" para uso em outros lugares.
 export default MentorEspecialidade;
