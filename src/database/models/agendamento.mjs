@@ -49,4 +49,6 @@ Agendamento.associate = function (models) {
   },
 });
 };
-  export default AreaAtuacao;
+
+// Exporta o modelo "Mentorado" para uso em outros módulos
+export default Agendamento;
