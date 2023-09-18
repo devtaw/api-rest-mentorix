@@ -77,21 +77,12 @@ const Mentor = sequelize.define("Mentor", {
     type: DataTypes.TEXT, // Experiência é um campo de texto
     allowNull: false,
   },
-  // Área de atuação: Área de atuação do usuário (por exemplo: Tecnologia, Negócios, Soft Skills).
-  areaAtuacao: {
-    type: DataTypes.ENUM("Tecnologia", "Negócios", "Soft Skills"), // Área de Atuação como ENUM
-    allowNull: false,
-  },
-  // Especialidade: Lista as especialidades que o mentor possuir para oferecer orientação.
-  especialidade: {
-    type: DataTypes.ENUM("Especialidade 1", "Especialidade 2", "Especialidade 3"), // Especialidade como ENUM
-    allowNull: false,
-  },
+
   // Idiomas: Idiomas em que o mentor é proficientemente capaz de oferecer orientação.
   idiomas: {
     type: DataTypes.ARRAY(DataTypes.STRING), // Idiomas é um array de texto
   },
-}
+},
 {
   // Define o nome da tabela no banco de dados como "area_atuacao".
   tableName: "mentor"
