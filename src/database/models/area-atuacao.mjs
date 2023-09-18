@@ -10,10 +10,16 @@
 // A combinação dessa relação com a relação estabelecida no Model/especialidade.js cria uma relação de
 //  muitas "Especialidades" possuem 1 "Área de Atuação".
 // Referência: https://sequelize.org/docs/v6/core-concepts/assocs/#one-to-many-relationships
+// Importa o módulo DataTypes do Sequelize para definir tipos de dados dos campos da tabela.
+import { DataTypes } from "sequelize";
 
-import sequelize from "sequelize";
-
-  const AreaAtuacao = sequelize.define("AreaAtuacao", {
+// Importa o objeto DB que contém a configuração da conexão com o banco de dados.
+import DB from "./index.cjs";
+const sequelize = DB.sequelize;
+const AreaAtuacao = sequelize.define(
+  "AreaAtuacao",
+  {
+    // Define o campo "id" como um inteiro com autoincremento, chave primária e não nulo.
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -21,30 +27,56 @@ import sequelize from "sequelize";
       unique: true,
       allowNull: false,
     },
+    
+    // Define o campo "nome" como uma string não nula.
     nome: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
+    // Define o campo "descricaoArea" como uma string que pode ser nula.
     descricaoArea: {
       type: DataTypes.STRING,
       allowNull: true,
     },
+
+    // Define o campo "fotoAreaAtuacao" como uma string que pode ser nula.
     fotoAreaAtuacao: {
       type: DataTypes.STRING,
       allowNull: true,
     },
+
+    // Define o campo "createdAt" como uma data não nula.
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+
+    // Define o campo "updatedAt" como uma data não nula.
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+  },
+  {
+    // Define o nome da tabela no banco de dados como "area_atuacao".
+    tableName: "area_atuacao",
+  }
+);
+
+// Define as associações 
+AreaAtuacao.associate = function (models) {
+  AreaAtuacao.hasMany(models.Especialidade, {
+    foreignKey: {
+      allowNull: false,
+    },
   });
 
-AreaAtuacao.hasMany(sequelize.models.Mentor, {
+  AreaAtuacao.hasMany(models.Mentor, {
   foreignKey: {
     allowNull: false,
-  },
-});
-
-AreaAtuacao.hasMany(sequelize.models.Especialidade, {
-  foreignKey: {
-    allowNull: false,
-  },
-});
-
+},
+  });
+};
+// Exporta o modelo "AreaAtuacao" para uso em outros módulos.
 export default AreaAtuacao;

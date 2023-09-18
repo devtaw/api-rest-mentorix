@@ -14,14 +14,14 @@
 // Experiência Profissional: Tipo de dado - Texto (String), Obrigatório: Sim, Descreve a experiência profissional e especializações do mentor.
 // Área de atuação: Tipo de dado - Texto (String) ou Lista de Texto, Obrigatório: Sim, Área de atuação do usuário (por exemplo: Tecnologia, Negócios, Soft Skills).
 // Especialidade: Tipo de dado - Lista de Texto ou Lista de Categorias, Obrigatório: Sim, Lista as especialidades que o mentor possuir para oferecer orientação.
-// Idiomas: Tipo de dado - Lista de Idiomas ou Texto (String). Obrigatório: Não (recomendado), Idiomas em que o mentor é proficientemente capaz de oferecer orientação.
+import { DataTypes } from "sequelize";
 
-import { Sequelize, DataTypes } from "sequelize";
-
-const sequelize = new Sequelize("sqlite::memory:");
+// Importa o objeto DB que contém a configuração da conexão com o banco de dados.
+import DB from "./index.cjs";
+const sequelize = DB.sequelize;
 
 const Mentor = sequelize.define("Mentor", {
-  // Os atributos do modelo são definidos aqui
+  
   // ID: Identificador único para cada mentor registrado na plataforma.
   id: {
     type: DataTypes.INTEGER, // Tipo de dado para um ID numérico
@@ -46,10 +46,10 @@ const Mentor = sequelize.define("Mentor", {
     unique: true,
   },
   telefone: {
-    type: DataTypes.STRING, // Tipo de dado para telefone, pode ser uma string
+    type: DataTypes.STRING, 
     allowNull: false,
   },
-  // Senha: Associada à conta do usuário. Armazenada de forma segura e criptografada.
+  // Armazenada de forma segura e criptografada.
   senhaCriptografada: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -59,7 +59,7 @@ const Mentor = sequelize.define("Mentor", {
       this.setDataValue("senhaCriptografada", hashedSenha);
     },
   },
-  // Foto de Perfil: Uma imagem do mentor é algo que torna o perfil mais pessoal.
+  // Uma imagem do mentor 
   fotoPerfil: {
     type: DataTypes.STRING, // Você pode armazenar a URL da imagem
   },
@@ -91,8 +91,39 @@ const Mentor = sequelize.define("Mentor", {
   idiomas: {
     type: DataTypes.ARRAY(DataTypes.STRING), // Idiomas é um array de texto
   },
-});
-// `sequelize.define` também retorno o modelo
-console.log(User === sequelize.models.User); // true
+}
+{
+  // Define o nome da tabela no banco de dados como "area_atuacao".
+  tableName: "mentor"
+}
+);
 
+// Define as associações 
+Mentor.associate = function (models) {
+  Mentor.belongsTo(models.User, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
+
+  Mentor.belongsTo(models.AreaAtuacao, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
+
+  Mentor.hasMany(models.Agendamento, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
+
+  Mentor.hasMany(models.MentorEspecialidade, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
+};
+
+// Exporta o modelo "Mentor" para uso em outros módulos.
 export default Mentor;
