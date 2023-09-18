@@ -59,7 +59,7 @@ const Mentorado = sequelize.define(
     },
 
     // Define o campo "user_id" como um inteiro que pode ser nulo.
-    user_id: {
+    id: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
