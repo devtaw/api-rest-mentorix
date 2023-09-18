@@ -2,7 +2,9 @@
 // POIS NÃO COSTUMA SER NECESSÁRIO MAIS VERBOS PARA AUTENTICAR.
 
 import express from "express";
-const routes = express.Router();
+import { UserService } from "../services/user-service.js";
+const routes = express.Router;
+const userService = new UserService();
 
 routes.post("/", (request, response) => {
   console.log("get autenticacao");
