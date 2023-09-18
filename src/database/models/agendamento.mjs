@@ -9,38 +9,39 @@ const sequelize = DB.sequelize;
 const { DataTypes } = DB.Sequelize;
 
 // Entidade "agendamento"
-const Agendamento = sequelize.define("Agendamento", {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true,
-    unique: true,
-    allowNull: false,
-  },
+const Agendamento = sequelize.define(
+  "Agendamento",
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+      unique: true,
+      allowNull: false,
+    },
 
-  campo_mensagem: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  aceite: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false,
-  },
-  createdAt: {
-    type: DataTypes.DATE,
-    allowNull: false,
-  },
+    campo_mensagem: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    aceite: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
 
-  updatedAt: {
-    type: DataTypes.DATE,
-    allowNull: false,
-    },
-},
-{
-  tableName: "agendamento"
-}
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+  },
+  {
+    tableName: "agendamento",
+  }
 );
-
 
 // Associações
 Agendamento.belongsTo(Mentor, {
@@ -58,4 +59,4 @@ Agendamento.belongsTo(Mentorado, {
 //Aqui começam as validações
 
 // Exporta as entidades
-export default  Agendamento ;
+export default Agendamento;
