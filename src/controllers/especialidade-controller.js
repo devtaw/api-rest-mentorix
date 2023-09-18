@@ -1,11 +1,12 @@
 import express from 'express';
 import { EspecialidadeService } from "../service/especialidade-service.js";
 const routes = express.Router;
+const especialidadeService = new EspecialidadeService();
 
-routes.get ("/", (request, response) => {
+routes.get ("/", async (request, response) => {
     try {
         console.log("get especialidade");
-        const listaEspecialidade = [];
+        const listaEspecialidade = await especialidadeService.getAllEspecialidades();
         return response.status(200).json(listaEspecialidade);
     } catch (error) {
         console.error(error);
@@ -15,11 +16,16 @@ routes.get ("/", (request, response) => {
     }
 });
 
-routes.get ("/:id", (request, response) => {
+routes.get ("/:id", async (request, response) => {
     try {
-        const body = request.body;
+        const idEspecialidade = request.params.id
+        const especialidade = await especialidadeService.getEspecialidadeById(idEspecialidade);
+        if (!mentorado) {
+            return res.status(404).json({ error: 'Usuário não encontrado.' });
+        }
         return response.status(200).json({
-            message: "Caiu no endpoint get especialidade by id" + id
+            message: "Caiu no endpoint get especialidade by id" + idEspecialidade,
+            especialidade
         })
     } catch (error) {
         console.error(error);
@@ -29,12 +35,14 @@ routes.get ("/:id", (request, response) => {
     }
 });
 
-routes.post ("/", (request, response) => {
+routes.post ("/", async (request, response) => {
     try {
         const body = request.body;
+        const especialidade = await especialidadeService.addEspecialidade(body);
         console.log('post especialidade');
         return response.status(200).json({
-            message: 'caiu no endpoint post especialidade'
+            message: 'caiu no endpoint post especialidade',
+            especialidade
         });
     } catch (error) {
         console.error(error);
@@ -44,12 +52,14 @@ routes.post ("/", (request, response) => {
     }
 });
 
-routes.put ("/:id", (request, response) => {
+routes.put ("/:id", async (request, response) => {
    try {
     const body = request.body;
     const idEspecialidade = request.params.id;
+    const especialidade = await especialidadeService.updateEspecialidade(idEspecialidade, body);
     return response.status(200).json({
-        message: 'Caiu no endpoint put especialidade by id' + idEspecialidade
+        message: 'Caiu no endpoint put especialidade by id' + idEspecialidade,
+        especialidade
     });
    } catch (error) {
     console.error(error);
@@ -59,11 +69,12 @@ routes.put ("/:id", (request, response) => {
    }
 });
 
-routes.delete ("/:id", (request, response) => {
+routes.delete ("/:id", async (request, response) => {
     try {
         const idEspecialidade = request.params.id;
+        await especialidadeService.deleteEspecialidade(idEspecialidade)
         console.log("delete especialidade");
-        return response.status(200).json ({
+        return response.status(204).json ({
             message: "Caiu no endpoint delete area by id" + idEspecialidade
         });
     } catch (error) {
