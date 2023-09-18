@@ -1,14 +1,7 @@
-// Onde será feito o mapeamento da entidade que está no banco de dados.
-//Agendamento
-//- mentor: Mentor
-//- mentorado: Mentorado
-//- assunto: String
-
+import { DataTypes } from "sequelize";
 import DB from "./index.cjs";
 const sequelize = DB.sequelize;
-const { DataTypes } = DB.Sequelize;
 
-// Entidade "agendamento"
 const Agendamento = sequelize.define(
   "Agendamento",
   {
@@ -42,19 +35,19 @@ const Agendamento = sequelize.define(
     tableName: "agendamento",
   }
 );
-
-// Associações
-Agendamento.belongsTo(Mentor, {
-  foreignKey: {
-    allowNull: false,
-  },
-});
-
-Agendamento.belongsTo(Mentorado, {
-  foreignKey: {
-    allowNull: false,
-  },
-});
+// Define as associações
+Agendamento.associate = function (models) {
+  Agendamento.belongsTo(models.Mentor, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
+  Agendamento.belongsTo(models.Mentorado, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
+};
 
 //Aqui começam as validações
 

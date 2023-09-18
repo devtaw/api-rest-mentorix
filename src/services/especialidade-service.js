@@ -15,9 +15,9 @@ export class EspecialidadeService {
   async updateEspecialidade(idEspecialidade, dadosEspecialidade) {
     const especialidade = await EspecialidadeModel.findByPk(idEspecialidade);
 
-    // if (!especialidade) {
-    //   throw new Error("Especialidade não encontrada.");
-    // }
+    if (!especialidade) {
+      throw new Error("Especialidade não encontrada.");
+    }
 
     return especialidade.update(dadosEspecialidade);
   }
@@ -25,9 +25,9 @@ export class EspecialidadeService {
   async deleteEspecialidade(especialidadeId) {
     const especialidade = await EspecialidadeModel.findByPk(especialidadeId);
 
-    // if (!especialidade) {
-    //   throw new Error("Especialidade não encontrada.");
-    // }
+    if (!especialidade) {
+      throw new Error("Especialidade não encontrada.");
+    }
 
     return especialidade.destroy();
   }

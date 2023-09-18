@@ -1,36 +1,40 @@
+// Importa o módulo DataTypes do Sequelize para definir tipos de dados dos campos da tabela.
+import { DataTypes } from "sequelize";
 import DB from "./index.cjs";
-
 const sequelize = DB.sequelize;
-const { DataTypes } = DB.Sequelize;
 
-// Define a entidade Mentorado e seus atributos
 const Mentorado = sequelize.define(
   "Mentorado",
   {
-    // Um identificador único para cada mentorado
+    // Define o campo "id" como um inteiro com autoincremento, chave primária e não nulo.
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true, // Permite que o valor seja gerado automaticamente
+      autoIncrement: true,
       unique: true,
       allowNull: false,
     },
-    // O nome do mentorado
+
+    // Define o campo "nomeCompleto" como uma string não nula.
     nomeCompleto: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
+    // Define o campo "dataNascimento" como uma data não nula.
     dataNascimento: {
       type: DataTypes.DATE,
       allowNull: false,
     },
-    // O email do mentorado
+
+    // Define o campo "email" como uma string não nula e única.
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
     },
-    // O número de telefone do mentorado
+
+    // Define o campo "telefone" como uma string não nula.
     telefone: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -46,40 +50,44 @@ const Mentorado = sequelize.define(
       allowNull: false,
     },
     // Idiomas: Idiomas que o mentorado deseja aprender ou nos quais precisa de orientação.
+
+    // Define o campo "idiomas" como um array de strings que pode ser nulo.
     idiomas: {
       type: DataTypes.ARRAY(DataTypes.STRING), // Idiomas é um array de texto
       allowNull: true,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true, // A relacao
-    },
+    // Define o campo "createdAt" como uma data não nula.
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
     },
+
+    // Define o campo "updatedAt" como uma data não nula.
     updatedAt: {
       type: DataTypes.DATE,
       allowNull: false,
     },
   },
   {
+    // Define o nome da tabela no banco de dados como "mentorado".
     tableName: "mentorado",
   }
 );
 
-Mentorado.belongsTo(User, {
-  foreignKey: {
-    allowNull: false,
-  },
-});
+// Define as associações
+Mentorado.associate = function (models) {
+  Mentorado.belongsTo(models.User, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
 
-Mentorado.hasMany(Agendamento, {
-  foreignKey: "agendamento_id", //chave estrangeira em Agendamento
-  allowNull: false,
-});
+  Mentorado.hasMany(models.Agendamento, {
+    foreignKey: {
+      allowNull: false,
+    },
+  });
+};
 
-// `sequelize.define` também retorno o modelo
-console.log(Mentorado === sequelize.models.Mentorado); // true
-
+// Exporta o modelo "Mentorado" para uso em outros módulos.
 export default Mentorado;

@@ -1,3 +1,4 @@
+import { ServiceError } from "../common/service-error";
 import UserModel from "../database/models/user.mjs";
 export class UserService {
   async getAllUsers() {
@@ -14,6 +15,9 @@ export class UserService {
 
   async updateUser(idUser, dadosUser) {
     const user = await UserModel.findByPk(idUser);
+    if (!user) {
+      throw ServiceError("Usuário não encontrado", 404);
+    }
 
     return user.update(dadosUser);
   }
@@ -21,15 +25,15 @@ export class UserService {
   async deleteUser(idUser) {
     const user = await UserModel.findByPk(idUser);
 
-    // if (!user) {
-    //   return res.status(404).json({ error: "Usuário não encontrado." });
-    // }
+    if (!user) {
+      throw ServiceError("Usuário não encontrado", 404);
+    }
 
     return user.destroy();
   }
 }
 
-// // Método para verificar a senha
+// Método para verificar a senha
 // export class UserService {
 // verificarSenha(senha) {
 // return bcrypt.compareSync(senha, this.senhaCriptografada);

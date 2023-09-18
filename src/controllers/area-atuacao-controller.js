@@ -170,4 +170,4 @@ routes.delete("/:id", (request, response) => {
   }
 });
 
-export const AreaController = routes;
+export const AreaAtuacaoController = routes;
