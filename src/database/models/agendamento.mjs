@@ -35,10 +35,18 @@ const sequelize = DB.sequelize;
   tableName: "agendamento",
 }
 );
-
+  // Define as associações 
 Agendamento.associate = function (models) {
-  Agendamento.hasMany(models.Mentor);
-  Agendamento.belongsTo(models.Mentorado);
-  };
 
+  Agendamento.belongsTo(models.Mentor, {
+  foreignKey: {
+    allowNull: false,
+  },
+});
+  Agendamento.belongsTo(models.Mentorado, {
+    foreignKey: {
+      allowNull: false,
+  },
+});
+};
   export default AreaAtuacao;
