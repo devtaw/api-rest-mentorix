@@ -50,5 +50,7 @@ Agendamento.associate = function (models) {
 });
 };
 
-// Exporta o modelo "Agendamento" para uso em outros módulos
+//Aqui começam as validações
+
+// Exporta as entidades
 export default Agendamento;
