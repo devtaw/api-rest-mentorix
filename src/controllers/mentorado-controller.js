@@ -3,7 +3,7 @@ import { MentoradoService } from "../services/mentorado-service.js";
 // TODO: ACRESCENTAR EM TODOS OS CONTROLLERS QUE RETORNARM O SERVICE ERROR
 import { ServiceError } from "../common/service-error.js";
 
-const routes = express.Router;
+const routes = express.Router();
 // mentoradoService é uma instância da classe MentoradoService
 const mentoradoService = new MentoradoService();
 

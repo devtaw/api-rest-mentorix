@@ -1,6 +1,6 @@
-import UserModel from "../database/models/user.mjs"
+import { ServiceError } from "../common/service-error";
+import UserModel from "../database/models/user.mjs";
 export class UserService {
-
   async getAllUsers() {
     return UserModel.findAll();
   }
@@ -15,16 +15,19 @@ export class UserService {
 
   async updateUser(idUser, dadosUser) {
     const user = await UserModel.findByPk(idUser);
-    
+    if (!user) {
+      throw ServiceError("Usuário não encontrado", 404);
+    }
+
     return user.update(dadosUser);
   }
 
   async deleteUser(idUser) {
     const user = await UserModel.findByPk(idUser);
 
-    // if (!user) {
-    //   return res.status(404).json({ error: "Usuário não encontrado." });
-    // }
+    if (!user) {
+      throw ServiceError("Usuário não encontrado", 404);
+    }
 
     return user.destroy();
   }
@@ -36,15 +39,3 @@ export class UserService {
 // return bcrypt.compareSync(senha, this.senhaCriptografada);
 // }
 // }
-
-
-
-
-
-
-
-
-
-
-
-
