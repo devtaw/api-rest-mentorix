@@ -118,7 +118,7 @@ Mentor.associate = function (models) {
     },
   });
 
-  Mentor.hasMany(modelsMentorEspecialidade, {
+  Mentor.hasMany(models.MentorEspecialidade, {
     foreignKey: {
       allowNull: false,
     },
