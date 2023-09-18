@@ -13,27 +13,27 @@
 
 import sequelize from "sequelize";
 
-  const AreaAtuacao = sequelize.define("AreaAtuacao", {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-      unique: true,
-      allowNull: false,
-    },
-    nome: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    descricaoArea: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    fotoAreaAtuacao: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-  });
+const AreaAtuacao = sequelize.define("AreaAtuacao", {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    unique: true,
+    allowNull: false,
+  },
+  nome: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  descricaoArea: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  fotoAreaAtuacao: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+});
 
 AreaAtuacao.hasMany(sequelize.models.Mentor, {
   foreignKey: {
