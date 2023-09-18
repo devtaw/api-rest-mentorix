@@ -14,7 +14,7 @@ const MentorEspecialidade = sequelize.define(
       unique: true,
       allowNull: false,
     },
-    
+
     // Define os campos "createdAt" e "updatedAt" do modelo.
     createdAt: {
       type: DataTypes.DATE,
@@ -22,29 +22,28 @@ const MentorEspecialidade = sequelize.define(
     },
     updatedAt: {
       type: DataTypes.DATE,
-      allowNull:false,
+      allowNull: false,
     },
   },
-  
+
   {
     // Define o nome da tabela no banco de dados como "mentor_especialidade".
     tableName: "mentor_especialidade",
   }
 );
 
-// Define as associações 
+// Define as associações
 MentorEspecialidade.associate = function (models) {
-
   MentorEspecialidade.belongsTo(models.MentorModel, {
     foreignKey: {
       allowNull: false,
     },
   });
   MentorEspecialidade.belongsTo(models.EspecialidadeModel, {
-  foreignKey: {
-    allowNull: false,
-  },
-});
+    foreignKey: {
+      allowNull: false,
+    },
+  });
 };
 // Exporta o modelo "MentorEspecialidade" para uso em outros lugares.
 export default MentorEspecialidade;

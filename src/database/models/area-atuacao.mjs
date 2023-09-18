@@ -27,7 +27,7 @@ const AreaAtuacao = sequelize.define(
       unique: true,
       allowNull: false,
     },
-    
+
     // Define o campo "nome" como uma string não nula.
     nome: {
       type: DataTypes.STRING,
@@ -64,7 +64,7 @@ const AreaAtuacao = sequelize.define(
   }
 );
 
-// Define as associações 
+// Define as associações
 AreaAtuacao.associate = function (models) {
   AreaAtuacao.hasMany(models.Especialidade, {
     foreignKey: {
@@ -73,9 +73,9 @@ AreaAtuacao.associate = function (models) {
   });
 
   AreaAtuacao.hasMany(models.Mentor, {
-  foreignKey: {
-    allowNull: false,
-},
+    foreignKey: {
+      allowNull: false,
+    },
   });
 };
 // Exporta o modelo "AreaAtuacao" para uso em outros módulos.
