@@ -1,7 +1,8 @@
 // import { AreaService } from "../services/area-service.js";
 import express from "express";
-const routes = express.Router();
-// const areaService = new AreaService();
+import { AreaAtuacaoService } from "../services/area-atuacao-service.js";
+const routes = express.Router;
+const areaAtuacaoService = new AreaAtuacaoService();
 
 // Cada uma das entidades deve realizar todos os métodos HTTP:
 // ● GET - Para listar os cadastros;
