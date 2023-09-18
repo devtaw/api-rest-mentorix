@@ -1,5 +1,5 @@
 // Onde será implementado o CRUD.
-import Agendamento from "../database/models/agendamento.mjs";
+import { AgendamentoModel } from "../database/models/agendamento.mjs";
 export class AgendamentoService {
     async getAllAgendamentos() {
         return AgendamentoModel.findAll();
@@ -11,11 +11,11 @@ export class AgendamentoService {
         return AgendamentoModel.create(dadosAgendamento);
     }
     async updateAgendamento(idAgendamento, dadosAgendamento) {
-        const agendamento = await Agendamento.Model.findByPk(idAgendamento);
+        const agendamento = await AgendamentoModel.findByPk(idAgendamento);
 
-        // if (!especialidade) {
-        //   throw new Error("Especialidade não encontrada.");
-        // }
+        if (!agendamento) {
+          throw new Error("Especialidade não encontrada.");
+        }
 
         return agendamento.update(dadosAgendamento);
     }
@@ -23,9 +23,9 @@ export class AgendamentoService {
     async deleteAgendamento(AgendamentoId) {
         const agendamento = await AgendamentoModel.findByPk(AgendamentoId);
 
-          // if (!especialidade) {
-        //   throw new Error("Especialidade não encontrada.");
-        // }
+          if (!agendamento) {
+          throw new Error("Especialidade não encontrada.");
+        }
 
         return agendamento.destroy();
     }
