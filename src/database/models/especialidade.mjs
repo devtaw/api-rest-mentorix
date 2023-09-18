@@ -43,7 +43,7 @@ const sequelize = DB.sequelize;
 
 Especialidade.associate = function (models) {
 
- Especialidade.hasMany(models.AreaAtuacao,{
+ Especialidade.belongsTo(models.AreaAtuacao,{
   foreignKey: {
     allowNull: false,
   },

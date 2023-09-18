@@ -35,7 +35,7 @@ const MentorEspecialidade = sequelize.define(
 // Define as associações 
 MentorEspecialidade.associate = function (models) {
 
-  MentorEspecialidade. belongsTo(models.MentorModel, {
+  MentorEspecialidade.belongsTo(models.MentorModel, {
     foreignKey: {
       allowNull: false,
     },
