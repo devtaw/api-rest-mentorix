@@ -10,10 +10,18 @@ export class MentoradoService {
     const mentorado = await MentoradoModel.findByPk(mentoradoId);
 
     if (!mentorado) {
-      throw new ServiceError("Mentorado não encontrado", 404);
+      // return res.status(404).json({ error: "Mentorado não encontrado." });
+      // TODO: ACRESCENTAR EM TODOS OS CONTROLLERS QUE RETORNARM O SERVICE ERROR - THROW NEW LANÇA UM ERRO OU EXCEÇÃO E ELE PARA A EXECUAÇÃO DO ENDPOINT E LANÇA UM ERRO PARA QUEM ESTIVER CHAMANDO A FUNÇÃO
+      throw new ServiceError("Mentorado não encontrado.", 404);
     }
 
     return mentorado;
+  }
+  async deleteMentorado(idMentorado) {
+    const mentorado = await MentoradoModel.findByPk(idMentorado);
+    if (!mentorado) {
+      throw new ServiceError("Mentorado não encontrado.", 404);
+    }
   }
 
   async addMentorado(dadosMentorado) {

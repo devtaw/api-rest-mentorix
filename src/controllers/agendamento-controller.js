@@ -2,6 +2,7 @@
 
 import express from "express";
 import { AgendamentoService } from "../services/agendamento-service.js";
+import { ServiceError } from "../common/service-error.js";
 const routes = express.Router();
 const agendamentoService = new AgendamentoService();
 
@@ -57,6 +58,9 @@ routes.get("/:id", (request, response) => {
       message: "Caiu no endpoint get agendamento by id " + id,
     });
   } catch (error) {
+    if(error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ mensagem: error.message });
+    } 
     /**
      * Caso houver qualquer tipo de erro na execução, retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
      */
@@ -85,6 +89,9 @@ routes.post("/", (request, response) => {
       data, //sugar sintaxe para simplificar a atribuição de propriedade dentro do objeto, seria data:data
     });
   } catch (error) {
+    if(error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ mensagem: error.message });
+    } 
     /**
      * Caso houver qualquer tipo de erro na execução, retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
      */
@@ -115,6 +122,9 @@ routes.put("/:id", (request, response) => {
       data, //sugar sintax para simplificar a atribuição de propriedade dentro do objeto, seria data:data
     });
   } catch (error) {
+    if(error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ mensagem: error.message });
+    } 
     /**
      * Caso houver qualquer tipo de erro na execução,retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
      */
@@ -140,6 +150,9 @@ routes.delete("/:id", (request, response) => {
       message: "Caiu no endpoint delete area by id " + id,
     });
   } catch (error) {
+    if (error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ mensagem: error.message });
+    }
     return response
       .status(500)
       .json({ mensagem: "Erro ao deletar Agendamento." });
