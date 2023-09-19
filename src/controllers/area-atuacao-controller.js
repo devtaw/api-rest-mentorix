@@ -1,3 +1,4 @@
+import { ServiceError } from "../common/service-error.js";
 import { AreaAtuacaoService } from "../services/area-atuacao-service.js";
 import express from "express";
 const routes = express.Router();
@@ -43,17 +44,14 @@ routes.get("/", async (request, response) => {
  *
  *  Exemplo de chamada: (GET) http://localhost:3000/area/123
  */
-routes.get("/:id", (request, response) => {
+routes.get("/:id", async (request, response) => {
   try {
     // obtem o id passado na url
     const id = request.params.id;
-
-    console.log("get area");
+    const areaAtuacao = await areaAtuacaoService.getAreaById(id);
 
     // retorna o status 200 (ok) e o json com os dados
-    return response.status(200).json({
-      message: "Caiu no endpoint get area by id " + id,
-    });
+    return response.status(200).json(areaAtuacao);
   } catch (error) {
     console.error(error);
     /**
@@ -88,6 +86,9 @@ routes.post("/", async (request, response) => {
     return response.status(200).json(newAreaAtuacao);
   } catch (error) {
     console.error(error);
+    if (error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ mensagem: error.message });
+    }
     /**
      * Caso houver qualquer tipo de erro na execução,
      * retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
@@ -105,20 +106,16 @@ routes.post("/", async (request, response) => {
  *
  * Exemplo de chamada: (PUT) http://localhost:3000/area/123
  */
-routes.put("/:id", (request, response) => {
+routes.put("/:id", async (request, response) => {
   try {
     // obtem o id passado na url
     const id = request.params.id;
     // obtem o corpo da requisição (dados da área a ser editada)
     const data = request.body;
-    console.log("put area");
+    const areaAtuacao = await areaAtuacaoService.updateArea(id, data);
 
     // retorna o status 200 (ok) e o json com os dados
-    return response.status(200).json({
-      // endpoint cada bloquinho desse put, put é um ponto de chamada (requição do verbo http)
-      message: "Caiu no endpoint put area by id " + id,
-      data, //sugar sintax para simplificar a atribuição de propriedade dentro do objeto, seria data:data
-    });
+    return response.status(200).json(areaAtuacao);
   } catch (error) {
     console.error(error);
     /**
@@ -136,16 +133,13 @@ routes.put("/:id", (request, response) => {
  *
  * Exemplo de chamada: (DELETE) http://localhost:3000/area/123
  */
-routes.delete("/:id", (request, response) => {
+routes.delete("/:id", async (request, response) => {
   try {
     // obtem o id passado na url
     const id = request.params.id;
-    console.log("put area");
+    const areaDeletada = await areaAtuacaoService.deleteArea(id);
 
-    return response.status(200).json({
-      // endpoint cada bloquinho desse delete, delete é um ponto de chamada (requição do verbo http)
-      message: "Caiu no endpoint delete area by id " + id,
-    });
+    return response.status(200).json(areaDeletada);
   } catch (error) {
     console.error(error);
     return response.status(500).json({ mensagem: "Erro ao deletar Área." }); //pode mudar no futuro dependendo na Regra de Negócio
