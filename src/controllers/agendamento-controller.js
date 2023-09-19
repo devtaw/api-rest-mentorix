@@ -58,6 +58,9 @@ routes.get("/:id", (request, response) => {
       message: "Caiu no endpoint get agendamento by id " + id,
     });
   } catch (error) {
+    if(error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ mensagem: error.message });
+    } 
     /**
      * Caso houver qualquer tipo de erro na execução, retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
      */
@@ -86,6 +89,9 @@ routes.post("/", (request, response) => {
       data, //sugar sintaxe para simplificar a atribuição de propriedade dentro do objeto, seria data:data
     });
   } catch (error) {
+    if(error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ mensagem: error.message });
+    } 
     /**
      * Caso houver qualquer tipo de erro na execução, retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
      */
