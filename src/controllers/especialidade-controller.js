@@ -1,5 +1,6 @@
 import express from "express";
 import { EspecialidadeService } from "../services/especialidade-service.js";
+import { ServiceError } from "../common/service-error.js";
 const routes = express.Router();
 const especialidadeService = new EspecialidadeService();
 
@@ -32,6 +33,11 @@ routes.get("/:id", async (request, response) => {
     });
   } catch (error) {
     console.error(error);
+
+    if (error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ messagem: error.message });
+    }
+
     return response.status(500).json({
       error: "erro ao listar especialidade",
     });
@@ -49,6 +55,9 @@ routes.post("/", async (request, response) => {
     });
   } catch (error) {
     console.error(error);
+    if (error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ messagem: error.message });
+    }
     return response.status(500).json({
       error: "erro ao cadastrar especialidade",
     });
@@ -69,6 +78,9 @@ routes.put("/:id", async (request, response) => {
     });
   } catch (error) {
     console.error(error);
+    if (error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ messagem: error.message });
+    }
     return response.status(500).json({
       error: "Erro ao incluir especialidade",
     });
@@ -85,6 +97,9 @@ routes.delete("/:id", async (request, response) => {
     });
   } catch (error) {
     console.error(error);
+    if (error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ messagem: error.message });
+    }
     return response.status(500).json({
       error: "erro ao deletar especialidade",
     });
