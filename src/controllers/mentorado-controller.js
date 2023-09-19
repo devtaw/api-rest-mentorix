@@ -59,10 +59,7 @@ routes.put("/:id", async (request, response) => {
     const body = request.body;
     const idMentorado = request.params.id;
     const mentorado = await mentoradoService.updateMentorado(idMentorado, body); // Corrigindo o nome do serviço
-    return response.status(200).json({
-      message: "Caiu no endpoint put mentorado by id" + idMentorado,
-      mentorado, // Corrigindo o nome do objeto retornado
-    });
+    return response.status(200).json(mentorado);
   } catch (error) {
     console.error(error);
     if (error instanceof ServiceError) {
@@ -79,9 +76,7 @@ routes.delete("/:id", async (request, response) => {
     const idMentorado = request.params.id;
     await mentoradoService.deleteMentorado(idMentorado); // Corrigindo o nome do serviço
     console.log("delete mentorado");
-    return response.status(204).json({
-      message: "Caiu no endpoint delete mentorado by id" + idMentorado,
-    });
+    return response.status(204);
   } catch (error) {
     console.error(error);
     if (error instanceof ServiceError) {
