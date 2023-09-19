@@ -13,7 +13,10 @@ export class AgendamentoService {
     return agendamento;
   }
   async addAgendamento(dadosAgendamento) {
-    if (!dadosAgendamento.campoMensagem || !dadosAgendamento.trim()) {
+    if (
+      !dadosAgendamento.campoMensagem ||
+      !dadosAgendamento.campoMensagem.trim()
+    ) {
       throw new ServiceError("Campo mensagem é obrigatório!", 400);
     }
     return AgendamentoModel.create(dadosAgendamento);
