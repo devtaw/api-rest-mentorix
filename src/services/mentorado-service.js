@@ -1,33 +1,73 @@
-import MentoradoModel from "../database/models/mentorado.mjs";
-// TODO: ACRESCENTAR EM TODOS OS SERVICES QUE RETORNARM O SERVICE ERROR
 import { ServiceError } from "../common/service-error.js";
+import MentoradoModel from "../database/models/mentorado.mjs";
+
 export class MentoradoService {
   async getAllMentorados() {
     return MentoradoModel.findAll();
   }
-  async getMentoradoById(idMentorado) {
-    return MentoradoModel.findByPk(idMentorado);
-  }
-  async addMentorado(dadosMentorado) {
-    return MentoradoModel.create(dadosMentorado);
-  }
-  async updateMentorado(idMentorado, dadosMentorado) {
-    const mentorado = await MentoradoModel.findByPk(idMentorado);
-    // TODO: AQUI FOI DEFINIDO QUE NÃO FOI ENCONTRADO UM MENTORADO.
+
+  async getMentoradoById(mentoradoId) {
+    const mentorado = await MentoradoModel.findByPk(mentoradoId);
+
     if (!mentorado) {
-      // return res.status(404).json({ error: "Mentorado não encontrado." });
-      // TODO: ACRESCENTAR EM TODOS OS CONTROLLERS QUE RETORNARM O SERVICE ERROR - THROW NEW LANÇA UM ERRO OU EXCEÇÃO E ELE PARA A EXECUAÇÃO DO ENDPOINT E LANÇA UM ERRO PARA QUEM ESTIVER CHAMANDO A FUNÇÃO
-      throw new ServiceError("Mentorado não encontrado.");
+      throw new ServiceError("Mentorado não encontrado", 404);
     }
 
-    await mentorado.update(dadosMentorado);
+    return mentorado;
   }
-  async deleteMentorado(idMentorado) {
-    const mentorado = await MentoradoModel.findByPk(idMentorado);
 
-    // if (!mentorado) {
-    //    return res.status(404).json({ error: 'Mentorado não encontrado.' });
-    //}
+  async addMentorado(dadosMentorado) {
+    if (!dadosMentorado.nome || !dadosMentorado.nome.trim()) {
+      throw new ServiceError("Nome é obrigatório", 400);
+    }
+
+    if (!dadosMentorado.email || !dadosMentorado.email.trim()) {
+      throw new ServiceError("Email é obrigatório", 400);
+    }
+
+    if (!dadosMentorado.telefone || !dadosMentorado.telefone.trim()) {
+      throw new ServiceError("Telefone é obrigatório", 400);
+    }
+
+    if (!dadosMentorado.senha || !dadosMentorado.senha.trim()) {
+      throw new ServiceError("Senha é obrigatória", 400);
+    }
+
+    return MentoradoModel.create(dadosMentorado);
+  }
+
+  async updateMentorado(mentoradoId, dadosMentorado) {
+    const mentorado = await MentoradoModel.findByPk(mentoradoId);
+
+    if (!mentorado) {
+      throw new ServiceError("Mentorado não encontrado", 404);
+    }
+
+    if (!dadosMentorado.nome || !dadosMentorado.nome.trim()) {
+      throw new ServiceError("Nome é obrigatório", 400);
+    }
+
+    if (!dadosMentorado.email || !dadosMentorado.email.trim()) {
+      throw new ServiceError("Email é obrigatório", 400);
+    }
+
+    if (!dadosMentorado.telefone || !dadosMentorado.telefone.trim()) {
+      throw new ServiceError("Telefone é obrigatório", 400);
+    }
+
+    if (!dadosMentorado.senha || !dadosMentorado.senha.trim()) {
+      throw new ServiceError("Senha é obrigatória", 400);
+    }
+
+    return mentorado.update(dadosMentorado);
+  }
+
+  async deleteMentorado(mentoradoId) {
+    const mentorado = await MentoradoModel.findByPk(mentoradoId);
+
+    if (!mentorado) {
+      throw ServiceError("Mentorado não encontrado", 404);
+    }
 
     return mentorado.destroy();
   }
