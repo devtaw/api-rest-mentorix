@@ -23,12 +23,12 @@ app.use(express.json());
 
 //Aqui, chama-se as rotas
 app.use("/autenticacao", AutenticacaoController);
-app.use("/mentorado", MentoradoController);
-app.use("/especialidade", EspecialidadeController);
-app.use("/area-atuacao", AreaAtuacaoController);
-app.use("/agendamento", AgendamentoController);
-app.use("/mentor", MentoradoController);
-app.use("/mentor-especialidade", MentorEspecialidadeController);
+app.use("/mentorados", MentoradoController);
+app.use("/especialidades", EspecialidadeController);
+app.use("/areas-atuacao", AreaAtuacaoController);
+app.use("/agendamentos", AgendamentoController);
+app.use("/mentores", MentoradoController);
+app.use("/mentor-especialidades", MentorEspecialidadeController);
 
 sequelize.sync().then(() => {
   console.log("Tabelas sincronizadas");
