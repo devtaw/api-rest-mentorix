@@ -16,6 +16,9 @@ export class EspecialidadeService {
   }
 
   async addEspecialidade(dadosEspecialidade) {
+    if (!dadosEspecialidade.nome || !dadosEspecialidade.nome.trim()) {
+      throw new ServiceError("Nome é obrigatório", 400);
+    }
     return EspecialidadeModel.create(dadosEspecialidade);
   }
 
@@ -24,6 +27,9 @@ export class EspecialidadeService {
 
     if (!especialidade) {
       throw new ServiceError("Especialidade não encontrada", 404);
+    }
+    if (!dadosEspecialidade.nome || !dadosEspecialidade.nome.trim()) {
+      throw new ServiceError("Nome é obrigatório", 400);
     }
 
     return especialidade.update(dadosEspecialidade);
