@@ -26,14 +26,6 @@ const Mentorado = sequelize.define(
       type: DataTypes.DATE,
       allowNull: false,
     },
-
-    // Define o campo "email" como uma string não nula e única.
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
-
     // Define o campo "telefone" como uma string não nula.
     telefone: {
       type: DataTypes.STRING,
