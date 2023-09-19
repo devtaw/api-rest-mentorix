@@ -1,12 +1,12 @@
 import express from "express";
 import { EspecialidadeService } from "../services/especialidade-service.js";
 import { ServiceError } from "../common/service-error.js";
+
 const routes = express.Router();
 const especialidadeService = new EspecialidadeService();
 
 routes.get("/", async (request, response) => {
   try {
-    console.log("get especialidade");
     const listaEspecialidade = await especialidadeService.getAllEspecialidades();
     return response.status(200).json(listaEspecialidade);
   } catch (error) {
@@ -22,13 +22,7 @@ routes.get("/:id", async (request, response) => {
     const idEspecialidade = request.params.id;
     const especialidade = await especialidadeService.getEspecialidadeById(idEspecialidade);
 
-    if (!especialidade) {
-      return response.status(404).json({ error: "Usuário não encontrado." });
-    }
-    return response.status(200).json({
-      message: "Caiu no endpoint get especialidade by id" + idEspecialidade,
-      especialidade,
-    });
+    return response.status(200).json(especialidade);
   } catch (error) {
     console.error(error);
 
@@ -46,11 +40,7 @@ routes.post("/", async (request, response) => {
   try {
     const body = request.body;
     const especialidade = await especialidadeService.addEspecialidade(body);
-    console.log("post especialidade");
-    return response.status(200).json({
-      message: "caiu no endpoint post especialidade",
-      especialidade,
-    });
+    return response.status(200).json(especialidade);
   } catch (error) {
     console.error(error);
     if (error instanceof ServiceError) {
@@ -66,11 +56,8 @@ routes.put("/:id", async (request, response) => {
   try {
     const body = request.body;
     const idEspecialidade = request.params.id;
-    const especialidade = await especialidadeService.updateEspecialidade(idEspecialidade, body);
-    return response.status(200).json({
-      message: "Caiu no endpoint put especialidade by id" + idEspecialidade,
-      especialidade,
-    });
+    const especialidadeAtualizada = await especialidadeService.updateEspecialidade(idEspecialidade, body);
+    return response.status(200).json(especialidadeAtualizada);
   } catch (error) {
     console.error(error);
     if (error instanceof ServiceError) {
@@ -86,10 +73,7 @@ routes.delete("/:id", async (request, response) => {
   try {
     const idEspecialidade = request.params.id;
     await especialidadeService.deleteEspecialidade(idEspecialidade);
-    console.log("delete especialidade");
-    return response.status(204).json({
-      message: "Caiu no endpoint delete area by id" + idEspecialidade,
-    });
+    return response.status(204);
   } catch (error) {
     console.error(error);
     if (error instanceof ServiceError) {
