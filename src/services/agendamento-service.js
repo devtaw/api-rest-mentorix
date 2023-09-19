@@ -6,9 +6,16 @@ export class AgendamentoService {
     return AgendamentoModel.findAll();
   }
   async getAgendamentosById(idAgendamento) {
-    return AgendamentoModel.findByPk(idAgendamento);
+    const agendamento = await AgendamentoModel.findByPk(idAgendamento);
+    if (!agendamento) {
+      throw new ServiceError("Agendamento não encontrada.", 404);
+    }
+    return agendamento;
   }
   async addAgendamento(dadosAgendamento) {
+    if (!dadosAgendamento.campoMensagem || !dadosAgendamento.trim()) {
+      throw new ServiceError("Campo mensagem é obrigatório!", 400);
+    }
     return AgendamentoModel.create(dadosAgendamento);
   }
   async updateAgendamento(idAgendamento, dadosAgendamento) {
