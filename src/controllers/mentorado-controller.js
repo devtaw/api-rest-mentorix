@@ -22,13 +22,8 @@ routes.get("/:id", async (request, response) => {
   try {
     const idMentorado = request.params.id;
     const mentorado = await mentoradoService.getMentoradoById(idMentorado); // Corrigindo o nome do serviço
-    if (!mentorado) {
-      return response.status(404).json({ error: "Usuário não encontrado." });
-    }
-    return response.status(200).json({
-      message: "Caiu no endpoint get mentorado by id" + idMentorado,
-      mentorado, // Corrigindo o nome do objeto retornado
-    });
+
+    return response.status(200).json(mentorado);
   } catch (error) {
     console.error(error);
 
