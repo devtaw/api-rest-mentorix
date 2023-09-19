@@ -16,21 +16,7 @@ routes.get("/", async (request, response) => {
   try {
     console.log("get agendamento");
     // apenas um exemplo de retorno, pode ser de um banco de dados, uma api, um service, etc.
-    const listaDeAgendamentos = [
-      {
-        id: 1,
-        nome: "Agendamento 1",
-      },
-      {
-        id: 2,
-        nome: "Agendamento 2",
-      },
-      {
-        id: 3,
-        nome: "Agendamento 3",
-      },
-    ];
-
+    const listaDeAgendamentos = await agendamentoService.getAllAgendamentos();
     // retorna o status 200 (ok) e o json com os dados
     return response.status(200).json(listaDeAgendamentos);
   } catch (error) {
@@ -47,20 +33,17 @@ routes.get("/", async (request, response) => {
  * Define uma rota GET para obter um agendamento específico com base no id passado na url
  *  Exemplo de chamada: (GET) http://localhost:3000/agendamento/123
  */
-routes.get("/:id", (request, response) => {
+routes.get("/:id", async (request, response) => {
   try {
     const id = request.params.id;
-
-    console.log("get agendamento");
+    const agendamento = await agendamentoService.getAgendamentosById(id);
 
     // retorna o status 200 (ok) e o json com os dados
-    return response.status(200).json({
-      message: "Caiu no endpoint get agendamento by id " + id,
-    });
+    return response.status(200).json(agendamento);
   } catch (error) {
-    if(error instanceof ServiceError) {
+    if (error instanceof ServiceError) {
       return response.status(error.errorCode).json({ mensagem: error.message });
-    } 
+    }
     /**
      * Caso houver qualquer tipo de erro na execução, retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
      */
@@ -76,22 +59,19 @@ routes.get("/:id", (request, response) => {
  * neste caso, o body da requisição deve conter os dados do agendamento a ser cadastrado
  */
 
-routes.post("/", (request, response) => {
+routes.post("/", async (request, response) => {
   try {
     // obtem os dados do agendamento a ser cadastrado
     const data = request.body;
 
-    console.log("post agendamento");
+    const novoAgendamento = await agendamentoService.addAgendamento(data); //
 
     // retorna o status 200 (ok) e o json com os dados
-    return response.status(200).json({
-      message: "Caiu no endpoint post agendamento",
-      data, //sugar sintaxe para simplificar a atribuição de propriedade dentro do objeto, seria data:data
-    });
+    return response.status(200).json(novoAgendamento); // return
   } catch (error) {
-    if(error instanceof ServiceError) {
+    if (error instanceof ServiceError) {
       return response.status(error.errorCode).json({ mensagem: error.message });
-    } 
+    }
     /**
      * Caso houver qualquer tipo de erro na execução, retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
      */
@@ -108,23 +88,23 @@ routes.post("/", (request, response) => {
  *
  * Exemplo de chamada: (PUT) http://localhost:3000/agendamento/123
  */
-routes.put("/:id", (request, response) => {
+routes.put("/:id", async (request, response) => {
   try {
     // obtem o id passado na url
     const id = request.params.id;
     // obtem o corpo da requisição (dados do agendamento a ser editado)
     const data = request.body;
-    console.log("put agendamento");
+    const agedamentoAtualizado = await agendamentoService.updateAgendamento(
+      id,
+      data
+    );
 
     // retorna o status 200 (ok) e o json com os dados
-    return response.status(200).json({
-      message: "Caiu no endpoint put agendamento by id " + id,
-      data, //sugar sintax para simplificar a atribuição de propriedade dentro do objeto, seria data:data
-    });
+    return response.status(200).json(agedamentoAtualizado); //
   } catch (error) {
-    if(error instanceof ServiceError) {
+    if (error instanceof ServiceError) {
       return response.status(error.errorCode).json({ mensagem: error.message });
-    } 
+    }
     /**
      * Caso houver qualquer tipo de erro na execução,retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
      */
@@ -139,16 +119,13 @@ routes.put("/:id", (request, response) => {
  *
  * Exemplo de chamada: (DELETE) http://localhost:3000/agendamento/123
  */
-routes.delete("/:id", (request, response) => {
+routes.delete("/:id", async (request, response) => {
   try {
     // obtem o id passado na url
     const id = request.params.id;
-    console.log("put agendamento");
+    const agendamentoDeletado = await agendamentoService.deleteAgendamento(id);
 
-    return response.status(200).json({
-      // endpoint cada bloquinho desse delete, delete é um ponto de chamada (requição do verbo http)
-      message: "Caiu no endpoint delete area by id " + id,
-    });
+    return response.status(200).json(agendamentoDeletado);
   } catch (error) {
     if (error instanceof ServiceError) {
       return response.status(error.errorCode).json({ mensagem: error.message });
