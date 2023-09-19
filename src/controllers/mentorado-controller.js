@@ -42,10 +42,7 @@ routes.post("/", async (request, response) => {
     const body = request.body;
     const mentorado = await mentoradoService.addMentorado(body); // Corrigindo o nome do serviço
     console.log("post mentorado");
-    return response.status(200).json({
-      message: "Caiu no endpoint post mentorado",
-      mentorado, // Corrigindo o nome do objeto retornado
-    });
+    return response.status(200).json(mentorado); // ;Corrigindo o nome do objeto retornado
   } catch (error) {
     console.error(error);
     if (error instanceof ServiceError) {
