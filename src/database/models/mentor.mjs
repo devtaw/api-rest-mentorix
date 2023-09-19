@@ -60,7 +60,7 @@ const Mentor = sequelize.define(
     },
     // Nível de Experiência: Indica o nível de experiência do mentor em sua área de especialização.
     nivelExperiencia: {
-      type: DataTypes.ENUM("Júnior", "Pleno", "Sênior"),
+      type: DataTypes.ENUM("junior", "pleno", "senior"),
       allowNull: false,
     },
     // Experiência Profissional: Descreve a experiência profissional e especializações do mentor.
