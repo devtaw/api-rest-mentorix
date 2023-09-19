@@ -144,6 +144,9 @@ routes.delete("/:id", (request, response) => {
       message: "Caiu no endpoint delete area by id " + id,
     });
   } catch (error) {
+    if (error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ mensagem: error.message });
+    }
     return response
       .status(500)
       .json({ mensagem: "Erro ao deletar Agendamento." });
