@@ -40,12 +40,6 @@ const Mentor = sequelize.define(
       type: DataTypes.DATE,
       allowNull: false,
     },
-    // E-mail: Armazena o e-mail do mentor.
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-    },
     telefone: {
       type: DataTypes.STRING,
       allowNull: false,
