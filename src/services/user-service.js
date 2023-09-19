@@ -6,11 +6,12 @@ export class UserService {
   }
 
   async getUserById(idUser) {
-    const user = UserModel.findAll(idUser);
+    const user = await UserModel.findByPk(idUser);
     if (!user) {
-      throw new ServiceError("User não encontrada", 404);
+      throw new ServiceError("User não encontrado", 404);
     }
-    return User;
+    return user;
+  }
   }
 
   async addUser(dadosUser) {
