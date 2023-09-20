@@ -5,7 +5,6 @@ const mentorService = new MentorService();
 
 routes.get("/", async (request, response) => {
   try {
-    console.log("get Mentor");
     const listaMentores = [];
     return response.status(200).json(listaMentores);
   } catch (error) {
@@ -32,7 +31,6 @@ routes.get("/:id", (request, response) => {
 routes.post("/", (request, response) => {
   try {
     const body = request.body;
-    console.log("post mentor");
     return response.status(200).json({
       message: "caiu no endpoint post mentor",
       body,
