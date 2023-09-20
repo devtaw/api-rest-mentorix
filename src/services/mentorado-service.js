@@ -16,13 +16,7 @@ export class MentoradoService {
 
     return mentorado;
   }
-  async deleteMentorado(idMentorado) {
-    const mentorado = await MentoradoModel.findByPk(idMentorado);
-    if (!mentorado) {
-      throw new ServiceError("Mentorado não encontrado.", 404);
-    }
-  }
-
+  
   async addMentorado(dadosMentorado) {
     if (!dadosMentorado.nome || !dadosMentorado.nome.trim()) {
       throw new ServiceError("Nome é obrigatório", 400);
