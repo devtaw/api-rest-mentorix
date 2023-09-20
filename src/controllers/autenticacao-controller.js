@@ -7,7 +7,6 @@ const routes = express.Router();
 const userService = new UserService();
 
 routes.post("/", (request, response) => {
-  console.log("get autenticacao");
   return response.status(200).json({
     message: "Caiu no endpoint post autenticacao",
   });
