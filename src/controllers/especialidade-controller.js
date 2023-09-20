@@ -63,7 +63,7 @@ routes.put("/:id", async (request, response) => {
     if (error instanceof ServiceError) {
       return response.status(error.errorCode).json({ messagem: error.message });
     }
-    return response.status(500).json({ error: "Ocorreu um erro ao atualizar o Agendamento!" });
+    return response.status(500).json({ error: "Ocorreu um erro ao atualizar o Especialidade!" });
   }
 });
 
