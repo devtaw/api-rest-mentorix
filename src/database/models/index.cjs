@@ -9,7 +9,6 @@ const env = process.env.NODE_ENV || "development";
 const db = {};
 
 let sequelize;
-
 if (process.env.NODE_ENV == "production") {
   sequelize = new Sequelize(process.env.database, process.env.username, process.env.password, {
     host: process.env.host,
@@ -20,6 +19,8 @@ if (process.env.NODE_ENV == "production") {
   const config = require(__dirname + "/../config/config.json")[env];
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
+
+
 
 fs.readdirSync(__dirname)
   .filter((file) => {
