@@ -53,7 +53,7 @@ routes.put("/:id", (request, response) => {
     });
   } catch (error) {
     console.error(error);
-    return response.status(500).json({ error: "Erro ao incluir mentor" });
+    return response.status(500).json({ error: "Ocorreu um erro ao atualizar o Agendamento!" });
   }
 });
 
