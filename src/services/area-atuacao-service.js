@@ -7,7 +7,11 @@ export class AreaAtuacaoService {
   }
 
   async getAreaById(areaId) {
-    return AreaAtuacaoModel.findByPk(areaId);
+    const areaAtuacao = AreaAtuacaoModel.findByPk(areaId);
+    if (!areaAtuacao) {
+      throw new ServiceError("Area de atuação não encontrada", 404);
+    }
+    return areaAtuacao;
   }
 
   async addArea(newArea) {
