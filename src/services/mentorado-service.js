@@ -11,7 +11,6 @@ export class MentoradoService {
 
     if (!mentorado) {
       // return res.status(404).json({ error: "Mentorado não encontrado." });
-      // TODO: ACRESCENTAR EM TODOS OS CONTROLLERS QUE RETORNARM O SERVICE ERROR - THROW NEW LANÇA UM ERRO OU EXCEÇÃO E ELE PARA A EXECUAÇÃO DO ENDPOINT E LANÇA UM ERRO PARA QUEM ESTIVER CHAMANDO A FUNÇÃO
       throw new ServiceError("Mentorado não encontrado.", 404);
     }
 
