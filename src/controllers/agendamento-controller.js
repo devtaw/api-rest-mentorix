@@ -23,9 +23,7 @@ routes.get("/", async (request, response) => {
     /**
      * Caso houver qualquer tipo de erro na execução, retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
      */
-    return response
-      .status(500)
-      .json({ mensagem: "Erro ao listar Agendamentos." });
+    return response.status(500).json({ mensagem: "Erro ao listar Agendamentos." });
   }
 });
 
@@ -47,9 +45,7 @@ routes.get("/:id", async (request, response) => {
     /**
      * Caso houver qualquer tipo de erro na execução, retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
      */
-    return response
-      .status(500)
-      .json({ mensagem: "Erro ao listar Agendamento." });
+    return response.status(500).json({ mensagem: "Erro ao listar Agendamento." });
   }
 });
 
@@ -75,9 +71,7 @@ routes.post("/", async (request, response) => {
     /**
      * Caso houver qualquer tipo de erro na execução, retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
      */
-    return response
-      .status(500)
-      .json({ mensagem: "Erro ao cadastrar Agendamento." });
+    return response.status(500).json({ mensagem: "Erro ao cadastrar Agendamento." });
   }
 });
 
@@ -94,10 +88,7 @@ routes.put("/:id", async (request, response) => {
     const id = request.params.id;
     // obtem o corpo da requisição (dados do agendamento a ser editado)
     const data = request.body;
-    const agedamentoAtualizado = await agendamentoService.updateAgendamento(
-      id,
-      data
-    );
+    const agedamentoAtualizado = await agendamentoService.updateAgendamento(id, data);
 
     // retorna o status 200 (ok) e o json com os dados
     return response.status(200).json(agedamentoAtualizado); //
@@ -108,9 +99,7 @@ routes.put("/:id", async (request, response) => {
     /**
      * Caso houver qualquer tipo de erro na execução,retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
      */
-    return response
-      .status(500)
-      .json({ mensagem: "Erro ao incluir Agendamento." });
+    return response.status(500).json({ mensagem: "Ocorreu um erro ao atualizar o Agendamento!" });
   }
 });
 
@@ -130,9 +119,7 @@ routes.delete("/:id", async (request, response) => {
     if (error instanceof ServiceError) {
       return response.status(error.errorCode).json({ mensagem: error.message });
     }
-    return response
-      .status(500)
-      .json({ mensagem: "Erro ao deletar Agendamento." });
+    return response.status(500).json({ mensagem: "Erro ao deletar Agendamento." });
   }
 });
 

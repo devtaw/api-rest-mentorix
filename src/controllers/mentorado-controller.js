@@ -65,9 +65,7 @@ routes.put("/:id", async (request, response) => {
     if (error instanceof ServiceError) {
       return response.status(error.errorCode).json({ message: error.message }); // Corrigindo a propriedade 'messagem' para 'message'
     }
-    return response.status(500).json({
-      error: "Erro ao incluir mentorado",
-    });
+    return response.status(500).json({ error: "Ocorreu um erro ao atualizar o Agendamento!" });
   }
 });
 

@@ -127,7 +127,7 @@ routes.put("/:id", async (request, response) => {
      *
      * pode mudar no futuro dependendo na Regra de Negócio
      */
-    return response.status(500).json({ mensagem: "Erro ao incluir Área." });
+    return response.status(500).json({ mensagem: "Ocorreu um erro ao atualizar o Agendamento!" });
   }
 });
 
