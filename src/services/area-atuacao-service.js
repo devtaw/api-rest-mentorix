@@ -7,9 +7,9 @@ export class AreaAtuacaoService {
   }
 
   async getAreaById(areaId) {
-    const areaAtuacao = AreaAtuacaoModel.findByPk(areaId);
+    const areaAtuacao = await AreaAtuacaoModel.findByPk(areaId);
     if (!areaAtuacao) {
-      throw new ServiceError("Area de atuação não encontrada", 404);
+      throw new ServiceError("Área de Atuação não encontrada!", 404);
     }
     return areaAtuacao;
   }
