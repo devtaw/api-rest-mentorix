@@ -54,6 +54,9 @@ routes.get("/:id", async (request, response) => {
     return response.status(200).json(areaAtuacao);
   } catch (error) {
     console.error(error);
+    if (error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ mensagem: error.message });
+    }
     /**
      * Caso houver qualquer tipo de erro na execução,
      * retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
