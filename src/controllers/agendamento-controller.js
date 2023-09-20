@@ -99,7 +99,7 @@ routes.put("/:id", async (request, response) => {
     /**
      * Caso houver qualquer tipo de erro na execução,retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
      */
-    return response.status(500).json({ mensagem: "Ocorreu um erro ao atualizar o Agendamento!" });
+    return response.status(500).json({ mensagem: "Ocorreu um erro ao atualizar Agendamento!" });
   }
 });
 

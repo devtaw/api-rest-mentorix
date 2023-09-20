@@ -59,7 +59,7 @@ routes.put("/:id", async (request, response) => {
 
     return response.status(200).json(mentorEspecialidade); // 200 okay
   } catch (error) {
-    return response.status(500).json({ error: "Ocorreu um erro ao atualizar o Agendamento!" });
+    return response.status(500).json({ error: "Ocorreu um erro ao atualizar o Mentor-Especialidade!" });
   }
 });
 
