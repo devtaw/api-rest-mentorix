@@ -14,7 +14,6 @@ const agendamentoService = new AgendamentoService();
  */
 routes.get("/", async (request, response) => {
   try {
-    console.log("get agendamento");
     // apenas um exemplo de retorno, pode ser de um banco de dados, uma api, um service, etc.
     const listaDeAgendamentos = await agendamentoService.getAllAgendamentos();
     // retorna o status 200 (ok) e o json com os dados
