@@ -1,12 +1,13 @@
 import express from "express";
 import { MentorService } from "../service/mentor-service.js";
-const routes = express.Router;
+import { ServiceError } from "../common/service-error.js";
+
+const routes = express.Router();
 const mentorService = new MentorService();
 
 routes.get("/", async (request, response) => {
   try {
-    console.log("get Mentor");
-    const listaMentores = [];
+    const listaMentores = await mentorService.getAllMentores();
     return response.status(200).json(listaMentores);
   } catch (error) {
     console.error(error);
@@ -14,57 +15,75 @@ routes.get("/", async (request, response) => {
   }
 });
 
-routes.get("/:id", (request, response) => {
+routes.get("/:id", async (request, response) => {
   try {
-    const body = request.body;
     const idMentor = request.params.id;
-    return response.status(200).json({
-      message: "caiu no endpoint get mentor by id" + idMentor,
-    });
+
+    const mentor = await mentorService.getMentorById(idMentor);
+
+    return response.status(200).json(mentor);
   } catch (error) {
     console.error(error);
+
+    if (error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ messagem: error.message });
+    }
     return response.status(500).json({
       error: "Erro ao listar mentor",
     });
   }
 });
 
-routes.post("/", (request, response) => {
+routes.post("/", async (request, response) => {
   try {
     const body = request.body;
-    console.log("post mentor");
-    return response.status(200).json({
-      message: "caiu no endpoint post mentor",
-      body,
-    });
+
+    const mentor = await mentorService.addMentor(body);
+
+    return response.status(200).json(mentor);
   } catch (error) {
     console.error(error);
+
+    if (error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ messagem: error.message });
+    }
     return response.status(500).json({ error: "Erro ao cadastrar mentor" });
   }
 });
 
-routes.put("/:id", (request, response) => {
+routes.put("/:id", async (request, response) => {
   try {
     const body = request.body;
     const idMentor = request.params.id;
-    return response.status(200).json({
-      message: "Caiu no endpoint put mentor by id" + idMentor,
-      body,
-    });
+
+    const mentorAtualizado = await mentorService.updateMentor(idMentor, body);
+
+    return response.status(200).json(mentorAtualizado);
   } catch (error) {
     console.error(error);
+
+    if (error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ messagem: error.message });
+    }
+
     return response.status(500).json({ error: "Ocorreu um erro ao atualizar Mentor" });
   }
 });
 
-routes.delete("/:id", (request, response) => {
+routes.delete("/:id", async (request, response) => {
   try {
     const idMentor = request.params.id;
-    return response.status(200).json({
-      message: "Caiu no endpoint delete by id" + idMentor,
-    });
+
+    await mentorService.deleteMentor(idMentor);
+
+    return response.status(204);
   } catch (error) {
     console.error(error);
+
+    if (error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ messagem: error.message });
+    }
+
     return response.status(500).json({
       error: "erro ao deletar mentor",
     });
