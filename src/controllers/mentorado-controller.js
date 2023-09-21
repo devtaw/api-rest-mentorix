@@ -7,7 +7,6 @@ const mentoradoService = new MentoradoService(); // Agora estamos utilizando o s
 
 routes.get("/", async (request, response) => {
   try {
-    console.log("get mentorado");
     const listaMentorados = await mentoradoService.getAllMentorados(); // Corrigindo o nome do serviço
     return response.status(200).json(listaMentorados);
   } catch (error) {
@@ -41,7 +40,6 @@ routes.post("/", async (request, response) => {
   try {
     const body = request.body;
     const mentorado = await mentoradoService.addMentorado(body); // Corrigindo o nome do serviço
-    console.log("post mentorado");
     return response.status(200).json(mentorado); // ;Corrigindo o nome do objeto retornado
   } catch (error) {
     console.error(error);
@@ -73,7 +71,6 @@ routes.delete("/:id", async (request, response) => {
   try {
     const idMentorado = request.params.id;
     await mentoradoService.deleteMentorado(idMentorado); // Corrigindo o nome do serviço
-    console.log("delete mentorado");
     return response.status(204);
   } catch (error) {
     console.error(error);

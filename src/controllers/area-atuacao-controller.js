@@ -18,7 +18,6 @@ const areaAtuacaoService = new AreaAtuacaoService();
  */
 routes.get("/", async (request, response) => {
   try {
-    console.log("get area");
     // apenas um exemplo de retorno, pode ser de um banco de dados, uma api, um service, etc.
     const listaDeAreas = await areaAtuacaoService.getAllAreas();
 
