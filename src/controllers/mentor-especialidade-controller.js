@@ -34,6 +34,11 @@ routes.get("/:id", async (request, response) => {
     // Retorna o mentorEspecialidade encontrado como resposta com status 200 (OK)
     return response.status(200).json(mentorEspecialidade);
   } catch (error) {
+    console.error(error);
+
+    if (error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ messagem: error.message });
+    }
     // Em caso de erro durante a busca, retorna uma resposta com status 500 (Erro interno do servidor)
     return response.status(500).json({ error: "Erro ao buscar mentorEspecialidade." });
   }
@@ -46,6 +51,12 @@ routes.post("/", async (request, response) => {
     const mentorEspecialidade = await mentorEspecialidadeService.addMentorEspecialidade(body);
     return response.status(200).json(mentorEspecialidade);
   } catch (error) {
+    console.error(error);
+
+    if (error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ messagem: error.message });
+    }
+
     return response.status(500).json({ error: "Erro ao cadastrar mentorEspecialidade." });
   }
 });
@@ -59,6 +70,12 @@ routes.put("/:id", async (request, response) => {
 
     return response.status(200).json(mentorEspecialidade); // 200 okay
   } catch (error) {
+    console.error(error);
+
+    if (error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ messagem: error.message });
+    }
+
     return response.status(500).json({ error: "Ocorreu um erro ao atualizar o Mentor-Especialidade!" });
   }
 });
@@ -70,8 +87,14 @@ routes.delete("/:id", async (request, response) => {
 
     await mentorEspecialidadeService.deleteMentorEspecialidade(id);
 
-    return response.status(204).json(); // 204- sem conteudo
+    return response.status(204); // 204- sem conteudo
   } catch (error) {
+    console.error(error);
+
+    if (error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ messagem: error.message });
+    }
+
     return response.status(500).json({ error: "Erro ao deletar mentorEspecialidade." }); // 500- erro interno do servidor
   }
 });
