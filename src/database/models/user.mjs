@@ -1,4 +1,5 @@
 import { DataTypes } from "sequelize";
+import bcrypt from "bcrypt";
 
 // Importa o objeto DB que contém a configuração da conexão com o banco de dados.
 import DB from "./index.cjs";

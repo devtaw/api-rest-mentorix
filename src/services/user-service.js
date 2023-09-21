@@ -1,5 +1,6 @@
 import UserModel from "../database/models/user.mjs";
 import { ServiceError } from "../common/service-error.js";
+import bcrypt from "bcrypt";
 
 export class UserService {
   async getAllUsers() {
@@ -54,5 +55,24 @@ export class UserService {
     }
 
     return user.destroy();
+  }
+
+  async autenticar(email, senha) {
+    const user = await UserModel.findOne({
+      where: {
+        email,
+      },
+    });
+
+    if (!user) {
+      throw new ServiceError("Usuário não encontrado", 404);
+    }
+
+    const senhaCriptografada = bcrypt.hashSync(senha, 10);
+    if (!user.senhaCriptografada === senhaCriptografada) {
+      throw new ServiceError("Senha inválida", 400);
+    }
+
+    return user;
   }
 }
