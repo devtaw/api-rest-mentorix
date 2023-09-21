@@ -31,7 +31,7 @@ routes.get("/", async (request, response) => {
      *
      * pode mudar no futuro dependendo na Regra de Negócio
      */
-    return response.status(500).json({ mensagem: "Erro ao listar Áreas." });
+    return response.status(500).json({ mensagem: "Ocorreu um erro ao listar as Áreas de Atuação!" });
   }
 });
 
@@ -62,7 +62,7 @@ routes.get("/:id", async (request, response) => {
      *
      * pode mudar no futuro dependendo na Regra de Negócio
      */
-    return response.status(500).json({ mensagem: "Erro ao listar Área." });
+    return response.status(500).json({ mensagem: "Ocorreu um erro ao listar a Área de Atuação!" });
   }
 });
 
@@ -97,7 +97,7 @@ routes.post("/", async (request, response) => {
      *
      * pode mudar no futuro dependendo na Regra de Negócio
      */
-    return response.status(500).json({ mensagem: "Erro ao cadastrar Área." });
+    return response.status(500).json({ mensagem: "Ocorreu um erro ao cadastrar Área de Atuação!" });
   }
 });
 
@@ -120,13 +120,16 @@ routes.put("/:id", async (request, response) => {
     return response.status(200).json(areaAtuacao);
   } catch (error) {
     console.error(error);
+    if (error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ mensagem: error.message });
+    }
     /**
      * Caso houver qualquer tipo de erro na execução,
      * retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
      *
      * pode mudar no futuro dependendo na Regra de Negócio
      */
-    return response.status(500).json({ mensagem: "Ocorreu um erro ao atualizar Área de Atuação!" });
+    return response.status(500).json({ mensagem: "Ocorreu um erro ao atualizar a Área de Atuação!" });
   }
 });
 
@@ -144,7 +147,10 @@ routes.delete("/:id", async (request, response) => {
     return response.status(200).json(areaDeletada);
   } catch (error) {
     console.error(error);
-    return response.status(500).json({ mensagem: "Erro ao deletar Área." }); //pode mudar no futuro dependendo na Regra de Negócio
+    if (error instanceof ServiceError) {
+      return response.status(error.errorCode).json({ mensagem: error.message });
+    }
+    return response.status(500).json({ mensagem: "Ocorreu um erro ao deletar a Área de Atuação!" }); //pode mudar no futuro dependendo na Regra de Negócio
   }
 });
 
