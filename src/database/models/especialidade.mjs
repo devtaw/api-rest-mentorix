@@ -1,3 +1,4 @@
+import AreaAtuacaoModel from "./area-atuacao.mjs";
 import { DataTypes } from "sequelize";
 import DB from "./index.cjs";
 const sequelize = DB.sequelize;
@@ -24,6 +25,15 @@ const Especialidade = sequelize.define(
 
     foto: {
       type: DataTypes.STRING,
+    },
+
+    area_atuacao_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: AreaAtuacaoModel,
+        key: "id",
+      },
     },
 
     createdAt: {
