@@ -40,8 +40,7 @@ O que é uma API REST? API (Application Programming Interface) é uma série de 
 Node.js // MySQL // Postman
 
 Bibliotecas:
-crypt, express, mysql2 e sequelize
-
+Bcrypt, express, mysql2 e sequelize
 
 # Deploy
 
@@ -100,42 +99,44 @@ npm start
 - [Postman - Download](https://www.postman.com/downloads/)
 - [Insomnia - Download](https://insomnia.rest/download)
 
-## Agendamentos
+## Area Atuação
 
-#### POST - Rota: '/area-agendamento'
+#### POST - Rota: '/areas-atuacao'
 
-_A rota post cria area agendamento_
+_A rota post cria area atuacao_
 
 ###### Entrada
 
 ```bash
 
-        {
+{
 		"id": 13,
 		"nome": "Desenvolvimento Web",
 		"descricaoArea": "criação de sites e aplicativos para a internet usando linguagens como HTML, CSS e JavaScript",
 		"fotoAreaAtuacao": "https://th.bing.com/th/id/R.10a6b3802667bb8ca5177c88a880f3dc?rik=i3y9whMAtz1SSw&pid=ImgRaw&r=0 ",
 		"createdAt": "2023-09-20",
 		"updatedAt": "2023-09-20"
-	 }
+}
 
 ```
 
 ###### Saída
 
 ```bash
+
 {
-	"Sucesso": " area agendamento criado com sucesso!"
+	"Sucesso": " area agendamentos" criado com sucesso!"
 }
+
 ```
 
-#### GET - Rota: '/area-agendamento'
+#### GET - Rota: '/areas-atuacao'
 
-_A rota get busca todos as areas cadastradas_
+_A rota get busca todos as areas atuacao cadastradas_
 
 ###### Saída
 
-````bash
+```bash
 {
 	"id": 14,
 	"nome": "Engenharia",
@@ -144,12 +145,16 @@ _A rota get busca todos as areas cadastradas_
 	"createdAt": "2023-09-20",
 	"updatedAt": "2023-09-20"
 }
+```
 
-#### GET - Rota: '/area-agendamento'
- * A rota get id busca o Agendamentos  pelo id informado*
+#### GET - Rota: '/areas-atuacao/:id
+
+- A rota get id busca o areas atuacao pelo id informado\*
 
 ###### Ex rota:
- https://mentorix.onrender.com/areas-atuacao/13
+
+https://mentorix.onrender.com/areas-atuacao/13
+
 ###### Saída
 
 ```bash
@@ -161,11 +166,11 @@ _A rota get busca todos as areas cadastradas_
 	"createdAt": "2023-09-20",
 	"updatedAt": "2023-09-20"
 }
-````
+```
 
-#### DELETE - Rota: '/area-atuacao/:id'
+#### DELETE - Rota: '/areas-atuacao/:id'
 
-_A rota DELETE id deleta a area-atuacao pelo id informado_
+_A rota DELETE id deleta a areas-atuacao pelo id informado_
 
 ###### Ex rota:
 
@@ -182,145 +187,108 @@ https://mentorix.onrender.com/areas-atuacao/13
 	"createdAt": "2023-09-20",
 	"updatedAt": "2023-09-20"
 }
-
 ```
 
-#### PUT - Rota: '/area-atuacao/:id'
+## Agendamento
 
-_A rota PUT id atualiza area-atuacao pelo id informado_
+#### POST - Rota: '/agendamentos'
 
-###### Ex rota:
-
-```bash
-{
-"id": 18,
-"nome": "Engenharia",
-"descricaoArea": "Aplica princípios científicos e matemáticos para projetar, construir e melhorar sistemas, estruturas e dispositivos",
-"fotoAreaAtuacao": "https://www.univille.edu.br/community/novoportal/VirtualDisk.html/downloadDirect/1462802/FA7-engenharia-mecanica-960x750.jpg",
-"createdAt": "2023-09-20",
-"updatedAt": "2023-09-20"
-}
-
-````bash
-
-###### Saída
-
-```bash
-{
-
-    }
-````
-
-## Agendamentos
-
-#### POST - Rota: '/agendamento'
-
-_A rota post cria agendamento_
+_A rota post cria agendamentos_
 
 ###### Entrada
 
 ```bash
+{
+"id": 10
+ "campoMensagem": "quero agendar",
+  "aceite": true,
+  "mentor_id":1,
+  "mentorado_id":1
+}
+```
 
-        {
-		"id": 13,
-		"nome": "Desenvolvimento Web",
-		"descricaoArea": "criação de sites e aplicativos para a internet usando linguagens como HTML, CSS e JavaScript",
-		"fotoAreaAtuacao": "https://th.bing.com/th/id/R.10a6b3802667bb8ca5177c88a880f3dc?rik=i3y9whMAtz1SSw&pid=ImgRaw&r=0 ",
-		"createdAt": "2023-09-20",
-		"updatedAt": "2023-09-20"
-	 }
+###### Saída
 
 ```
+
+{
+	"Sucesso": "agendamentos" criado com sucesso!"
+}
+```
+
+#### GET - Rota: '/agendamentos'
+
+_A rota get busca todos as agendamentos" cadastradas_
 
 ###### Saída
 
 ```bash
+
 {
-	"Sucesso": "agendamento criado com sucesso!"
+ "id": 10
+ "campoMensagem": "quero agendar",
+  "aceite": true,
+  "mentor_id":1,
+  "mentorado_id":1
 }
 ```
 
-#### GET - Rota: '/agendamento'
+#### GET - Rota: '/agendamentos/:id'
 
-_A rota get busca todos as agendamento cadastradas_
-
-###### Saída
-
-````bash
-{
-	"id": 14,
-	"nome": "Engenharia",
-	"descricaoArea": "Aplica princípios científicos e matemáticos para projetar, construir e melhorar sistemas, estruturas e dispositivos",
-	"fotoAreaAtuacao": "https://www.univille.edu.br/community/novoportal/VirtualDisk.html/downloadDirect/1462802/FA7-engenharia-mecanica-960x750.jpg",
-	"createdAt": "2023-09-20",
-	"updatedAt": "2023-09-20"
-}
-
-#### GET - Rota: '/agendamento'
- * A rota get id busca o Agendamentos  pelo id informado*
-
-###### Ex rota:
- https://mentorix.onrender.com/areas-atuacao/13
-###### Saída
-
-```bash
-{
-    "id": 13,
-	"nome": "Desenvolvimento Web",
-	"descricaoArea": "criação de sites e aplicativos para a internet usando linguagens como HTML, CSS e JavaScript",
-	"fotoAreaAtuacao": "https://th.bing.com/th/id/R.10a6b3802667bb8ca5177c88a880f3dc?rik=i3y9whMAtz1SSw&pid=ImgRaw&r=0 ",
-	"createdAt": "2023-09-20",
-	"updatedAt": "2023-09-20"
-}
-````
-
-#### DELETE - Rota: '/agendamento/:id'
-
-_A rota DELETE id deleta a agendamento pelo id informado_
+- A rota get id busca o Agendamentos pelo id informado
 
 ###### Ex rota:
 
-https://mentorix.onrender.com/areas-atuacao/13
+https://mentorix.onrender.com//agendamentos/10
 
 ###### Saída
 
 ```bash
 {
-	"id": 13,
-	"nome": "Desenvolvimento Web",
-	"descricaoArea": "criação de sites e aplicativos para a internet usando linguagens como HTML, CSS e JavaScript",
-	"fotoAreaAtuacao": "https://th.bing.com/th/id/R.10a6b3802667bb8ca5177c88a880f3dc?rik=i3y9whMAtz1SSw&pid=ImgRaw&r=0 ",
-	"createdAt": "2023-09-20",
-	"updatedAt": "2023-09-20"
+ "id": 10
+ "campoMensagem": "quero agendar",
+  "aceite": true,
+  "mentor_id":1,
+  "mentorado_id":1
 }
-
 ```
 
-#### PUT - Rota: '/agendamento/:id'
+#### DELETE - Rota: '/agendamentos'/:id
 
-_A rota PUT id atualiza agendamento pelo id informado_
+_A rota DELETE id deleta a agendamentos" pelo id informado_
 
-###### Ex rota:
-
-```bash
-{
-	"id": 18,
-	"nome": "Engenharia",
-	"descricaoArea": "Aplica princípios científicos e matemáticos para projetar, construir e melhorar sistemas, estruturas e dispositivos",
-	"fotoAreaAtuacao": "https://www.univille.edu.br/community/novoportal/VirtualDisk.html/downloadDirect/1462802/FA7-engenharia-mecanica-960x750.jpg",
-	"createdAt": "2023-09-20",
-	"updatedAt": "2023-09-20"
-}
-
-```
+###### Ex rota: https://mentorix.onrender.com/agendamentos/10
 
 ###### Saída
 
 ```bash
 {
 
-    }
-````
+ "id": 10
+ "campoMensagem": "quero agendar",
+  "aceite": true,
+  "mentor_id":1,
+  "mentorado_id":1
+}
+```
+
+#### PUT - Rota: '/agendamentos"/:id'
+
+_A rota PUT id atualiza agendamentos" pelo id informado_
+
+###### Ex rota: https://mentorix.onrender.com/agendamentos/10
+
+```bash
+{
+
+ "id": 10
+ "campoMensagem": "quero agendar",
+  "aceite": true,
+  "mentor_id":1,
+  "mentorado_id":1
+}
+
+```
 
 ###### ⛔ Tratamento de Erro
 
@@ -356,30 +324,38 @@ _A rota PUT id atualiza agendamento pelo id informado_
 }
 ```
 
-
-## Autenticação 
-
-#### POST - Rota: '/autenticacao'
-
-_A rota cria autenticação_ 
-
-
 ## Especialidade
 
-#### GET - Rota '/especialidade'
+#### POST - Rota: '/especialidades'
+
+_A rota cria especialidades_
 
 ```bash
-    {
-        "id": 1,
-        "nome": "Segurança da Informação",
-        "descricao": "area que se concentra em garantir a segurança e proteção dos sistemas de informação",
-        "foto": "https://i.ytimg.com/vi/RnsYE2eZqkA/maxresdefault.jpg",
-        "createdAt": "2023-09-21",
-        "updatedAt": "2023-09-21"
-    },
+{
+	"id": 1,
+	"nome": "Segurança da Informação",
+	"descricao": "area que se concentra em garantir a segurança e proteção dos sistemas de informação",
+	"foto": "https://i.ytimg.com/vi/RnsYE2eZqkA/maxresdefault.jpg",
+	"createdAt": "2023-09-21",
+	"updatedAt": "2023-09-21"
+}
 ```
-    
-#### GET ID - Rota '/especialidade/:id' 
+
+#### GET - Rota '/especialidades'/
+
+```bash
+{
+	"id": 1,
+	"nome": "Segurança da Informação",
+	"descricao": "area que se concentra em garantir a segurança e proteção dos sistemas de informação",
+	"foto": "https://i.ytimg.com/vi/RnsYE2eZqkA/maxresdefault.jpg",
+	"createdAt": "2023-09-21",
+	"updatedAt": "2023-09-21"
+},
+```
+
+#### GET ID - Rota '/especialidades/:id'
+
 https://mentorix.onrender.com/especialidades/1
 
 ```bash
@@ -392,18 +368,9 @@ https://mentorix.onrender.com/especialidades/1
     "updatedAt": "2023-09-21"
 }
 ```
-#### POST - Rota '/especialidade'
-```bash
-{
-    "id": 3,
-    "nome": "Segurança da Informação",
-    "descricao": "area que se concentra em garantir a segurança e proteção dos sistemas de informação",
-    "foto": "https://i.ytimg.com/vi/RnsYE2eZqkA/maxresdefault.jpg",
-    "createdAt": "2023-09-21T00:00:00.000Z",
-    "updatedAt": "2023-09-22T14:06:51.891Z"
-}
-```
-#### PUT - Rota '/especialidade/:id'
+
+#### PUT - Rota '/especialidades/:id'
+
 ```bash
 
  {
@@ -415,13 +382,27 @@ https://mentorix.onrender.com/especialidades/1
     "updatedAt": "2023-09-22"
 }
 ```
-#### DELETE - Rota '/especialidade/:id'
-Pesquisar por ID 
+
+#### DELETE - Rota '/especialidades/:id'
+
+Pesquisar por ID
 https://mentorix.onrender.com/especialidades/3
+
+```bash
+
+{
+"id": 3,
+"nome": "Segurança da Informação TESTE",
+"descricao": "area que se concentra em garantir a segurança e proteção dos sistemas de informação",
+"foto": "https://i.ytimg.com/vi/RnsYE2eZqkA/maxresdefault.jpg",
+"createdAt": "2023-09-21",
+"updatedAt": "2023-09-22"
+}
+```
 
 Depois do Delete, pesquisar novamente por id .
 
-tratamento de erro
+Tratamento de erro
 
 ```bash
 {
@@ -431,7 +412,7 @@ tratamento de erro
 
 ## Mentores
 
-#### POST - Rota: '/mentor'
+#### POST - Rota: '/mentores'/
 
 _A rota post cria area mentor_
 
@@ -460,13 +441,13 @@ _A rota post cria area mentor_
 }
 ```
 
-#### GET - Rota: '/mentor'
+#### GET - Rota: '/mentores'/
 
 _A rota get busca todos os mentores_
 
 ###### Saída
 
-````bash
+```bash
 {
 	"id": 7,
 		"nome": "Gerson Josias",
@@ -477,12 +458,16 @@ _A rota get busca todos os mentores_
 		"createdAt": "2023-09-20",
 		"updatedAt": "2023-09-20"
 }
+```
 
-#### GET - Rota: '/mentor'
- * A rota get id busca o mentor pelo id informado*
+#### GET - Rota: '/mentores/:id'
+
+- A rota get id busca o mentores pelo id informado\*
 
 ###### Ex rota:
- https://mentorix.onrender.com/areas-atuacao/13
+
+https://mentorix.onrender.com/mentores/7
+
 ###### Saída
 
 ```bash
@@ -496,15 +481,15 @@ _A rota get busca todos os mentores_
 		"createdAt": "2023-09-20",
 		"updatedAt": "2023-09-20"
 }
-````
+```
 
-#### DELETE - Rota: '/mentor/:id'
+#### DELETE - Rota: '/mentores/:id'
 
-_A rota DELETE id deleta o mentor pelo id informado_
+_A rota DELETE id deleta o mentores pelo id informado_
 
 ###### Ex rota:
 
-https://mentorix.onrender.com/areas-atuacao/13
+https://mentorix.onrender.com/mentores/7
 
 ###### Saída
 
@@ -522,13 +507,9 @@ https://mentorix.onrender.com/areas-atuacao/13
 
 ```
 
-#### PUT - Rota: '/mentor/:id'
+#### PUT - Rota: '/mentores/:id'
 
-_A rota PUT id atualiza mentor pelo id informado_
-
-
-
-###### Ex rota:
+_A rota PUT id atualiza mentores pelo id informado_
 
 ```bash
 {
@@ -544,31 +525,23 @@ _A rota PUT id atualiza mentor pelo id informado_
 
 ```
 
-###### Saída
+## MentoresEspecialidade
 
-```bash
-{
+#### POST - Rota: '/mentores-especialidades
 
-    }
-````
+_A rota post cria mentores-especialidade_
 
-
-## Mentor Especialidade
-
-#### POST - Rota: '/mentor-especialidade'
-
-_A rota post cria mentor-especialidade_
 ###### Entrada
 
 ```bash
 
-        {
-		"id": 13,
-		"mentor_id": 5,
-		"especialidade_id": 8,
-		"createdAt": "2023-09-20",
-		"updatedAt": "2023-09-20"
-	 }
+{
+	"id": 13,
+	"mentor_id": 5,
+	"especialidade_id": 8,
+	"createdAt": "2023-09-20",
+	"updatedAt": "2023-09-20"
+}
 
 ```
 
@@ -580,45 +553,46 @@ _A rota post cria mentor-especialidade_
 }
 ```
 
-#### GET - Rota: '/mentor-especialidade'
+#### GET - Rota: '/mentores-especialidade'
 
-_A rota get busca todos as especialidades_
+_A rota get busca todos as mentores-especialidades_
 
 ###### Saída
 
 ```bash
 
-        {
+{
 		"id": 13,
 		"mentor_id": 5,
 		"especialidade_id": 8,
 		"createdAt": "2023-09-20",
 		"updatedAt": "2023-09-20"
-	 }
+}
 
 ```
 
-#### GET - Rota: '/mentor-especialidade'
- * A rota get id busca a especialidade do mentor pelo id informado*
+#### GET - Rota: '/mentor-especialidade/:id'
 
-###### Ex rota:
- https://mentorix.onrender.com/areas-atuacao/13
+- A rota get id busca a especialidade do mentor pelo id informado\*
+
+###### Ex rota: https://mentorix.onrender.com/mentor-especialidade/13
+
 ###### Saída
 
 ```bash
-        {
+{
 		"id": 13,
 		"mentor_id": 5,
 		"especialidade_id": 8,
 		"createdAt": "2023-09-20",
 		"updatedAt": "2023-09-20"
-	 }
+}
 
 ```
 
-#### DELETE - Rota: '/mentor-especialidade/:id'
+#### DELETE - Rota: '/mentores-especialidade/:id'
 
-_A rota DELETE id deleta a especialidade do mentor pelo id informado_
+_A rota DELETE id deleta a especialidade do mentores- especialidade pelo id informado_
 
 ###### Ex rota:
 
@@ -628,51 +602,40 @@ https://mentorix.onrender.com/mentor-especialidade/13
 
 ```bash
 
-        {
+{
 		"id": 13,
 		"mentor_id": 5,
 		"especialidade_id": 8,
 		"createdAt": "2023-09-20",
 		"updatedAt": "2023-09-20"
-	 }
+}
 
 ```
 
-#### PUT - Rota: '/mentor-especialidade/:id'
+#### PUT - Rota: '/mentores-especialidade/:id'
 
+r
 _A rota PUT id atualiza mentor-especialidade pelo id informado_
 
-###### Ex rota:
+###### Ex rota: https://mentorix.onrender.com/mentores-especialidade/13
 
 ```bash
 
-        {
+{
 		"id": 13,
 		"mentor_id": 7,
 		"especialidade_id": 9,
 		"createdAt": "2023-09-20",
 		"updatedAt": "2023-09-20"
-	 }
+}
 
 ```
 
-````bash
-
-###### Saída
-
-```bash
-{
-
-    }
-````
-
-
-
 ## Mentorados
 
-#### POST - Rota: '/mentorado'
+#### POST - Rota: '/mentorados'
 
-_A rota post cria area mentorado_
+_A rota post cria area mentorados_
 
 ###### Entrada
 
@@ -689,7 +652,6 @@ _A rota post cria area mentorado_
 
 ```
 
-
 ###### Saída
 
 ```bash
@@ -698,10 +660,32 @@ _A rota post cria area mentorado_
 }
 ```
 
-#### GET - Rota: '/mentorado'
+#### GET - Rota: '/mentorados'
 
 _A rota get busca todos os mentorados_
 
+###### Saída
+
+```bash
+{
+	"id": 69,
+		"nome": "Roberto Guedes",
+		"dataNascimento": "10/02/2000",
+		"telefone": "041945621059",
+		"oQueBusco": "Obter mais experiência em programação, especialmente em front-end"
+		"createdAt": "2023-09-20",
+		"updatedAt": "2023-09-20"
+}
+
+```
+
+#### GET - Rota: '/mentorados/:id'
+
+- A rota get id busca o mentorados pelo id informado\*
+
+###### Ex rota:
+
+https://mentorix.onrender.com/mentorados/69
 
 ###### Saída
 
@@ -718,33 +702,11 @@ _A rota get busca todos os mentorados_
 
 ```
 
-#### GET - Rota: '/mentorado'
- * A rota get id busca o mentorado pelo id informado*
+#### DELETE - Rota: '/mentorados/:id'
 
-###### Ex rota:
- https://mentorix.onrender.com/areas-atuacao/13
-###### Saída
+_A rota DELETE id deleta o mentorados pelo id informado_
 
-```bash
-{
-	"id": 69,
-		"nome": "Roberto Guedes",
-		"dataNascimento": "10/02/2000",
-		"telefone": "041945621059",
-		"oQueBusco": "Obter mais experiência em programação, especialmente em front-end"
-		"createdAt": "2023-09-20",
-		"updatedAt": "2023-09-20"
-}
-
-```
-
-#### DELETE - Rota: '/mentorado/:id'
-
-_A rota DELETE id deleta o mentorado pelo id informado_
-
-###### Ex rota:
-
-https://mentorix.onrender.com/areas-atuacao/13
+###### Ex rota: https://mentorix.onrender.com/mentorados/69
 
 ###### Saída
 
@@ -755,12 +717,11 @@ https://mentorix.onrender.com/areas-atuacao/13
 
 ```
 
-#### PUT - Rota: '/mentorado/:id'
+#### PUT - Rota: '/mentorados/:id'
 
-_A rota PUT id atualiza o mentorado pelo id informado_
+_A rota PUT id atualiza o mentorados pelo id informado_
 
-###### Ex rota:
-
+###### Ex rota: https://mentorix.onrender.com/mentorados/69
 
 ```bash
 {
@@ -775,24 +736,12 @@ _A rota PUT id atualiza o mentorado pelo id informado_
 
 ```
 
-````bash
-
-###### Saída
-
-```bash
-{
-
-    }
-````
-
-
-
 ## Referência
 
 - [Git](https://git-scm.com/)
 - [VSCode](https://code.visualstudio.com/download)
-- [NodeJS](https://nodejs.org/pt-br/download) - Recomenda-se a versão LTS por mais estável
-- [dotenv](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
+- [NodeJS](https://nodejs.org/pt-br/download)
+- [bcryp](https://sequelize.org/docs/v6/core-concepts/getters-setters-virtuals)
 - [express](https://expressjs.com/)
 - [Render](https://render.com/)
 - [sequelize](https://sequelize.org/docs/v7/getting-started/)
@@ -801,8 +750,3 @@ _A rota PUT id atualiza o mentorado pelo id informado_
 - [MySQL](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/macos-installation.html) - MacOS
 - [MySQL](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/linux-installation.html) - Linux
 - [MySQL](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/solaris-installation.html) - Solaris
-
-
-
-
-
