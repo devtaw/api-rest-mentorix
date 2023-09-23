@@ -15,64 +15,80 @@
 // Área de atuação: Tipo de dado - Texto (String) ou Lista de Texto, Obrigatório: Sim, Área de atuação do usuário (por exemplo: Tecnologia, Negócios, Soft Skills).
 // Especialidade: Tipo de dado - Lista de Texto ou Lista de Categorias, Obrigatório: Sim, Lista as especialidades que o mentor possuir para oferecer orientação.
 import { DataTypes } from "sequelize";
+import UserModel from "./user.mjs";
+import AreaAtuacaoModel from "./area-atuacao.mjs";
 
 // Importa o objeto DB que contém a configuração da conexão com o banco de dados.
 import DB from "./index.cjs";
 const sequelize = DB.sequelize;
 
-const Mentor = sequelize.define(
-  "Mentor",
-  {
-    // ID: Identificador único para cada mentor registrado na plataforma.
-    id: {
-      type: DataTypes.INTEGER, // Tipo de dado para um ID numérico
-      primaryKey: true, // Define este campo como chave primária
-      autoIncrement: true, // Permite que o valor seja gerado automaticamente
-      unique: true,
-      allowNull: false,
-    },
-    // Nome completo: Armazena o nome completo do mentor.
-    nomeCompleto: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    dataNascimento: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    telefone: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    // Uma imagem do mentor
-    fotoPerfil: {
-      type: DataTypes.STRING, // Você pode armazenar a URL da imagem
-    },
-    // Biografia: Uma breve descrição do usuário.
-    biografia: {
-      type: DataTypes.STRING,
-    },
-    // Nível de Experiência: Indica o nível de experiência do mentor em sua área de especialização.
-    nivelExperiencia: {
-      type: DataTypes.ENUM("junior", "pleno", "senior"),
-      allowNull: false,
-    },
-    // Experiência Profissional: Descreve a experiência profissional e especializações do mentor.
-    experienciaProfissional: {
-      type: DataTypes.TEXT, // Experiência é um campo de texto
-      allowNull: false,
-    },
+const Mentor = sequelize.define("Mentor", {
+  // ID: Identificador único para cada mentor registrado na plataforma.
+  id: {
+    type: DataTypes.INTEGER, // Tipo de dado para um ID numérico
+    primaryKey: true, // Define este campo como chave primária
+    autoIncrement: true, // Permite que o valor seja gerado automaticamente
+    unique: true,
+    allowNull: false,
+  },
+  // Nome completo: Armazena o nome completo do mentor.
+  nomeCompleto: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  dataNascimento: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+  telefone: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  // Uma imagem do mentor
+  fotoPerfil: {
+    type: DataTypes.STRING, // Você pode armazenar a URL da imagem
+  },
+  // Biografia: Uma breve descrição do usuário.
+  biografia: {
+    type: DataTypes.STRING,
+  },
+  // Nível de Experiência: Indica o nível de experiência do mentor em sua área de especialização.
+  nivelExperiencia: {
+    type: DataTypes.ENUM("junior", "pleno", "senior"),
+    allowNull: false,
+  },
+  // Experiência Profissional: Descreve a experiência profissional e especializações do mentor.
+  experienciaProfissional: {
+    type: DataTypes.TEXT, // Experiência é um campo de texto
+    allowNull: false,
+  },
 
-    // Idiomas: Idiomas em que o mentor é proficientemente capaz de oferecer orientação.
-    idiomas: {
-      type: DataTypes.ARRAY(DataTypes.STRING), // Idiomas é um array de texto
+  // Idiomas: Idiomas em que o mentor é proficientemente capaz de oferecer orientação.
+  idiomas: {
+    type: DataTypes.ARRAY(DataTypes.STRING), // Idiomas é um array de texto
+  },
+
+  user_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: UserModel,
+      key: "id",
     },
   },
-  {
-    // Define o nome da tabela no banco de dados como "area_atuacao".
-    tableName: "mentor",
-  }
-);
+
+  area_atuacao_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: AreaAtuacaoModel,
+      key: "id",
+    },
+  },
+
+  // Define o nome da tabela no banco de dados como "area_atuacao".
+  tableName: "mentor",
+});
 
 // Define as associações
 Mentor.associate = function (models) {
