@@ -1,15 +1,16 @@
 import express from "express";
+import { ServiceError } from "../common/service-error.js";
 import { UserService } from "../services/user-service.js";
 
 const routes = express.Router();
 const userService = new UserService();
 
-routes.post("/", (request, response) => {
+routes.post("/", async (request, response) => {
   try {
-    const login = request.body.login;
+    const email = request.body.email;
     const senha = request.body.senha;
 
-    const usuarioAutenticado = userService.autenticar(login, senha);
+    const usuarioAutenticado = await userService.autenticar(email, senha);
 
     return response.status(200).json(usuarioAutenticado);
   } catch (error) {
