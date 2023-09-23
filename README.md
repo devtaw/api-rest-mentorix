@@ -1,8 +1,8 @@
-# Projeto Mentorix 
+# Projeto Mentorix
 
 ## Descrição do projeto
 
-Olá! 
+Olá!
 Apresentamos aqui o nosso projeto, o Mentorix. Trata-se de uma API seguindo o padrão Rest feita com Node.JS.
 
 O objetivo deste projeto foi trabalhar em equipe para produzir uma API seguindo os padrões REST, para que mais tarde façamos integração com o Front-End que será feito em React.
@@ -13,7 +13,7 @@ O que é uma API REST? API (Application Programming Interface) é uma série de 
 
 1. Criar o DB Diagram;
 
- - 1.1. Criar banco de dados no mySQL Workbench, o nome será: database_mentorix;
+- 1.1. Criar banco de dados no mySQL Workbench, o nome será: database_mentorix;
 
 2. Rodar SQL Script para criar as tabelas e relacionamentos no Banco de Dados no mySQL Workbench;
 
@@ -35,71 +35,774 @@ O que é uma API REST? API (Application Programming Interface) é uma série de 
 
 11. Verificar com o Insomnia se a rota está funcionando corretamente.
 
-## Como clonar o projeto    
+# Tecnologias Utilizadas
 
-Antes de começar o procedimento de clonagem do projeto, certifique-se de que tenha o Git Bash instalado em sua máquina
+Node.js // MySQL // Postman
 
-1. Vá ao repositório e clique onde está escrito "<> Code ". Apareceram algumas opções para clonar; Neste caso, usaremos o HTTPS;
-
-2. Copie o código HTTPS clicando no botão logo ao lado direito do código disponibilizado;
-
-3. Com o código copiado, vá até a sua área de trabalho e clique com o botão direito do mouse e vá em "mostrar mais opções"; clique em "Git Bash here/Git Bash aqui";
-
-4. No terminal do git, digite `git clone` e insira o link do repositório clicando com o botão direito do mouse e clicando em "paste/colar" ou utilizando o atalho "Shift + Insert";
-
-5. Pronto! Agora o projeto foi clonado para sua máquina e você pode navegar nele.
-
-## Como rodar o projeto 
-
-Antes de começarmos a rodar o projeto na máquina, certifique-se de ter Node.JS, MySQL Server, algum tipo de software para testes de requsiçaão; Neste caso, foi utilizado o Insomnia; e algum editor de código instalado em sua máquina; Neste caso, utilizaremos o VSCode para execução do projeto.
-
-Em relação ao Node.JS, foi utilizada a versão 18.17.1; Recomenda-se utilizar essa mesma versão, pois caso tente rodar o projeto em outras versões, erros podem ocorrer;
-
-1. Ao abrir o VSCode, clique no primeiro ícone na barra lateral esquerda, que se assemelha a uma folha sobrepondo a outra
-
-2. Após isso, clique em "Open Folder/Abrir pasta" e selecione o local em que o projeto foi clonado; Neste caso, a área de trabalho, e depois selecione o projeto;
-
-3. Após abrir o projeto em sua máquina, vá na parte superior e clique em "Terminal", e vá em "New Terminal/Novo Terminal" ou utilize o atalho Ctrl + Shift + ';
-
-4. Ao abrir o terminal, insira o código "npm i" e pressione enter; Isso instalará todas as dependências necessárias para o projeto em sua máquina a partir do package.json;
-
-5. Após as dependências serem instaladas, digite "npm run start" em seu terminal; Isso começará a rodar o script;
-
-6. Abra o seu MySQL Workbench e conecte-se ao servidor;
-
-7. Em seguida, vá ao canto superior esquerdo e clique em file; e em seguida vá em "Open SQL Script" e selecione o seguinte script: SQL SCRIPT - DATABASE - MENTORIX - VERSÃO 3;
- - 7.1. Ou, você pode utilizar o atalho Ctrl + Shift + O para imediatamente ir para as opções de abrir um script SQL;
-
-7. Abra seu Insomnia e insira o seguinte link na barra superior: https://mentorix.onrender.com/areas-atuacao;
-
-8. Ao invés de "area-atuacao", pode-se colocar a rota(?) desejada;
-
-9. Primeiro, utilize o método POST para criar as informações desejadas;
-
-10. Após isso, use o método GET e insira o id logo após a rota(?) para obter as informaçõe inseridas;
-
-11. Caso queira alterar algo no banco de dados, use p método PUT e insira o id logo após a rota(?) e altere as características desejadas;
-
-12. Utilize o GET com o mesmo ID para visualizar as alterações;
-
-13. Caso queira deletar algo, utilize o método DELETE e coloque o ID para deletar a entidade desejada.
-
-Pronto! Agora você possui uma API desenvolvida seguindo o padrão REST em sua máquina. 
-
-## Links
-
-- https://git-scm.com/                                                                    ----->  Para instalação do Git;
-- https://code.visualstudio.com/download                                                  ----->  Para instalação do VSCode;
-- https://nodejs.org/pt-br/download                                                       ----->  Para instalação do Node.JS (recomendado a instalação da versão LTS por ser mais estável);
-- https://expressjs.com/                                                                  ----->  Documentação do Express;
-- https://insomnia.rest/download                                                          ----->  Para instalação do Insomnia;
-- https://sequelize.org/docs/v7/getting-started/                                          ----->  Documentação do Sequelize;
-- https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/windows-installation.html   ----->  Para instalação do MySQL em Windows;
-- https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/macos-installation.html     ----->  Para instalação do MySQL em MacOS;
-- https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/linux-installation.html     ----->  Para instalação do MySQL em Linux;
-- https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/solaris-installation.html   ----->  Para instalação do MySQL em Solaris;
+Bibliotecas:
+crypt, express, mysql2 e sequelize
 
 
+# Deploy
+
+Para fazer o deploy desse projeto rode
+
+**_Clone o projeto_**
+
+###### com HTTPS
+
+```bash
+git clone https://github.com/devtaw/api-rest-mentorix.git
+
+```
+
+###### com SSH
+
+```bash
+git clone git@github.com:devtaw/api-rest-mentorix.git
+```
+
+###### **_Entre no diretório do projeto_**
+
+```bash
+cd api-rest-mentorix
+```
+
+###### **_Abra com code (opcional)_**
+
+```bash
+code .
+```
+
+###### **_Instale as dependências_**
+
+```bash
+npm install
+```
+
+###### **_Inicie o servidor_**
+
+```bash
+npm run start
+
+//ou
+
+npm start
+
+```
+
+#### 🎉🎉🎉 É isso, aproveite o projeto.
+
+# Teste Rotas
+
+**_Certifique-se de ter o Postman ou Insomnia instalado em seu sistema._**
+
+- [Postman - Download](https://www.postman.com/downloads/)
+- [Insomnia - Download](https://insomnia.rest/download)
+
+## Agendamentos
+
+#### POST - Rota: '/area-agendamento'
+
+_A rota post cria area agendamento_
+
+###### Entrada
+
+```bash
+
+        {
+		"id": 13,
+		"nome": "Desenvolvimento Web",
+		"descricaoArea": "criação de sites e aplicativos para a internet usando linguagens como HTML, CSS e JavaScript",
+		"fotoAreaAtuacao": "https://th.bing.com/th/id/R.10a6b3802667bb8ca5177c88a880f3dc?rik=i3y9whMAtz1SSw&pid=ImgRaw&r=0 ",
+		"createdAt": "2023-09-20",
+		"updatedAt": "2023-09-20"
+	 }
+
+```
+
+###### Saída
+
+```bash
+{
+	"Sucesso": " area agendamento criado com sucesso!"
+}
+```
+
+#### GET - Rota: '/area-agendamento'
+
+_A rota get busca todos as areas cadastradas_
+
+###### Saída
+
+````bash
+{
+	"id": 14,
+	"nome": "Engenharia",
+	"descricaoArea": "Aplica princípios científicos e matemáticos para projetar, construir e melhorar sistemas, estruturas e dispositivos",
+	"fotoAreaAtuacao": "https://www.univille.edu.br/community/novoportal/VirtualDisk.html/downloadDirect/1462802/FA7-engenharia-mecanica-960x750.jpg",
+	"createdAt": "2023-09-20",
+	"updatedAt": "2023-09-20"
+}
+
+#### GET - Rota: '/area-agendamento'
+ * A rota get id busca o Agendamentos  pelo id informado*
+
+###### Ex rota:
+ https://mentorix.onrender.com/areas-atuacao/13
+###### Saída
+
+```bash
+{
+    "id": 13,
+	"nome": "Desenvolvimento Web",
+	"descricaoArea": "criação de sites e aplicativos para a internet usando linguagens como HTML, CSS e JavaScript",
+	"fotoAreaAtuacao": "https://th.bing.com/th/id/R.10a6b3802667bb8ca5177c88a880f3dc?rik=i3y9whMAtz1SSw&pid=ImgRaw&r=0 ",
+	"createdAt": "2023-09-20",
+	"updatedAt": "2023-09-20"
+}
+````
+
+#### DELETE - Rota: '/area-atuacao/:id'
+
+_A rota DELETE id deleta a area-atuacao pelo id informado_
+
+###### Ex rota:
+
+https://mentorix.onrender.com/areas-atuacao/13
+
+###### Saída
+
+```bash
+{
+	"id": 13,
+	"nome": "Desenvolvimento Web",
+	"descricaoArea": "criação de sites e aplicativos para a internet usando linguagens como HTML, CSS e JavaScript",
+	"fotoAreaAtuacao": "https://th.bing.com/th/id/R.10a6b3802667bb8ca5177c88a880f3dc?rik=i3y9whMAtz1SSw&pid=ImgRaw&r=0 ",
+	"createdAt": "2023-09-20",
+	"updatedAt": "2023-09-20"
+}
+
+```
+
+#### PUT - Rota: '/area-atuacao/:id'
+
+_A rota PUT id atualiza area-atuacao pelo id informado_
+
+###### Ex rota:
+
+```bash
+{
+"id": 18,
+"nome": "Engenharia",
+"descricaoArea": "Aplica princípios científicos e matemáticos para projetar, construir e melhorar sistemas, estruturas e dispositivos",
+"fotoAreaAtuacao": "https://www.univille.edu.br/community/novoportal/VirtualDisk.html/downloadDirect/1462802/FA7-engenharia-mecanica-960x750.jpg",
+"createdAt": "2023-09-20",
+"updatedAt": "2023-09-20"
+}
+
+````bash
+
+###### Saída
+
+```bash
+{
+
+    }
+````
+
+## Agendamentos
+
+#### POST - Rota: '/agendamento'
+
+_A rota post cria agendamento_
+
+###### Entrada
+
+```bash
+
+        {
+		"id": 13,
+		"nome": "Desenvolvimento Web",
+		"descricaoArea": "criação de sites e aplicativos para a internet usando linguagens como HTML, CSS e JavaScript",
+		"fotoAreaAtuacao": "https://th.bing.com/th/id/R.10a6b3802667bb8ca5177c88a880f3dc?rik=i3y9whMAtz1SSw&pid=ImgRaw&r=0 ",
+		"createdAt": "2023-09-20",
+		"updatedAt": "2023-09-20"
+	 }
+
+```
+
+###### Saída
+
+```bash
+{
+	"Sucesso": "agendamento criado com sucesso!"
+}
+```
+
+#### GET - Rota: '/agendamento'
+
+_A rota get busca todos as agendamento cadastradas_
+
+###### Saída
+
+````bash
+{
+	"id": 14,
+	"nome": "Engenharia",
+	"descricaoArea": "Aplica princípios científicos e matemáticos para projetar, construir e melhorar sistemas, estruturas e dispositivos",
+	"fotoAreaAtuacao": "https://www.univille.edu.br/community/novoportal/VirtualDisk.html/downloadDirect/1462802/FA7-engenharia-mecanica-960x750.jpg",
+	"createdAt": "2023-09-20",
+	"updatedAt": "2023-09-20"
+}
+
+#### GET - Rota: '/agendamento'
+ * A rota get id busca o Agendamentos  pelo id informado*
+
+###### Ex rota:
+ https://mentorix.onrender.com/areas-atuacao/13
+###### Saída
+
+```bash
+{
+    "id": 13,
+	"nome": "Desenvolvimento Web",
+	"descricaoArea": "criação de sites e aplicativos para a internet usando linguagens como HTML, CSS e JavaScript",
+	"fotoAreaAtuacao": "https://th.bing.com/th/id/R.10a6b3802667bb8ca5177c88a880f3dc?rik=i3y9whMAtz1SSw&pid=ImgRaw&r=0 ",
+	"createdAt": "2023-09-20",
+	"updatedAt": "2023-09-20"
+}
+````
+
+#### DELETE - Rota: '/agendamento/:id'
+
+_A rota DELETE id deleta a agendamento pelo id informado_
+
+###### Ex rota:
+
+https://mentorix.onrender.com/areas-atuacao/13
+
+###### Saída
+
+```bash
+{
+	"id": 13,
+	"nome": "Desenvolvimento Web",
+	"descricaoArea": "criação de sites e aplicativos para a internet usando linguagens como HTML, CSS e JavaScript",
+	"fotoAreaAtuacao": "https://th.bing.com/th/id/R.10a6b3802667bb8ca5177c88a880f3dc?rik=i3y9whMAtz1SSw&pid=ImgRaw&r=0 ",
+	"createdAt": "2023-09-20",
+	"updatedAt": "2023-09-20"
+}
+
+```
+
+#### PUT - Rota: '/agendamento/:id'
+
+_A rota PUT id atualiza agendamento pelo id informado_
+
+###### Ex rota:
+
+```bash
+{
+	"id": 18,
+	"nome": "Engenharia",
+	"descricaoArea": "Aplica princípios científicos e matemáticos para projetar, construir e melhorar sistemas, estruturas e dispositivos",
+	"fotoAreaAtuacao": "https://www.univille.edu.br/community/novoportal/VirtualDisk.html/downloadDirect/1462802/FA7-engenharia-mecanica-960x750.jpg",
+	"createdAt": "2023-09-20",
+	"updatedAt": "2023-09-20"
+}
+
+```
+
+###### Saída
+
+```bash
+{
+
+    }
+````
+
+###### ⛔ Tratamento de Erro
+
+### _Valida nome_
+
+```bash
+{
+    "message": "Usuário não encontrado""
+}
+```
+
+##### _Valida e-mail_
+
+```bash
+{
+    "message": "Email é obrigatório"."
+}
+```
+
+##### _Valida senha_
+
+```bash
+{
+    "message": "Senha é obrigatória""
+}
+```
+
+##### _Valida telefone_
+
+```bash
+{
+    "message": "Telefone é obrigatório""
+}
+```
 
 
-Feito por devtaw, DaniSodeiro, Hickembick e Hellraiser997.
+## Autenticação 
+
+#### POST - Rota: '/autenticacao'
+
+_A rota cria autenticação_ 
+
+
+## Especialidade
+
+#### GET - Rota '/especialidade'
+
+```bash
+    {
+        "id": 1,
+        "nome": "Segurança da Informação",
+        "descricao": "area que se concentra em garantir a segurança e proteção dos sistemas de informação",
+        "foto": "https://i.ytimg.com/vi/RnsYE2eZqkA/maxresdefault.jpg",
+        "createdAt": "2023-09-21",
+        "updatedAt": "2023-09-21"
+    },
+```
+    
+#### GET ID - Rota '/especialidade/:id' 
+https://mentorix.onrender.com/especialidades/1
+
+```bash
+{
+    "id": 1,
+    "nome": "Segurança da Informação",
+    "descricao": "area que se concentra em garantir a segurança e proteção dos sistemas de informação",
+    "foto": "https://i.ytimg.com/vi/RnsYE2eZqkA/maxresdefault.jpg",
+    "createdAt": "2023-09-21",
+    "updatedAt": "2023-09-21"
+}
+```
+#### POST - Rota '/especialidade'
+```bash
+{
+    "id": 3,
+    "nome": "Segurança da Informação",
+    "descricao": "area que se concentra em garantir a segurança e proteção dos sistemas de informação",
+    "foto": "https://i.ytimg.com/vi/RnsYE2eZqkA/maxresdefault.jpg",
+    "createdAt": "2023-09-21T00:00:00.000Z",
+    "updatedAt": "2023-09-22T14:06:51.891Z"
+}
+```
+#### PUT - Rota '/especialidade/:id'
+```bash
+
+ {
+    "id": 3,
+    "nome": "Segurança da Informação TESTE",
+    "descricao": "area que se concentra em garantir a segurança e proteção dos sistemas de informação",
+    "foto": "https://i.ytimg.com/vi/RnsYE2eZqkA/maxresdefault.jpg",
+    "createdAt": "2023-09-21",
+    "updatedAt": "2023-09-22"
+}
+```
+#### DELETE - Rota '/especialidade/:id'
+Pesquisar por ID 
+https://mentorix.onrender.com/especialidades/3
+
+Depois do Delete, pesquisar novamente por id .
+
+tratamento de erro
+
+```bash
+{
+	"messagem": "Especialidade não encontrada"
+}
+```
+
+## Mentores
+
+#### POST - Rota: '/mentor'
+
+_A rota post cria area mentor_
+
+###### Entrada
+
+```bash
+
+        {
+		"id": 7,
+		"nome": "Gerson Josias",
+		"dataNascimento": "16/06/1986",
+		"telefone": "041988887777",
+		"nivelExperiencia": "senior",
+		"experienciaProfissional": "inserir texto de experiencia profissional",
+		"createdAt": "2023-09-20",
+		"updatedAt": "2023-09-20"
+	 }
+
+```
+
+###### Saída
+
+```bash
+{
+	"Sucesso": "Mentor criado com sucesso!"
+}
+```
+
+#### GET - Rota: '/mentor'
+
+_A rota get busca todos os mentores_
+
+###### Saída
+
+````bash
+{
+	"id": 7,
+		"nome": "Gerson Josias",
+		"dataNascimento": "16/06/1986",
+		"telefone": "041988887777",
+		"nivelExperiencia": "senior",
+		"experienciaProfissional": "inserir texto de experiencia profissional",
+		"createdAt": "2023-09-20",
+		"updatedAt": "2023-09-20"
+}
+
+#### GET - Rota: '/mentor'
+ * A rota get id busca o mentor pelo id informado*
+
+###### Ex rota:
+ https://mentorix.onrender.com/areas-atuacao/13
+###### Saída
+
+```bash
+{
+    "id": 7,
+		"nome": "Gerson Josias",
+		"dataNascimento": "16/06/1986",
+		"telefone": "041988887777",
+		"nivelExperiencia": "senior",
+		"experienciaProfissional": "inserir texto de experiencia profissional",
+		"createdAt": "2023-09-20",
+		"updatedAt": "2023-09-20"
+}
+````
+
+#### DELETE - Rota: '/mentor/:id'
+
+_A rota DELETE id deleta o mentor pelo id informado_
+
+###### Ex rota:
+
+https://mentorix.onrender.com/areas-atuacao/13
+
+###### Saída
+
+```bash
+{
+	"id": 7,
+		"nome": "Gerson Josias",
+		"dataNascimento": "16/06/1986",
+		"telefone": "041988887777",
+		"nivelExperiencia": "senior",
+		"experienciaProfissional": "inserir texto de experiencia profissional",
+		"createdAt": "2023-09-20",
+		"updatedAt": "2023-09-20"
+}
+
+```
+
+#### PUT - Rota: '/mentor/:id'
+
+_A rota PUT id atualiza mentor pelo id informado_
+
+
+
+###### Ex rota:
+
+```bash
+{
+	"id": 7,
+		"nome": "Adriano Rodrigues",
+		"dataNascimento": "23/09/1998",
+		"telefone": "041988887777",
+		"nivelExperiencia": "pleno",
+		"experienciaProfissional": "inserir texto de experiencia profissional",
+		"createdAt": "2023-09-20",
+		"updatedAt": "2023-09-20"
+}
+
+```
+
+###### Saída
+
+```bash
+{
+
+    }
+````
+
+
+## Mentor Especialidade
+
+#### POST - Rota: '/mentor-especialidade'
+
+_A rota post cria mentor-especialidade_
+###### Entrada
+
+```bash
+
+        {
+		"id": 13,
+		"mentor_id": 5,
+		"especialidade_id": 8,
+		"createdAt": "2023-09-20",
+		"updatedAt": "2023-09-20"
+	 }
+
+```
+
+###### Saída
+
+```bash
+{
+	"Sucesso": " mentor-especialidade criado com sucesso!"
+}
+```
+
+#### GET - Rota: '/mentor-especialidade'
+
+_A rota get busca todos as especialidades_
+
+###### Saída
+
+```bash
+
+        {
+		"id": 13,
+		"mentor_id": 5,
+		"especialidade_id": 8,
+		"createdAt": "2023-09-20",
+		"updatedAt": "2023-09-20"
+	 }
+
+```
+
+#### GET - Rota: '/mentor-especialidade'
+ * A rota get id busca a especialidade do mentor pelo id informado*
+
+###### Ex rota:
+ https://mentorix.onrender.com/areas-atuacao/13
+###### Saída
+
+```bash
+        {
+		"id": 13,
+		"mentor_id": 5,
+		"especialidade_id": 8,
+		"createdAt": "2023-09-20",
+		"updatedAt": "2023-09-20"
+	 }
+
+```
+
+#### DELETE - Rota: '/mentor-especialidade/:id'
+
+_A rota DELETE id deleta a especialidade do mentor pelo id informado_
+
+###### Ex rota:
+
+https://mentorix.onrender.com/mentor-especialidade/13
+
+###### Saída
+
+```bash
+
+        {
+		"id": 13,
+		"mentor_id": 5,
+		"especialidade_id": 8,
+		"createdAt": "2023-09-20",
+		"updatedAt": "2023-09-20"
+	 }
+
+```
+
+#### PUT - Rota: '/mentor-especialidade/:id'
+
+_A rota PUT id atualiza mentor-especialidade pelo id informado_
+
+###### Ex rota:
+
+```bash
+
+        {
+		"id": 13,
+		"mentor_id": 7,
+		"especialidade_id": 9,
+		"createdAt": "2023-09-20",
+		"updatedAt": "2023-09-20"
+	 }
+
+```
+
+````bash
+
+###### Saída
+
+```bash
+{
+
+    }
+````
+
+
+
+## Mentorados
+
+#### POST - Rota: '/mentorado'
+
+_A rota post cria area mentorado_
+
+###### Entrada
+
+```bash
+{
+	"id": 69,
+		"nome": "Roberto Guedes",
+		"dataNascimento": "10/02/2000",
+		"telefone": "041945621059",
+		"oQueBusco": "Obter mais experiência em programação, especialmente em front-end"
+		"createdAt": "2023-09-20",
+		"updatedAt": "2023-09-20"
+}
+
+```
+
+
+###### Saída
+
+```bash
+{
+	"Sucesso": " Mentorado criado com sucesso!"
+}
+```
+
+#### GET - Rota: '/mentorado'
+
+_A rota get busca todos os mentorados_
+
+
+###### Saída
+
+```bash
+{
+	"id": 69,
+		"nome": "Roberto Guedes",
+		"dataNascimento": "10/02/2000",
+		"telefone": "041945621059",
+		"oQueBusco": "Obter mais experiência em programação, especialmente em front-end"
+		"createdAt": "2023-09-20",
+		"updatedAt": "2023-09-20"
+}
+
+```
+
+#### GET - Rota: '/mentorado'
+ * A rota get id busca o mentorado pelo id informado*
+
+###### Ex rota:
+ https://mentorix.onrender.com/areas-atuacao/13
+###### Saída
+
+```bash
+{
+	"id": 69,
+		"nome": "Roberto Guedes",
+		"dataNascimento": "10/02/2000",
+		"telefone": "041945621059",
+		"oQueBusco": "Obter mais experiência em programação, especialmente em front-end"
+		"createdAt": "2023-09-20",
+		"updatedAt": "2023-09-20"
+}
+
+```
+
+#### DELETE - Rota: '/mentorado/:id'
+
+_A rota DELETE id deleta o mentorado pelo id informado_
+
+###### Ex rota:
+
+https://mentorix.onrender.com/areas-atuacao/13
+
+###### Saída
+
+```bash
+{
+	 message: "Mentorado deletado com sucesso"
+}
+
+```
+
+#### PUT - Rota: '/mentorado/:id'
+
+_A rota PUT id atualiza o mentorado pelo id informado_
+
+###### Ex rota:
+
+
+```bash
+{
+	"id": 69,
+		"nome": "Roberto Guedes",
+		"dataNascimento": "15/12/2000",
+		"telefone": "041945521859",
+		"oQueBusco": "Obter mais experiência em programação, especialmente em front-end"
+		"createdAt": "2023-09-20",
+		"updatedAt": "2023-09-20"
+}
+
+```
+
+````bash
+
+###### Saída
+
+```bash
+{
+
+    }
+````
+
+
+
+## Referência
+
+- [Git](https://git-scm.com/)
+- [VSCode](https://code.visualstudio.com/download)
+- [NodeJS](https://nodejs.org/pt-br/download) - Recomenda-se a versão LTS por mais estável
+- [dotenv](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
+- [express](https://expressjs.com/)
+- [Render](https://render.com/)
+- [sequelize](https://sequelize.org/docs/v7/getting-started/)
+- [Insomnia](https://insomnia.rest/download)
+- [MySQL](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/windows-installation.html) - Windows
+- [MySQL](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/macos-installation.html) - MacOS
+- [MySQL](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/linux-installation.html) - Linux
+- [MySQL](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/solaris-installation.html) - Solaris
+
+
+
+
+
