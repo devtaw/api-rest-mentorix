@@ -236,7 +236,7 @@ _A rota post cria agendamento_
 
 ```bash
 {
-	"Sucesso": " area agendamento criado com sucesso!"
+	"Sucesso": "agendamento criado com sucesso!"
 }
 ```
 
@@ -557,7 +557,7 @@ _A rota PUT id atualiza mentor pelo id informado_
 
 #### POST - Rota: '/mentor-especialidade'
 
-_A rota post cria area mentor-especialidade_
+_A rota post cria mentor-especialidade_
 ###### Entrada
 
 ```bash
