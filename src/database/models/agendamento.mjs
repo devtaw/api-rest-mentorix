@@ -1,3 +1,5 @@
+import MentoradoModel from "../models/mentorado.mjs";
+import MentorModel from "../models/mentor.mjs";
 import { DataTypes } from "sequelize";
 import DB from "./index.cjs";
 const sequelize = DB.sequelize;
@@ -21,6 +23,24 @@ const Agendamento = sequelize.define(
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
+
+    mentor_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: MentorModel,
+        key: "id",
+      },
+    },
+    mentorado_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: MentoradoModel,
+        key: "id",
+      },
+    },
+
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -48,8 +68,6 @@ Agendamento.associate = function (models) {
     },
   });
 };
-
-//Aqui começam as validações
 
 // Exporta as entidades
 export default Agendamento;

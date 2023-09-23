@@ -1,8 +1,8 @@
-// Importa o objeto DB, que parece ser um objeto relacionado ao Sequelize.
+import EspecialidadeModel from "../models/especialidade.mjs";
+import MentorModel from "../models/mentor.mjs";
 import { DataTypes } from "sequelize";
 import DB from "./index.cjs";
 const sequelize = DB.sequelize;
-
 // Define o modelo "MentorEspecialidade" para representar a associação entre Mentores e Especialidades.
 const MentorEspecialidade = sequelize.define(
   "MentorEspecialidade",
@@ -13,6 +13,23 @@ const MentorEspecialidade = sequelize.define(
       autoIncrement: true,
       unique: true,
       allowNull: false,
+    },
+
+    mentor_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: MentorModel,
+        key: "id",
+      },
+    },
+    especialidade_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: EspecialidadeModel,
+        key: "id",
+      },
     },
 
     // Define os campos "createdAt" e "updatedAt" do modelo.

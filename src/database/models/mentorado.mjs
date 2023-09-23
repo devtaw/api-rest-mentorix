@@ -1,5 +1,6 @@
 // Importa o módulo DataTypes do Sequelize para definir tipos de dados dos campos da tabela.
 import { DataTypes } from "sequelize";
+import UserModel from "./user.mjs";
 import DB from "./index.cjs";
 const sequelize = DB.sequelize;
 
@@ -47,6 +48,14 @@ const Mentorado = sequelize.define(
     idiomas: {
       type: DataTypes.ARRAY(DataTypes.STRING), // Idiomas é um array de texto
       allowNull: true,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: UserModel,
+        key: "id",
+      },
     },
     // Define o campo "createdAt" como uma data não nula.
     createdAt: {

@@ -15,6 +15,8 @@
 // Área de atuação: Tipo de dado - Texto (String) ou Lista de Texto, Obrigatório: Sim, Área de atuação do usuário (por exemplo: Tecnologia, Negócios, Soft Skills).
 // Especialidade: Tipo de dado - Lista de Texto ou Lista de Categorias, Obrigatório: Sim, Lista as especialidades que o mentor possuir para oferecer orientação.
 import { DataTypes } from "sequelize";
+import UserModel from "./user.mjs";
+import AreaAtuacaoModel from "./area-atuacao.mjs";
 
 // Importa o objeto DB que contém a configuração da conexão com o banco de dados.
 import DB from "./index.cjs";
@@ -66,6 +68,35 @@ const Mentor = sequelize.define(
     // Idiomas: Idiomas em que o mentor é proficientemente capaz de oferecer orientação.
     idiomas: {
       type: DataTypes.ARRAY(DataTypes.STRING), // Idiomas é um array de texto
+    },
+
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: UserModel,
+        key: "id",
+      },
+    },
+
+    area_atuacao_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: AreaAtuacaoModel,
+        key: "id",
+      },
+    },
+    // Define o campo "createdAt" como uma data não nula.
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+
+    // Define o campo "updatedAt" como uma data não nula.
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
     },
   },
   {

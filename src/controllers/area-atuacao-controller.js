@@ -4,16 +4,8 @@ import express from "express";
 const routes = express.Router();
 const areaAtuacaoService = new AreaAtuacaoService();
 
-// Cada uma das entidades deve realizar todos os métodos HTTP:
-// ● GET - Para listar os cadastros;
-// ● GET - Para buscar os dados de um cadastro específico com base em um de seus atributos (ID/Código, por exemplo).
-// ● POST - Para incluir um novo cadastro;
-// ● PUT/PATCH - Para editar os cadastros;
-// ● DELETE - Para remover um cadastro;
-
 /**
  * Define uma rota GET (http://localhost:3000/area/) para obter todas as areas
- *
  * Exemplo de chamada: (GET) http://localhost:3000/area
  */
 routes.get("/", async (request, response) => {
@@ -28,8 +20,6 @@ routes.get("/", async (request, response) => {
     /**
      * Caso houver qualquer tipo de erro na execução,
      * retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
-     *
-     * pode mudar no futuro dependendo na Regra de Negócio
      */
     return response.status(500).json({ mensagem: "Ocorreu um erro ao listar as Áreas de Atuação!" });
   }
@@ -59,8 +49,6 @@ routes.get("/:id", async (request, response) => {
     /**
      * Caso houver qualquer tipo de erro na execução,
      * retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
-     *
-     * pode mudar no futuro dependendo na Regra de Negócio
      */
     return response.status(500).json({ mensagem: "Ocorreu um erro ao listar a Área de Atuação!" });
   }
@@ -68,14 +56,6 @@ routes.get("/:id", async (request, response) => {
 
 /**
  * Define uma rota POST (http://localhost:3000/area) para cadastrar uma nova área
- *
- * neste caso, o body da requisição deve conter os dados da área a ser cadastrada
- *
- * Exemplo de body:
- * {
- *   "nome": "Área 1"
- * }
- *
  * Exemplo de chamada: (POST) http://localhost:3000/area
  */
 routes.post("/", async (request, response) => {
@@ -94,8 +74,6 @@ routes.post("/", async (request, response) => {
     /**
      * Caso houver qualquer tipo de erro na execução,
      * retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
-     *
-     * pode mudar no futuro dependendo na Regra de Negócio
      */
     return response.status(500).json({ mensagem: "Ocorreu um erro ao cadastrar Área de Atuação!" });
   }
@@ -103,9 +81,6 @@ routes.post("/", async (request, response) => {
 
 /**
  * Define uma rota PUT (http://localhost:3000/area) para editar uma área específica
- *
- * :id representa um parâmetro da rota, ou seja, pode ser qualquer valor
- *
  * Exemplo de chamada: (PUT) http://localhost:3000/area/123
  */
 routes.put("/:id", async (request, response) => {
@@ -126,8 +101,6 @@ routes.put("/:id", async (request, response) => {
     /**
      * Caso houver qualquer tipo de erro na execução,
      * retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
-     *
-     * pode mudar no futuro dependendo na Regra de Negócio
      */
     return response.status(500).json({ mensagem: "Ocorreu um erro ao atualizar a Área de Atuação!" });
   }
