@@ -8,6 +8,7 @@ import { AreaAtuacaoController } from "./src/controllers/area-atuacao-controller
 import DB from "./src/database/models/index.cjs";
 import { AgendamentoController } from "./src/controllers/agendamento-controller.js";
 import { MentorEspecialidadeController } from "./src/controllers/mentor-especialidade-controller.js";
+import { MentorController } from "./src/controllers/mentor-controller.js";
 const sequelize = DB.sequelize;
 
 import cors from "cors";
@@ -30,7 +31,7 @@ app.use("/mentorados", MentoradoController);
 app.use("/especialidades", EspecialidadeController);
 app.use("/areas-atuacao", AreaAtuacaoController);
 app.use("/agendamentos", AgendamentoController);
-app.use("/mentores", MentoradoController);
+app.use("/mentores", MentorController);
 app.use("/mentor-especialidades", MentorEspecialidadeController);
 
 sequelize.sync().then(() => {
