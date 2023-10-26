@@ -1,5 +1,5 @@
 import express from "express";
-import { MentorService } from "../service/mentor-service.js";
+import { MentorService } from "../services/mentor-service.js";
 import { ServiceError } from "../common/service-error.js";
 
 const routes = express.Router();
