@@ -22,8 +22,18 @@ export class UserService {
       throw new ServiceError("Email é obrigatório", 400);
     }
 
-    if (!userData.senha || !userData.senha.trim()) {
+    if (!userData.senhaCriptografada || !userData.senhaCriptografada.trim()) {
       throw new ServiceError("Senha é obrigatória", 400);
+    }
+
+    const userAlreadyExists = await UserModel.findAll({
+      where: {
+        email: userData.email,
+      },
+    });
+
+    if (userAlreadyExists?.length) {
+      throw new ServiceError("User already exists", 400);
     }
 
     return UserModel.create(userData);

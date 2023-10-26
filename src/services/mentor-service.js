@@ -1,4 +1,4 @@
-import { ServiceError } from "../common/service-error";
+import { ServiceError } from "../common/service-error.js";
 import MentorModel from "../database/models/mentor.mjs";
 import { UserService } from "../services/user-service.js";
 

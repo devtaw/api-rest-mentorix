@@ -33,6 +33,10 @@ const Mentor = sequelize.define(
       unique: true,
       allowNull: false,
     },
+    email: {
+      type: DataTypes.STRING,
+      unique: true,
+    },
     // Nome completo: Armazena o nome completo do mentor.
     nomeCompleto: {
       type: DataTypes.STRING,
