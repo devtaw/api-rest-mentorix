@@ -10,8 +10,11 @@ import { AgendamentoController } from "./src/controllers/agendamento-controller.
 import { MentorEspecialidadeController } from "./src/controllers/mentor-especialidade-controller.js";
 const sequelize = DB.sequelize;
 
+import cors from "cors";
+
 //constante para rodar o express
 const app = express();
+app.use(cors());
 
 //Const para definir o port
 const port = process.env.PORT || 3000;
