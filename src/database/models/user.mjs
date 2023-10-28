@@ -53,11 +53,6 @@ User.associate = function (models) {
     onDelete: "CASCADE", // Quando um registro na tabela referenciada é excluído, todos os registros relacionados na tabela atual são excluídos automaticamente.
     onUpdate: "CASCADE", // Quando a chave primária de um registro na tabela referenciada é atualizada, todos os registros relacionados na tabela atual são atualizados automaticamente.
   });
-
-  User.hasOne(models.Mentorado, {
-    onDelete: "CASCADE",
-    onUpdate: "CASCADE",
-  });
 };
 
 export default User;

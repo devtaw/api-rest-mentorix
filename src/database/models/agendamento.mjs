@@ -13,6 +13,22 @@ const Agendamento = sequelize.define(
       unique: true,
       allowNull: false,
     },
+
+    nomeCompleto: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
+    profissao: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+
     campoMensagem: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -31,14 +47,7 @@ const Agendamento = sequelize.define(
         key: "id",
       },
     },
-    mentorado_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: MentoradoModel,
-        key: "id",
-      },
-    },
+
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -55,11 +64,6 @@ const Agendamento = sequelize.define(
 // Define as associações
 Agendamento.associate = function (models) {
   Agendamento.belongsTo(models.Mentor, {
-    foreignKey: {
-      allowNull: false,
-    },
-  });
-  Agendamento.belongsTo(models.Mentorado, {
     foreignKey: {
       allowNull: false,
     },

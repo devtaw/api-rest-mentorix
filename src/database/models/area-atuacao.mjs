@@ -34,18 +34,6 @@ const AreaAtuacao = sequelize.define(
       allowNull: false,
     },
 
-    // Define o campo "descricaoArea" como uma string que pode ser nula.
-    descricaoArea: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-
-    // Define o campo "fotoAreaAtuacao" como uma string que pode ser nula.
-    fotoAreaAtuacao: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-
     // Define o campo "createdAt" como uma data não nula.
     createdAt: {
       type: DataTypes.DATE,
@@ -67,12 +55,6 @@ const AreaAtuacao = sequelize.define(
 // Define as associações
 AreaAtuacao.associate = function (models) {
   AreaAtuacao.hasMany(models.Especialidade, {
-    foreignKey: {
-      allowNull: false,
-    },
-  });
-
-  AreaAtuacao.hasMany(models.Mentor, {
     foreignKey: {
       allowNull: false,
     },

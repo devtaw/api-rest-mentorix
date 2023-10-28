@@ -30,17 +30,19 @@ const Mentor = sequelize.define(
       unique: true,
       allowNull: false,
     },
+
+    // Uma imagem do mentor
+    fotoPerfil: {
+      type: DataTypes.STRING, // Você pode armazenar a URL da imagem
+    },
+
     // Nome completo: Armazena o nome completo do mentor.
     nomeCompleto: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // Uma imagem do mentor
-    fotoPerfil: {
-      type: DataTypes.STRING, // Você pode armazenar a URL da imagem
-    },
-    // Biografia: Uma breve descrição do usuário.
-    biografia: {
+
+    profissao: {
       type: DataTypes.STRING,
     },
 
@@ -48,7 +50,8 @@ const Mentor = sequelize.define(
       type: DataTypes.STRING,
     },
 
-    profissao: {
+    // Biografia: Uma breve descrição do usuário.
+    biografia: {
       type: DataTypes.STRING,
     },
 
@@ -60,14 +63,7 @@ const Mentor = sequelize.define(
         key: "id",
       },
     },
-    area_atuacao_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: AreaAtuacaoModel,
-        key: "id",
-      },
-    },
+
     // Define o campo "createdAt" como uma data não nula.
     createdAt: {
       type: DataTypes.DATE,
@@ -91,16 +87,13 @@ Mentor.associate = function (models) {
       allowNull: false,
     },
   });
-  Mentor.belongsTo(models.AreaAtuacao, {
-    foreignKey: {
-      allowNull: false,
-    },
-  });
+
   Mentor.hasMany(models.Agendamento, {
     foreignKey: {
       allowNull: false,
     },
   });
+
   Mentor.hasMany(models.MentorEspecialidade, {
     foreignKey: {
       allowNull: false,

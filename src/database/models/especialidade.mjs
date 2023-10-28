@@ -19,14 +19,6 @@ const Especialidade = sequelize.define(
       allowNull: false,
     },
 
-    descricao: {
-      type: DataTypes.TEXT,
-    },
-
-    foto: {
-      type: DataTypes.STRING,
-    },
-
     area_atuacao_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
