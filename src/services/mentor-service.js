@@ -9,8 +9,8 @@ export class MentorService {
     return MentorModel.findAll();
   }
 
-  async asgetMentorById(mentorId) {
-    const mentor = await MentorModel.findByPk(mentoraId);
+  async getMentorById(mentorId) {
+    const mentor = await MentorModel.findByPk(mentorId);
 
     if (!mentor) {
       throw new ServiceError("Mentor não encontrado.", 404);
