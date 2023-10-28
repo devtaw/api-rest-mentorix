@@ -1,6 +1,5 @@
 // Responsável: Tawany
 // Forma de fazer o modelo sequelize.define: https://sequelize.org/docs/v6/core-concepts/model-basics/
-
 // ID: Tipo de dado - Número (Integer), PK, Obrigatório: Sim, Único, Incremento Automático: Sim, Identificador único para cada mentor registrado na plataforma.
 // Mentores ou Mentorados: Tipo de dado - Booleano - Para identificar se o usuário está se cadastrando como mentor ou mentorado.
 // Nome completo: Tipo de dado - Texto (String), Obrigatório: Sim, Armazena o nome completo do mentor.
@@ -17,11 +16,9 @@
 import { DataTypes } from "sequelize";
 import UserModel from "./user.mjs";
 import AreaAtuacaoModel from "./area-atuacao.mjs";
-
 // Importa o objeto DB que contém a configuração da conexão com o banco de dados.
 import DB from "./index.cjs";
 const sequelize = DB.sequelize;
-
 const Mentor = sequelize.define(
   "Mentor",
   {
@@ -33,20 +30,8 @@ const Mentor = sequelize.define(
       unique: true,
       allowNull: false,
     },
-    email: {
-      type: DataTypes.STRING,
-      unique: true,
-    },
     // Nome completo: Armazena o nome completo do mentor.
     nomeCompleto: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    dataNascimento: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    telefone: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -58,20 +43,13 @@ const Mentor = sequelize.define(
     biografia: {
       type: DataTypes.STRING,
     },
-    // Nível de Experiência: Indica o nível de experiência do mentor em sua área de especialização.
-    nivelExperiencia: {
-      type: DataTypes.ENUM("junior", "pleno", "senior"),
-      allowNull: false,
-    },
-    // Experiência Profissional: Descreve a experiência profissional e especializações do mentor.
-    experienciaProfissional: {
-      type: DataTypes.TEXT, // Experiência é um campo de texto
-      allowNull: false,
+
+    linkedin: {
+      type: DataTypes.STRING,
     },
 
-    // Idiomas: Idiomas em que o mentor é proficientemente capaz de oferecer orientação.
-    idiomas: {
-      type: DataTypes.ARRAY(DataTypes.STRING), // Idiomas é um array de texto
+    profissao: {
+      type: DataTypes.STRING,
     },
 
     user_id: {
@@ -82,7 +60,6 @@ const Mentor = sequelize.define(
         key: "id",
       },
     },
-
     area_atuacao_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -96,7 +73,6 @@ const Mentor = sequelize.define(
       type: DataTypes.DATE,
       allowNull: false,
     },
-
     // Define o campo "updatedAt" como uma data não nula.
     updatedAt: {
       type: DataTypes.DATE,
@@ -108,7 +84,6 @@ const Mentor = sequelize.define(
     tableName: "mentor",
   }
 );
-
 // Define as associações
 Mentor.associate = function (models) {
   Mentor.belongsTo(models.User, {
@@ -116,25 +91,21 @@ Mentor.associate = function (models) {
       allowNull: false,
     },
   });
-
   Mentor.belongsTo(models.AreaAtuacao, {
     foreignKey: {
       allowNull: false,
     },
   });
-
   Mentor.hasMany(models.Agendamento, {
     foreignKey: {
       allowNull: false,
     },
   });
-
   Mentor.hasMany(models.MentorEspecialidade, {
     foreignKey: {
       allowNull: false,
     },
   });
 };
-
 // Exporta o modelo "Mentor" para uso em outros módulos.
 export default Mentor;
