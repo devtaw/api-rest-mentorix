@@ -15,7 +15,7 @@ routes.get("/", async (request, response) => {
   }
 });
 
-routes.get("/:id", authMiddleware, async (request, response) => {
+routes.get("/:id", async (request, response) => {
   try {
     const idMentor = request.params.id;
 
@@ -32,7 +32,7 @@ routes.get("/:id", authMiddleware, async (request, response) => {
   }
 });
 
-routes.post("/", authMiddleware, async (request, response) => {
+routes.post("/", async (request, response) => {
   try {
     const body = request.body;
 
@@ -47,7 +47,7 @@ routes.post("/", authMiddleware, async (request, response) => {
   }
 });
 
-routes.put("/:id", authMiddleware, async (request, response) => {
+routes.put("/:id", async (request, response) => {
   try {
     const body = request.body;
     const idMentor = request.params.id;
@@ -63,7 +63,7 @@ routes.put("/:id", authMiddleware, async (request, response) => {
   }
 });
 
-routes.delete("/:id", authMiddleware, async (request, response) => {
+routes.delete("/:id", async (request, response) => {
   try {
     const idMentor = request.params.id;
 
