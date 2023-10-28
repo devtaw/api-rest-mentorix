@@ -1,5 +1,4 @@
-import jsonwebtoken, { JsonWebTokenError } from "jsonwebtoken";
-import { json } from "sequelize";
+import jsonwebtoken from "jsonwebtoken";
 
 export function authMiddleware(request, response, next) {
   try {
@@ -16,12 +15,6 @@ export function authMiddleware(request, response, next) {
   } catch (error) {
     console.log(error);
 
-    if (error instanceof JsonWebTokenError) {
-      {
-        return response.status(401).json({ message: "Usuário não autenticado!" });
-      }
-
-      return response.status(500).json({ message: "Ocorreu um erro ao autenticar o usuário." });
-    }
+    return response.status(401).json({ message: "Usuário não autenticado!" });
   }
 }
