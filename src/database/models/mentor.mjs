@@ -45,6 +45,7 @@ const Mentor = sequelize.define(
 
     profissao: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
 
     linkedin: {
