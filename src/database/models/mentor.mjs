@@ -54,6 +54,7 @@ const Mentor = sequelize.define(
     // Biografia: Uma breve descrição do usuário.
     biografia: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
 
     user_id: {
