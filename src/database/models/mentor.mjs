@@ -48,7 +48,7 @@ const Mentor = sequelize.define(
     },
 
     linkedin: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
 
     // Biografia: Uma breve descrição do usuário.
