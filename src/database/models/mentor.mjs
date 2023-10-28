@@ -33,7 +33,7 @@ const Mentor = sequelize.define(
 
     // Uma imagem do mentor
     fotoPerfil: {
-      type: DataTypes.STRING, // Você pode armazenar a URL da imagem
+      type: DataTypes.TEXT, // Você pode armazenar a URL da imagem
       allowNull: false,
     },
 
@@ -53,7 +53,7 @@ const Mentor = sequelize.define(
 
     // Biografia: Uma breve descrição do usuário.
     biografia: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
 
     user_id: {
