@@ -3,7 +3,6 @@ import MentorModel from "../models/mentor.mjs";
 import { DataTypes } from "sequelize";
 import DB from "./index.cjs";
 const sequelize = DB.sequelize;
-
 const Agendamento = sequelize.define(
   "Agendamento",
   {
@@ -14,14 +13,14 @@ const Agendamento = sequelize.define(
       unique: true,
       allowNull: false,
     },
-
     campoMensagem: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
     aceite: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
+      allowNull: true,
     },
 
     mentor_id: {
@@ -40,12 +39,10 @@ const Agendamento = sequelize.define(
         key: "id",
       },
     },
-
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,
     },
-
     updatedAt: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -68,6 +65,5 @@ Agendamento.associate = function (models) {
     },
   });
 };
-
 // Exporta as entidades
 export default Agendamento;
