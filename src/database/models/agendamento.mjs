@@ -30,7 +30,7 @@ const Agendamento = sequelize.define(
     },
 
     campoMensagem: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
 
