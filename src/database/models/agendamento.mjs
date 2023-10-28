@@ -1,4 +1,3 @@
-import MentoradoModel from "../models/mentorado.mjs";
 import MentorModel from "../models/mentor.mjs";
 import { DataTypes } from "sequelize";
 import DB from "./index.cjs";

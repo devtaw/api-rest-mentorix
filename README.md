@@ -203,7 +203,6 @@ _A rota post cria agendamentos_
  "campoMensagem": "quero agendar",
   "aceite": true,
   "mentor_id":1,
-  "mentorado_id":1
 }
 ```
 
@@ -229,7 +228,6 @@ _A rota get busca todos as agendamentos" cadastradas_
  "campoMensagem": "quero agendar",
   "aceite": true,
   "mentor_id":1,
-  "mentorado_id":1
 }
 ```
 
@@ -249,7 +247,6 @@ https://mentorix.onrender.com//agendamentos/10
  "campoMensagem": "quero agendar",
   "aceite": true,
   "mentor_id":1,
-  "mentorado_id":1
 }
 ```
 
@@ -268,7 +265,6 @@ _A rota DELETE id deleta a agendamentos" pelo id informado_
  "campoMensagem": "quero agendar",
   "aceite": true,
   "mentor_id":1,
-  "mentorado_id":1
 }
 ```
 
@@ -285,7 +281,6 @@ _A rota PUT id atualiza agendamentos" pelo id informado_
  "campoMensagem": "quero agendar",
   "aceite": true,
   "mentor_id":1,
-  "mentorado_id":1
 }
 
 ```
@@ -625,111 +620,6 @@ _A rota PUT id atualiza mentor-especialidade pelo id informado_
 		"id": 13,
 		"mentor_id": 7,
 		"especialidade_id": 9,
-		"createdAt": "2023-09-20",
-		"updatedAt": "2023-09-20"
-}
-
-```
-
-## Mentorados
-
-#### POST - Rota: '/mentorados'
-
-_A rota post cria area mentorados_
-
-###### Entrada
-
-```bash
-{
-	"id": 69,
-		"nome": "Roberto Guedes",
-		"dataNascimento": "10/02/2000",
-		"telefone": "041945621059",
-		"oQueBusco": "Obter mais experiência em programação, especialmente em front-end"
-		"createdAt": "2023-09-20",
-		"updatedAt": "2023-09-20"
-}
-
-```
-
-###### Saída
-
-```bash
-{
-	"Sucesso": " Mentorado criado com sucesso!"
-}
-```
-
-#### GET - Rota: '/mentorados'
-
-_A rota get busca todos os mentorados_
-
-###### Saída
-
-```bash
-{
-	"id": 69,
-		"nome": "Roberto Guedes",
-		"dataNascimento": "10/02/2000",
-		"telefone": "041945621059",
-		"oQueBusco": "Obter mais experiência em programação, especialmente em front-end"
-		"createdAt": "2023-09-20",
-		"updatedAt": "2023-09-20"
-}
-
-```
-
-#### GET - Rota: '/mentorados/:id'
-
-- A rota get id busca o mentorados pelo id informado\*
-
-###### Ex rota:
-
-https://mentorix.onrender.com/mentorados/69
-
-###### Saída
-
-```bash
-{
-	"id": 69,
-		"nome": "Roberto Guedes",
-		"dataNascimento": "10/02/2000",
-		"telefone": "041945621059",
-		"oQueBusco": "Obter mais experiência em programação, especialmente em front-end"
-		"createdAt": "2023-09-20",
-		"updatedAt": "2023-09-20"
-}
-
-```
-
-#### DELETE - Rota: '/mentorados/:id'
-
-_A rota DELETE id deleta o mentorados pelo id informado_
-
-###### Ex rota: https://mentorix.onrender.com/mentorados/69
-
-###### Saída
-
-```bash
-{
-	 message: "Mentorado deletado com sucesso"
-}
-
-```
-
-#### PUT - Rota: '/mentorados/:id'
-
-_A rota PUT id atualiza o mentorados pelo id informado_
-
-###### Ex rota: https://mentorix.onrender.com/mentorados/69
-
-```bash
-{
-	"id": 69,
-		"nome": "Roberto Guedes",
-		"dataNascimento": "15/12/2000",
-		"telefone": "041945521859",
-		"oQueBusco": "Obter mais experiência em programação, especialmente em front-end"
 		"createdAt": "2023-09-20",
 		"updatedAt": "2023-09-20"
 }

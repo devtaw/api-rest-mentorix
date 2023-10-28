@@ -1,7 +1,7 @@
 // Responsável: Tawany
 // Forma de fazer o modelo sequelize.define: https://sequelize.org/docs/v6/core-concepts/model-basics/
 // ID: Tipo de dado - Número (Integer), PK, Obrigatório: Sim, Único, Incremento Automático: Sim, Identificador único para cada mentor registrado na plataforma.
-// Mentores ou Mentorados: Tipo de dado - Booleano - Para identificar se o usuário está se cadastrando como mentor ou mentorado.
+// Mentores: Tipo de dado - Booleano - Para identificar se o usuário está se cadastrando como mentor.
 // Nome completo: Tipo de dado - Texto (String), Obrigatório: Sim, Armazena o nome completo do mentor.
 // Data de Nascimento:  Tipo de dado - Data (DATE), Obrigatório: Sim, Armazena a data de nascimento do mentor.
 // E-mail: Tipo de dado - Texto (String), Obrigatório: Sim, Único, Armazena o e-mail do mentor.

@@ -1,7 +1,6 @@
 //Importação do express
 import express from "express";
 import { AutenticacaoController } from "./src/controllers/autenticacao-controller.js";
-import { MentoradoController } from "./src/controllers/mentorado-controller.js";
 import { EspecialidadeController } from "./src/controllers/especialidade-controller.js";
 import { AreaAtuacaoController } from "./src/controllers/area-atuacao-controller.js";
 
@@ -27,7 +26,6 @@ app.use(express.json());
 
 //Aqui, chama-se as rotas
 app.use("/autenticacao", AutenticacaoController);
-app.use("/mentorados", MentoradoController);
 app.use("/especialidades", EspecialidadeController);
 app.use("/areas-atuacao", AreaAtuacaoController);
 app.use("/agendamentos", AgendamentoController);
