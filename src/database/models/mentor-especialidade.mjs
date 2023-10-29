@@ -1,4 +1,3 @@
-import EspecialidadeModel from "../models/especialidade.mjs";
 import MentorModel from "../models/mentor.mjs";
 import { DataTypes } from "sequelize";
 import DB from "./index.cjs";
@@ -23,13 +22,10 @@ const MentorEspecialidade = sequelize.define(
         key: "id",
       },
     },
-    especialidade_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: EspecialidadeModel,
-        key: "id",
-      },
+
+    especialidades: {
+      type: DataTypes.TEXT,
+      allowNull: true,
     },
 
     // Define os campos "createdAt" e "updatedAt" do modelo.
@@ -37,6 +33,7 @@ const MentorEspecialidade = sequelize.define(
       type: DataTypes.DATE,
       allowNull: false,
     },
+
     updatedAt: {
       type: DataTypes.DATE,
       allowNull: false,

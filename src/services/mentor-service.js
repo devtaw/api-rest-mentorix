@@ -67,32 +67,24 @@ export class MentorService {
   }
 
   async mentorValido(newMentor) {
-    if (!newMentor.email || !newMentor.senha.trim()) {
-      throw new ServiceError("Email é obrigatório.", 400);
-    }
-
-    if (!newMentor.senha || !newMentor.senha.trim()) {
-      throw new ServiceError("Senha é obrigatória.", 400);
-    }
-
     if (!newMentor.nomeCompleto || !newMentor.nomeCompleto.trim()) {
       throw new ServiceError("Nome é obrigatório.", 400);
     }
 
-    if (!newMentor.dataNascimento || !newMentor.dataNascimento.trim()) {
-      throw new ServiceError("Data nascimento é obrigatório.", 400);
+    if (!newMentor.fotoPerfil || !newMentor.fotoPerfil.trim()) {
+      throw new ServiceError("Foto perfil é obrigatório.", 400);
     }
 
-    if (!newMentor.telefone || !newMentor.telefone.trim()) {
-      throw new ServiceError("Telefone é obrigatório.", 400);
+    if (!newMentor.profissao || !newMentor.profissao.trim()) {
+      throw new ServiceError("Profissao é obrigatório.", 400);
     }
 
-    if (!newMentor.nivelExperiencia || !newMentor.nivelExperiencia.trim()) {
-      throw new ServiceError("Nível de experiencia é obrigatório.", 400);
+    if (!newMentor.biografia || !newMentor.biografia.trim()) {
+      throw new ServiceError("Biografia é obrigatório.", 400);
     }
 
-    if (!newMentor.experienciaProfissional || !newMentor.experienciaProfissional.trim()) {
-      throw new ServiceError("Experiencia profissional é obrigatório.", 400);
+    if (!newMentor.especialidades || !newMentor.especialidades?.length) {
+      throw new ServiceError("Lista de especialidades é obrigatório.", 400);
     }
 
     return true;
