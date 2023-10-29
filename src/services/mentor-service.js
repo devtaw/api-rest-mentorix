@@ -1,12 +1,13 @@
 import { ServiceError } from "../common/service-error.js";
 import MentorModel from "../database/models/mentor.mjs";
+import MentorEspecialidadeModel from "../database/models/mentor-especialidade.mjs";
 import { UserService } from "../services/user-service.js";
 
 const userService = new UserService();
 
 export class MentorService {
   async getAllMentores() {
-    return MentorModel.findAll();
+    const mentores = await MentorModel.findAll();
   }
 
   async getMentorById(mentorId) {
@@ -16,16 +17,27 @@ export class MentorService {
       throw new ServiceError("Mentor não encontrado.", 404);
     }
 
-    return mentor;
+    const mentorEspecialidades = await MentorEspecialidadeModel.findOne({
+      where: {
+        mentor_id: mentor.id,
+      },
+    });
+
+    return {
+      mentor,
+      especialidades: JSON.parse(mentorEspecialidades?.especialidades) || [],
+    };
   }
 
   async addMentor(newMentor) {
     // chama o método que verifica se o mentor é válido
     // se não for válido, o método mentorValido lança um erro
-    if (!this.mentorValido(newMentor)) {
+    const mentorValido = await this.mentorValido(newMentor);
+    if (!mentorValido) {
       return;
     }
 
+    // cria um usuário antes de criar um mentor
     const user = await userService.addUser({
       email: newMentor.email,
       senhaCriptografada: newMentor.senha,
@@ -35,9 +47,15 @@ export class MentorService {
     newMentor.user_id = user.id;
 
     // cria o mentor
-    return MentorModel.create(newMentor);
+    const mentor = await MentorModel.create(newMentor);
 
-    // cria um usuário antes de criar um mentor
+    // cria mentor_especialidade
+    await MentorEspecialidadeModel.create({
+      mentor_id: mentor.id,
+      especialidades: JSON.stringify(newMentor.especialidades),
+    });
+
+    return mentor;
   }
 
   async updateMentor(mentorId, newMentor) {
@@ -49,8 +67,30 @@ export class MentorService {
 
     // chama o método que verifica se o mentor é válido
     // se não for válido, o método mentorValido lança um erro
-    if (!this.mentorValido(newMentor)) {
+    const mentorValido = await this.mentorValido(newMentor);
+    if (!mentorValido) {
       return;
+    }
+
+    // atualiza as especialidades do mentor
+    const mentorEspecialidades = await MentorEspecialidadeModel.findOne({
+      where: {
+        mentor_id: mentor.id,
+      },
+    });
+
+    // se já tiver uma lista de especialidades, atualiza o registro
+    if (mentorEspecialidades && mentorEspecialidades.length) {
+      await mentorEspecialidades.update({
+        especialidades: JSON.stringify(newMentor.especialidades),
+      });
+    }
+    // se nao tiver nenhuma especialidade, cria um novo registro
+    else if (!mentorEspecialidades || !mentorEspecialidades.length) {
+      await MentorEspecialidadeModel.create({
+        mentor_id: mentor.id,
+        especialidades: JSON.stringify(newMentor.especialidades),
+      });
     }
 
     return mentor.update(newMentor);

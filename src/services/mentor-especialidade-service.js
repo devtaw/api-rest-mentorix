@@ -5,7 +5,12 @@ import { ServiceError } from "../common/service-error.js";
 export class MentorEspecialidadeService {
   // Retorna todos os registros de "Mentor Especialidade" no banco de dados
   async getAllMentorEspecialidades() {
-    return MentorEspecialidadeModel.findAll();
+    return MentorEspecialidadeModel.findAll().then((result) => {
+      return result.map((data) => ({
+        ...data.dataValues,
+        especialidades: JSON.parse(data.dataValues.especialidades),
+      }));
+    });
   }
 
   // Retorna um registro de "Mentor Especialidade" pelo ID
