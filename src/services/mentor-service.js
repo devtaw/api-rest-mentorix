@@ -127,6 +127,33 @@ export class MentorService {
       throw new ServiceError("Lista de especialidades é obrigatório.", 400);
     }
 
+    const especialidadesPermitidas = [
+      "desenvolvimento",
+      "criptomoedas",
+      "blockchain",
+      "financas",
+      "investimentos",
+      "estrategia",
+      "criatividade",
+      "comunicacao",
+      "produtividade",
+    ];
+
+    const todasEspecialidadesSaoValidas = newMentor.especialidades.every((especialidade) =>
+      especialidadesPermitidas.includes(especialidade)
+    );
+
+    console.log("todasEspecialidadesSaoValidas ", todasEspecialidadesSaoValidas);
+
+    console.log("newMentor.especialidades ", newMentor.especialidades);
+
+    if (!todasEspecialidadesSaoValidas) {
+      throw new ServiceError(
+        `Especialidades inválidas. Especialidades permitidas: ${especialidadesPermitidas.join(", ")}`,
+        400
+      );
+    }
+
     return true;
   }
 }
