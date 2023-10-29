@@ -7,7 +7,7 @@ const userService = new UserService();
 
 export class MentorService {
   async getAllMentores() {
-    const mentores = await MentorModel.findAll();
+    return MentorModel.findAll();
   }
 
   async getMentorById(mentorId) {
