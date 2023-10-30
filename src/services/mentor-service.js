@@ -27,7 +27,7 @@ export class MentorService {
     });
 
     return {
-      ...mentor,
+      ...mentor.dataValues,
       especialidades: JSON.parse(mentorEspecialidades?.especialidades) || [],
       email: user.email,
     };
