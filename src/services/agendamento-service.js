@@ -1,11 +1,12 @@
 // Onde será implementado o CRUD.
 import AgendamentoModel from "../database/models/agendamento.mjs";
+import Mentor from "../database/models/mentor.mjs";
 import { MentorService } from "../services/mentor-service.js";
 import { ServiceError } from "../common/service-error.js";
 import { mailClient } from "../common/mail-client.js";
-import env from "dotenv";
-
-const commonConfigs = env.config().parsed;
+import dotenv from "dotenv";
+const result = dotenv.config();
+const configs = result.parsed;
 export class AgendamentoService {
   mentorService;
 
@@ -123,7 +124,7 @@ export class AgendamentoService {
       throw new ServiceError("Mentor não encontrado.", 404);
     }
 
-    const mentorixUserEmail = process.env.DEFAULT_EMAIL_USER || commonConfigs.DEFAULT_EMAIL_USER;
+    const mentorixUserEmail = configs.EMAIL_USER;
 
     const mensagem = `
 <h1>Você tem uma atualização na sua solicitação de agendamento!</h1>

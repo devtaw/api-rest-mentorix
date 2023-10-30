@@ -1,11 +1,14 @@
 import nodemailer from "nodemailer";
-import env from "dotenv";
+import dotenv from "dotenv";
+const result = dotenv.config();
+const configs = result.parsed;
 
-const commonConfigs = env.config().parsed;
-const host = process.env.EMAIL_SMTP || commonConfigs.DEFAULT_EMAIL_SMTP;
-const port = process.env.EMAIL_PORT || commonConfigs.DEFAULT_EMAIL_PORT;
-const user = process.env.EMAIL_USER || commonConfigs.DEFAULT_EMAIL_USER;
-const password = process.env.EMAIL_PASSWORD || commonConfigs.DEFAULT_EMAIL_PASSWORD;
+// console.log("configs: ", configs);
+
+const host = configs.EMAIL_SMTP;
+const port = configs.EMAIL_PORT;
+const user = configs.EMAIL_USER;
+const password = configs.EMAIL_PASSWORD;
 
 // console.log("-------------------------------------------");
 // console.log(host);
