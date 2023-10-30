@@ -66,7 +66,9 @@ export class UserService {
       throw new ServiceError("Senha inválida", 401);
     }
 
-    const token = jsonwebtoken.sign({ user: JSON.stringify(user) }, process.env.JWT_SECRET, {
+    const secretLocal = "mentorix-secret";
+
+    const token = jsonwebtoken.sign({ user: JSON.stringify(user) }, process.env.JWT_SECRET || secretLocal, {
       expiresIn: "4h",
     });
 

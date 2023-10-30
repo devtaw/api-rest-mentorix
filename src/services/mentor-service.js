@@ -1,5 +1,6 @@
 import { ServiceError } from "../common/service-error.js";
 import MentorModel from "../database/models/mentor.mjs";
+import UserModel from "../database/models/user.mjs";
 import MentorEspecialidadeModel from "../database/models/mentor-especialidade.mjs";
 import { UserService } from "../services/user-service.js";
 
@@ -17,6 +18,8 @@ export class MentorService {
       throw new ServiceError("Mentor não encontrado.", 404);
     }
 
+    const user = await UserModel.findByPk(mentor.user_id);
+
     const mentorEspecialidades = await MentorEspecialidadeModel.findOne({
       where: {
         mentor_id: mentor.id,
@@ -24,8 +27,9 @@ export class MentorService {
     });
 
     return {
-      mentor,
+      ...mentor,
       especialidades: JSON.parse(mentorEspecialidades?.especialidades) || [],
+      email: user.email,
     };
   }
 

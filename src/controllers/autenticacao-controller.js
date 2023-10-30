@@ -4,12 +4,11 @@ import { UserService } from "../services/user-service.js";
 const routes = express.Router();
 const userService = new UserService();
 
-routes.get("/", async (request, response) => {
+routes.post("/", async (request, response) => {
   try {
-    const [, hash] = Buffer.from(request.headers.authorization.split(" ")).toString().split(".");
-    const [email, password] = Buffer.from(hash, "base64").toString().split(":");
+    const { email, senha } = request.body;
 
-    const { user, token } = await userService.autenticar(email, password);
+    const { user, token } = await userService.autenticar(email, senha);
 
     return response.status(200).json({
       data: { user, token },
