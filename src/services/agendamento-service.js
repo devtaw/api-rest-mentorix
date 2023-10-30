@@ -3,7 +3,9 @@ import AgendamentoModel from "../database/models/agendamento.mjs";
 import { MentorService } from "../services/mentor-service.js";
 import { ServiceError } from "../common/service-error.js";
 import { mailClient } from "../common/mail-client.js";
-import commonConfigs from "../common-configs.json" assert { type: "json" };
+import env from "dotenv";
+
+const commonConfigs = env.config().parsed;
 export class AgendamentoService {
   mentorService;
 

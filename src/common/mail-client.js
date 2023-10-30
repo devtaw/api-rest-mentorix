@@ -1,6 +1,7 @@
 import nodemailer from "nodemailer";
-import commonConfigs from "../common-configs.json" assert { type: "json" };
+import env from "dotenv";
 
+const commonConfigs = env.config().parsed;
 const host = process.env.EMAIL_SMTP || commonConfigs.DEFAULT_EMAIL_SMTP;
 const port = process.env.EMAIL_PORT || commonConfigs.DEFAULT_EMAIL_PORT;
 const user = process.env.EMAIL_USER || commonConfigs.DEFAULT_EMAIL_USER;
