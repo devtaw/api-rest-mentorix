@@ -3,6 +3,7 @@ import MentorModel from "../database/models/mentor.mjs";
 import MentorEspecialidadeModel from "../database/models/mentor-especialidade.mjs";
 import { UserService } from "../services/user-service.js";
 import AgendamentoModel from "../database/models/agendamento.mjs";
+import UserModel from "../database/models/user.mjs";
 
 const userService = new UserService();
 
@@ -18,6 +19,8 @@ export class MentorService {
       throw new ServiceError("Mentor não encontrado.", 404);
     }
 
+    const user = await UserModel.findByPk(mentor.user_id);
+
     const mentorEspecialidades = await MentorEspecialidadeModel.findOne({
       where: {
         mentor_id: mentor.id,
@@ -30,13 +33,11 @@ export class MentorService {
       },
     }).then((agendamentos) => agendamentos.map((agendamento) => agendamento.dataValues));
 
-    console.log("agendamentosMentor ", agendamentosMentor);
-    // console.log("agendamentosMentor.dataValues", agendamentosMentor);
-
     return {
-      mentor,
+      ...mentor.dataValues,
       especialidades: JSON.parse(mentorEspecialidades?.especialidades) || [],
       agendamentos: agendamentosMentor || [],
+      email: user.email,
     };
   }
 
@@ -160,7 +161,8 @@ export class MentorService {
 
     if (!todasEspecialidadesSaoValidas) {
       throw new ServiceError(
-        `Especialidades inválidas. Especialidades permitidas: ${especialidadesPermitidas.join(", ")}`,
+        `Especialidades inválidas. Especialidades permitidas:
+${especialidadesPermitidas.join(", ")}`,
         400
       );
     }

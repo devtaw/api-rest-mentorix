@@ -8,10 +8,11 @@ const agendamentoService = new AgendamentoService();
 
 // const agendamentoService = new AgendamentoService();
 /**
- * Define uma rota GET (http://localhost:3000/agendamento/) para obter todos os agendamentos
- *
- * Exemplo de chamada: (GET) http://localhost:3000/agendamento
- */
+* Define uma rota GET (http://localhost:3000/agendamento/) para obter
+todos os agendamentos
+*
+* Exemplo de chamada: (GET) http://localhost:3000/agendamento
+*/
 routes.get("/", async (request, response) => {
   try {
     // apenas um exemplo de retorno, pode ser de um banco de dados, uma api, um service, etc.
@@ -19,17 +20,20 @@ routes.get("/", async (request, response) => {
     // retorna o status 200 (ok) e o json com os dados
     return response.status(200).json(listaDeAgendamentos);
   } catch (error) {
+    console.error(error);
     /**
-     * Caso houver qualquer tipo de erro na execução, retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
-     */
+* Caso houver qualquer tipo de erro na execução, retorna o status 500
+(erro interno do servidor) e o json com a mensagem de erro
+*/
     return response.status(500).json({ mensagem: "Erro ao listar Agendamentos." });
   }
 });
 
 /**
- * Define uma rota GET para obter um agendamento específico com base no id passado na url
- *  Exemplo de chamada: (GET) http://localhost:3000/agendamento/123
- */
+* Define uma rota GET para obter um agendamento específico com base no
+id passado na url
+* Exemplo de chamada: (GET) http://localhost:3000/agendamento/123
+*/
 routes.get("/:id", async (request, response) => {
   try {
     const id = request.params.id;
@@ -42,17 +46,20 @@ routes.get("/:id", async (request, response) => {
       return response.status(error.errorCode).json({ mensagem: error.message });
     }
     /**
-     * Caso houver qualquer tipo de erro na execução, retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
-     */
+* Caso houver qualquer tipo de erro na execução, retorna o status 500
+(erro interno do servidor) e o json com a mensagem de erro
+*/
     return response.status(500).json({ mensagem: "Erro ao listar Agendamento." });
   }
 });
 
 /**
- * Define uma rota POST (http://localhost:3000/agendamento) para cadastrar um novo agendamento
- *
- * neste caso, o body da requisição deve conter os dados do agendamento a ser cadastrado
- */
+* Define uma rota POST (http://localhost:3000/agendamento) para
+cadastrar um novo agendamento
+*
+* neste caso, o body da requisição deve conter os dados do agendamento
+a ser cadastrado
+*/
 
 routes.post("/", async (request, response) => {
   try {
@@ -64,23 +71,27 @@ routes.post("/", async (request, response) => {
     // retorna o status 200 (ok) e o json com os dados
     return response.status(200).json(novoAgendamento); // return
   } catch (error) {
+    console.error(error);
+
     if (error instanceof ServiceError) {
       return response.status(error.errorCode).json({ mensagem: error.message });
     }
     /**
-     * Caso houver qualquer tipo de erro na execução, retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
-     */
+* Caso houver qualquer tipo de erro na execução, retorna o status 500
+(erro interno do servidor) e o json com a mensagem de erro
+*/
     return response.status(500).json({ mensagem: "Erro ao cadastrar Agendamento." });
   }
 });
 
 /**
- * Define uma rota PUT (http://localhost:3000/agendamento) para editar um agendamento específico
- *
- * :id representa um parâmetro da rota, ou seja, pode ser qualquer valor
- *
- * Exemplo de chamada: (PUT) http://localhost:3000/agendamento/123
- */
+* Define uma rota PUT (http://localhost:3000/agendamento) para editar
+um agendamento específico
+*
+* :id representa um parâmetro da rota, ou seja, pode ser qualquer valor
+*
+* Exemplo de chamada: (PUT) http://localhost:3000/agendamento/123
+*/
 routes.put("/:id", async (request, response) => {
   try {
     // obtem o id passado na url
@@ -96,17 +107,19 @@ routes.put("/:id", async (request, response) => {
       return response.status(error.errorCode).json({ mensagem: error.message });
     }
     /**
-     * Caso houver qualquer tipo de erro na execução,retorna o status 500 (erro interno do servidor) e o json com a mensagem de erro
-     */
+* Caso houver qualquer tipo de erro na execução,retorna o status 500
+(erro interno do servidor) e o json com a mensagem de erro
+*/
     return response.status(500).json({ mensagem: "Ocorreu um erro ao atualizar Agendamento!" });
   }
 });
 
 /**
- * Define uma rota DELETE (http://localhost:3000/agendamento) para deletar um agendamento específico
- *
- * Exemplo de chamada: (DELETE) http://localhost:3000/agendamento/123
- */
+* Define uma rota DELETE (http://localhost:3000/agendamento) para
+deletar um agendamento específico
+*
+* Exemplo de chamada: (DELETE) http://localhost:3000/agendamento/123
+*/
 routes.delete("/:id", async (request, response) => {
   try {
     // obtem o id passado na url

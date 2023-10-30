@@ -1,13 +1,14 @@
 //Importação do express
 import express from "express";
+import DB from "./src/database/models/index.cjs";
+import "./src/common/mail-client.js";
 import { AutenticacaoController } from "./src/controllers/autenticacao-controller.js";
 import { EspecialidadeController } from "./src/controllers/especialidade-controller.js";
 import { AreaAtuacaoController } from "./src/controllers/area-atuacao-controller.js";
-
-import DB from "./src/database/models/index.cjs";
 import { AgendamentoController } from "./src/controllers/agendamento-controller.js";
 import { MentorEspecialidadeController } from "./src/controllers/mentor-especialidade-controller.js";
 import { MentorController } from "./src/controllers/mentor-controller.js";
+
 const sequelize = DB.sequelize;
 
 import cors from "cors";
