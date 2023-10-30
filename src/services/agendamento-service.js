@@ -124,7 +124,7 @@ export class AgendamentoService {
       throw new ServiceError("Mentor não encontrado.", 404);
     }
 
-    const mentorixUserEmail = configs.EMAIL_USER;
+    const mentorixUserEmail = process.env.EMAIL_USER || configs?.EMAIL_USER;
 
     const mensagem = `
 <h1>Você tem uma atualização na sua solicitação de agendamento!</h1>
