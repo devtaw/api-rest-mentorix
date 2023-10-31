@@ -1,6 +1,5 @@
 // Onde será implementado o CRUD.
 import AgendamentoModel from "../database/models/agendamento.mjs";
-import Mentor from "../database/models/mentor.mjs";
 import { MentorService } from "../services/mentor-service.js";
 import { ServiceError } from "../common/service-error.js";
 import { mailClient } from "../common/mail-client.js";
@@ -83,7 +82,7 @@ export class AgendamentoService {
       throw new ServiceError("Mentor não encontrado.", 404);
     }
 
-    const mentorixUserEmail = process.env.DEFAULT_EMAIL_USER || commonConfigs.DEFAULT_EMAIL_USER;
+    const mentorixUserEmail = process.env.DEFAULT_EMAIL_USER || configs?.DEFAULT_EMAIL_USER;
 
     const mensagem = `
 <h1>Você tem uma nova solicitação de agendamento!</h1>
@@ -93,17 +92,6 @@ export class AgendamentoService {
 <p>Profissão: ${dadosAgendamento.profissao || "Não informado."}</p>
 <p>Mensagem: ${dadosAgendamento.campoMensagem}</p>
 `;
-
-    console.log(
-      {
-        from: `Suporte Mentorix <${mentorixUserEmail}>`,
-        to: mentor.email,
-        subject: "[Mentorix] Você tem uma nova solicitação de agendamento!",
-        html: mensagem,
-        text: mensagem,
-      },
-      mentor
-    );
 
     return mailClient
       .sendMail({
