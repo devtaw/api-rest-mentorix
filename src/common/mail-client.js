@@ -12,12 +12,14 @@ const password = process.env.EMAIL_PASSWORD || configs?.EMAIL_PASSWORD;
 const clientId = process.env.EMAIL_CLIENT_ID || configs?.EMAIL_CLIENT_ID;
 const clientSecret = process.env.EMAIL_CLIENT_SECRET || configs?.EMAIL_CLIENT_SECRET;
 
-// console.log("-------------------------------------------");
-// console.log(host);
-// console.log(port);
-// console.log(user);
-// console.log(password);
-// console.log("-------------------------------------------");
+console.log("-------------------------------------------");
+console.log(host);
+console.log(port);
+console.log(user);
+console.log(password);
+console.log(clientId);
+console.log(clientSecret);
+console.log("-------------------------------------------");
 
 export const mailClient = nodemailer.createTransport({
   host: host,
@@ -26,6 +28,7 @@ export const mailClient = nodemailer.createTransport({
   auth: {
     user: user,
     pass: password,
+    password: password,
     clientId: clientId,
     clientSecret: clientSecret,
   },
