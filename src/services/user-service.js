@@ -1,4 +1,5 @@
 import UserModel from "../database/models/user.mjs";
+import MentorModel from "../database/models/mentor.mjs";
 import { ServiceError } from "../common/service-error.js";
 import bcrypt from "bcrypt";
 import jsonwebtoken from "jsonwebtoken";
@@ -51,12 +52,14 @@ export class UserService {
     }
     return user.destroy();
   }
+
   async autenticar(email, senha) {
     const user = await UserModel.findOne({
       where: {
         email,
       },
     });
+
     if (!user) {
       throw new ServiceError("Usuário não encontrado", 404);
     }
@@ -72,6 +75,14 @@ export class UserService {
       expiresIn: "4h",
     });
 
-    return { user, token };
+    const mentor = await MentorModel.findOne({
+      where: {
+        user_id: user.id,
+      },
+    }).then((data) => data?.dataValues);
+
+    console.log("========== mentor: ", mentor);
+
+    return { user, token, mentor_id: mentor?.id };
   }
 }

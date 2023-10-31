@@ -8,10 +8,10 @@ routes.post("/", async (request, response) => {
   try {
     const { email, senha } = request.body;
 
-    const { user, token } = await userService.autenticar(email, senha);
+    const { user, token, mentor_id } = await userService.autenticar(email, senha);
 
     return response.status(200).json({
-      data: { user, token },
+      data: { user, token, mentor_id },
     });
   } catch (error) {
     console.error(error);
